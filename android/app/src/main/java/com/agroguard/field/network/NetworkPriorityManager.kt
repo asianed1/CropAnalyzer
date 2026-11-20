@@ -42,11 +42,11 @@ class NetworkPriorityManager(context: Context) {
     private val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-    private val _state = MutableStateFlow(evaluateCurrentNetworks())
-    val state: StateFlow<PriorityNetworkState> = _state.asStateFlow()
-
     private val activeWifiNetworks = mutableSetOf<Network>()
     private val activeCellularNetworks = mutableSetOf<Network>()
+
+    private val _state = MutableStateFlow(evaluateCurrentNetworks())
+    val state: StateFlow<PriorityNetworkState> = _state.asStateFlow()
 
     private val networkCallback = object : ConnectivityManager.NetworkCallback() {
         override fun onAvailable(network: Network) {
