@@ -14,6 +14,7 @@ export interface DiagnosisDisplayData {
   matchReasons?: string[];
   recommendations: ConditionRecommendation;
   payloadKb?: number;
+  isVagueMatch?: boolean;
 }
 
 interface DiagnosisResultCardProps {
@@ -33,8 +34,14 @@ export const DiagnosisResultCard: React.FC<DiagnosisResultCardProps> = ({
 }) => {
   const isHealthy = result.category.toLowerCase() === 'healthy';
   const isAbiotic = result.category.toLowerCase() === 'abiotic';
-  const confidenceTier =
-    result.probabilityPercent >= 75 ? 'High Confidence' : result.probabilityPercent >= 58 ? 'Moderate Confidence' : 'Low Confidence';
+  const isBroad = Boolean(result.isVagueMatch || result.category.toLowerCase() === 'broad match');
+  const confidenceTier = isBroad
+    ? 'Broad Match (Vague Input)'
+    : result.probabilityPercent >= 75
+    ? 'High Confidence'
+    : result.probabilityPercent >= 58
+    ? 'Moderate Confidence'
+    : 'Low Confidence';
 
   return (
     <section
@@ -50,7 +57,9 @@ export const DiagnosisResultCard: React.FC<DiagnosisResultCardProps> = ({
               : 'On-Device Offline Engine (0 KB Mobile Data)'}
           </span>
           <span aria-hidden="true">·</span>
-          <span>{isAbiotic ? 'Abiotic / Environmental' : result.category}</span>
+          <span>
+            {isBroad ? 'Broad Multi-Match' : isAbiotic ? 'Abiotic / Environmental' : result.category}
+          </span>
           {result.payloadKb && result.source === 'gemini_cloud' && (
             <>
               <span aria-hidden="true">·</span>
@@ -84,7 +93,9 @@ export const DiagnosisResultCard: React.FC<DiagnosisResultCardProps> = ({
 
           <div>
             <p className="text-xs font-medium text-[#5A675C]">
-              {isHealthy
+              {isBroad
+                ? 'Possible Conditions (Specify Crop to Narrow)'
+                : isHealthy
                 ? 'Plant Condition'
                 : isAbiotic
                 ? 'Detected Environmental / Abiotic Cause'
@@ -92,7 +103,11 @@ export const DiagnosisResultCard: React.FC<DiagnosisResultCardProps> = ({
             </p>
             <p
               className={`mt-0.5 text-lg font-semibold ${
-                isHealthy ? 'text-[#1B5E20]' : isAbiotic ? 'text-[#B45309]' : 'text-[#9A3412]'
+                isHealthy
+                  ? 'text-[#1B5E20]'
+                  : isAbiotic || isBroad
+                  ? 'text-[#B45309]'
+                  : 'text-[#9A3412]'
               }`}
             >
               {result.diagnosisName}

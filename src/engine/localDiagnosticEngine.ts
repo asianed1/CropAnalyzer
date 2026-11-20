@@ -38,10 +38,16 @@ export interface LocalDiagnosisCandidate {
 }
 
 export interface LocalAnalysisResult {
-  status: 'diagnosed_offline' | 'needs_pulldown_or_cloud' | 'unresolved_cloud_recommended';
+  status:
+    | 'diagnosed_offline'
+    | 'diagnosed_vague_offline'
+    | 'needs_pulldown_or_cloud'
+    | 'unresolved_cloud_recommended';
   quality: ImageQualityMetrics;
   primaryMatch: LocalDiagnosisCandidate | null;
   alternatives: LocalDiagnosisCandidate[];
+  vagueSummary?: string;
+  vagueConditionTitle?: string;
   failureReason?: string;
 }
 
@@ -286,6 +292,12 @@ export function runOnDeviceDiagnosis(
       }
 
       // 2. Contextual pulldown alignment ('unknown' is treated neutrally)
+      const isFullyVague =
+        context.suspectedCropId === 'auto' &&
+        context.plantPart === 'unknown' &&
+        context.primarySymptom === 'unknown' &&
+        !hasExplicitAbioticSignal;
+
       if (context.suspectedCropId === crop.id) {
         score += 0.18;
         reasons.push(`Crop selected: ${crop.commonName}`);
@@ -295,7 +307,7 @@ export function runOnDeviceDiagnosis(
           (imageHintId === 'sample_maize_armyworm' && crop.id === 'maize') ||
           (imageHintId === 'sample_rice_blast' && crop.id === 'rice')
         ) {
-          score += 0.22;
+          score += isFullyVague ? 0.04 : 0.22;
           reasons.push(`On-device crop classifier matched ${crop.commonName} leaf morphology`);
         }
       }
@@ -489,12 +501,32 @@ export function runOnDeviceDiagnosis(
   }
 
   candidates.sort((a, b) => b.probabilityPercent - a.probabilityPercent);
-  const top = candidates[0] ?? null;
-  const alternatives = candidates.slice(1, 3);
 
-  const margin = top && alternatives[0] ? top.probabilityPercent - alternatives[0].probabilityPercent : 20;
+  // Pick top distinct conditions across crops (or within selected crop)
+  const distinctCandidates: LocalDiagnosisCandidate[] = [];
+  const seenKeys = new Set<string>();
+  for (const cand of candidates) {
+    const key =
+      context.suspectedCropId === 'auto'
+        ? cand.condition.name.toLowerCase()
+        : cand.condition.id;
+    if (!seenKeys.has(key)) {
+      seenKeys.add(key);
+      distinctCandidates.push(cand);
+    }
+    if (distinctCandidates.length >= 4) break;
+  }
 
-  if (isOutOfDistribution || !top || top.probabilityPercent < 60) {
+  const top = distinctCandidates[0] ?? candidates[0] ?? null;
+  const alternatives = distinctCandidates.slice(1, 3);
+
+  const margin =
+    top && distinctCandidates[1]
+      ? top.probabilityPercent - distinctCandidates[1].probabilityPercent
+      : 20;
+
+  // Truly out-of-distribution or zero meaningful match -> escalate to Gemini / Memory
+  if (isOutOfDistribution || !top || top.probabilityPercent < 42) {
     return {
       status: 'unresolved_cloud_recommended',
       quality,
@@ -502,17 +534,53 @@ export function runOnDeviceDiagnosis(
       alternatives,
       failureReason: isOutOfDistribution
         ? 'Unusual purple-bronze galls or unrecognized leaf morphology fall outside the 30-crop Southeast Asia & abiotic offline model.'
-        : 'On-device confidence is below the diagnostic threshold (60%).',
+        : 'Visual traits inside the bounding box did not match any known plant condition with enough signal.',
     };
   }
 
-  if (top.probabilityPercent < 70 && margin < 6 && context.suspectedCropId === 'auto' && !hasExplicitAbioticSignal) {
+  const isVagueCropOrContext =
+    (context.suspectedCropId === 'auto' && (top.probabilityPercent < 70 || margin < 6)) ||
+    top.probabilityPercent < 60;
+
+  if (isVagueCropOrContext) {
+    const topThree = distinctCandidates.slice(0, 3);
+    const formattedList =
+      context.suspectedCropId === 'auto'
+        ? topThree.map((c) => `${c.condition.name} (${c.crop.commonName})`)
+        : topThree.map((c) => c.condition.name);
+
+    const joinedReadable =
+      formattedList.length >= 3
+        ? `${formattedList[0]}, ${formattedList[1]}, or ${formattedList[2]}`
+        : formattedList.join(' or ');
+
+    const conditionTitleList = topThree.map((c) => c.condition.name);
+    const vagueConditionTitle =
+      conditionTitleList.length >= 3
+        ? `${conditionTitleList[0]}, ${conditionTitleList[1]}, or ${conditionTitleList[2]}`
+        : conditionTitleList.join(' or ');
+
+    const missingParts: string[] = [];
+    if (context.suspectedCropId === 'auto') missingParts.push('the crop');
+    if (context.primarySymptom === 'unknown') missingParts.push('the primary symptom');
+    if (context.soilMoisture === 'unknown' && context.recentInputs === 'unknown') {
+      missingParts.push('soil/input history');
+    }
+    const missingPhrase =
+      missingParts.length > 0 ? missingParts.slice(0, 2).join(' and ') : 'detailed field context';
+
+    const vagueSummary =
+      context.suspectedCropId === 'auto'
+        ? `Since you did not indicate ${missingPhrase} in the pulldowns, the symptoms observed in the image could be any of these: ${joinedReadable}. Select the crop below to pinpoint one cause, or ask Gemini online if available.`
+        : `Since ${missingPhrase} ${missingParts.length > 1 ? 'were' : 'was'} left on "Do not know", the issue on ${top.crop.commonName} could be any of these: ${joinedReadable}. Narrow the symptom or soil pulldowns below to confirm.`;
+
     return {
-      status: 'needs_pulldown_or_cloud',
+      status: 'diagnosed_vague_offline',
       quality,
       primaryMatch: top,
       alternatives,
-      failureReason: 'Top local candidates are closely tied. Refine the pulldown menus below or escalate to Gemini cloud analysis.',
+      vagueConditionTitle,
+      vagueSummary,
     };
   }
 

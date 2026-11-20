@@ -144,7 +144,7 @@ const QUICK_SCENARIOS: ScenarioPreset[] = [
   {
     id: 'all_unsure_tomato',
     title: 'All Pulldowns "Do not know"',
-    subtitle: 'Offline · Tests image-only with unsure menus',
+    subtitle: 'Offline · Returns broad multi-crop possibilities',
     sampleId: 'sample_tomato_blight',
     imageSrc: FIELD_SAMPLES[0].src,
     context: {
@@ -307,20 +307,62 @@ export default function App() {
     const analysis = runOnDeviceDiagnosis(metrics, context, activeSampleId);
     setLocalResult(analysis);
 
-    if (analysis.status === 'diagnosed_offline' && analysis.primaryMatch) {
+    if (
+      (analysis.status === 'diagnosed_offline' ||
+        analysis.status === 'diagnosed_vague_offline') &&
+      analysis.primaryMatch
+    ) {
       const m = analysis.primaryMatch;
-      const output: DiagnosisDisplayData = {
-        source: 'offline_engine',
-        cropCommonName: m.crop.commonName,
-        cropScientificName: m.crop.scientificName,
-        diagnosisName: m.condition.name,
-        pathogenScientificName: m.condition.scientificName,
-        category: m.condition.category,
-        probabilityPercent: m.probabilityPercent,
-        summary: m.condition.summary,
-        matchReasons: m.matchReasons,
-        recommendations: m.condition.recommendations,
-      };
+      const isVague = analysis.status === 'diagnosed_vague_offline';
+      const output: DiagnosisDisplayData = isVague
+        ? {
+            source: 'offline_engine',
+            isVagueMatch: true,
+            cropCommonName:
+              context.suspectedCropId === 'auto'
+                ? 'Crop Not Specified (Multiple Matching Crops)'
+                : m.crop.commonName,
+            cropScientificName:
+              context.suspectedCropId === 'auto'
+                ? 'Select Suspected Crop below to narrow'
+                : m.crop.scientificName,
+            diagnosisName:
+              analysis.vagueConditionTitle || m.condition.name,
+            pathogenScientificName: 'Broad Offline Match — Vague Inputs',
+            category: 'Broad Match',
+            probabilityPercent: m.probabilityPercent,
+            summary: analysis.vagueSummary || m.condition.summary,
+            matchReasons: [
+              'Visual traits detected inside bounding box',
+              'Inputs left broad / "Do not know"',
+            ],
+            recommendations: {
+              immediateActions: [
+                'Isolate or prune a few badly affected leaves carefully while avoiding spreading wet spores.',
+                'Check whether surrounding plants show dry/cracked soil, standing water, heavy shade, or recent fertilizer scorch.',
+              ],
+              biologicalControl: [
+                'Hold off on specific bio-fungicides or insecticides until you select the crop in the pulldown to narrow the exact pest or pathogen.',
+              ],
+              chemicalGuidance:
+                'Do NOT apply chemical sprays blindly from a broad match. Specify the crop and primary symptom below—or verify online via Gemini—before spraying.',
+              prevention: [
+                'Keep field notes on crop name, plant part affected, and recent weather/fertilizer inputs for sharper offline diagnosis.',
+              ],
+            },
+          }
+        : {
+            source: 'offline_engine',
+            cropCommonName: m.crop.commonName,
+            cropScientificName: m.crop.scientificName,
+            diagnosisName: m.condition.name,
+            pathogenScientificName: m.condition.scientificName,
+            category: m.condition.category,
+            probabilityPercent: m.probabilityPercent,
+            summary: m.condition.summary,
+            matchReasons: m.matchReasons,
+            recommendations: m.condition.recommendations,
+          };
       setDisplayDiagnosis(output);
 
       const caseId = `case_${Date.now()}`;

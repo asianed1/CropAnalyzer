@@ -213,16 +213,91 @@ class LocalDiagnosticEngine(
             }
         }
 
-        val best = scored.maxByOrNull { it.probability }
-        if (isOutOfDistribution || best == null || best.probability < 60) {
+        val sorted = scored.sortedByDescending { it.probability }
+        val distinctTop = mutableListOf<ScoredCandidate>()
+        val seenNames = mutableSetOf<String>()
+        for (cand in sorted) {
+            val key = if (context.suspectedCropId == "auto") cand.diagnosisName.lowercase() else "${cand.cropCommonName}:${cand.diagnosisName}".lowercase()
+            if (seenNames.add(key)) {
+                distinctTop.add(cand)
+            }
+            if (distinctTop.size >= 4) break
+        }
+
+        val best = distinctTop.firstOrNull() ?: sorted.firstOrNull()
+        val second = distinctTop.getOrNull(1)
+        val margin = if (best != null && second != null) best.probability - second.probability else 20
+
+        if (isOutOfDistribution || best == null || best.probability < 42) {
             return AnalysisDecision.UnresolvedNeedCloud(
                 tempCaseId = tempId,
                 reason = if (isOutOfDistribution) {
                     "Unrecognized symptom pattern falls outside the 30-crop Southeast Asia & abiotic offline knowledge base."
                 } else {
-                    "Offline confidence (${best?.probability ?: 0}%) is below the 60% threshold."
+                    "Visual traits inside the bounding box did not match any known plant condition with enough signal."
                 },
                 roiJpegBytes = jpegBytes
+            )
+        }
+
+        val isVagueInput =
+            (context.suspectedCropId == "auto" && (best.probability < 70 || margin < 6)) ||
+                best.probability < 60
+
+        if (isVagueInput) {
+            val topThree = distinctTop.take(3)
+            val labels = if (context.suspectedCropId == "auto") {
+                topThree.map { "${it.diagnosisName} (${it.cropCommonName})" }
+            } else {
+                topThree.map { it.diagnosisName }
+            }
+            val joinedReadable = when {
+                labels.size >= 3 -> "${labels[0]}, ${labels[1]}, or ${labels[2]}"
+                else -> labels.joinToString(" or ")
+            }
+            val titleConditions = when {
+                topThree.size >= 3 -> "${topThree[0].diagnosisName}, ${topThree[1].diagnosisName}, or ${topThree[2].diagnosisName}"
+                else -> topThree.joinToString(" or ") { it.diagnosisName }
+            }
+            val vagueSummary = if (context.suspectedCropId == "auto") {
+                "Since you did not indicate the crop or full field details in the pulldowns, the symptoms observed in this image could be any of these: $joinedReadable. Select the crop below to narrow to one diagnosis, or ask Gemini online if signal is available."
+            } else {
+                "Since detailed symptom or soil conditions were left on \"Do not know\", the issue on ${best.cropCommonName} could be any of these: $joinedReadable. Narrow the pulldowns below to confirm."
+            }
+
+            return AnalysisDecision.ConfidentOffline(
+                DiagnosisOutput(
+                    caseId = tempId,
+                    cropCommonName = if (context.suspectedCropId == "auto") {
+                        "Crop Not Specified (Multiple Matching Crops)"
+                    } else {
+                        best.cropCommonName
+                    },
+                    cropScientificName = if (context.suspectedCropId == "auto") {
+                        "Select Suspected Crop below to narrow"
+                    } else {
+                        best.cropScientificName
+                    },
+                    diagnosisName = titleConditions,
+                    pathogenScientificName = "Broad Offline Match — Vague Inputs",
+                    category = "Broad Match",
+                    probabilityPercent = best.probability,
+                    summary = vagueSummary,
+                    recommendations = com.agroguard.field.model.ConditionRecommendation(
+                        immediateActions = listOf(
+                            "Isolate or prune a few badly affected leaves carefully while avoiding spreading wet spores.",
+                            "Check whether surrounding plants show dry/cracked soil, standing water, heavy shade, or recent fertilizer scorch."
+                        ),
+                        biologicalControl = listOf(
+                            "Hold off on specific biological sprays until you select the crop in the pulldown to narrow the exact pest or pathogen."
+                        ),
+                        chemicalGuidance = "Do NOT spray chemical pesticides blindly from a broad match. Specify the crop and primary symptom below—or verify online via Gemini—before spraying.",
+                        prevention = listOf(
+                            "Keep notes on crop name, affected plant part, and recent weather or fertilizer inputs for sharper offline diagnosis."
+                        )
+                    ),
+                    source = "OFFLINE_ON_DEVICE"
+                )
             )
         }
 

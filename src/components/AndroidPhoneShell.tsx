@@ -282,7 +282,9 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
 
                 <div>
                   <p className="text-[11px] text-[#5A675C]">
-                    {displayDiagnosis.category === 'Abiotic'
+                    {displayDiagnosis.isVagueMatch || displayDiagnosis.category === 'Broad Match'
+                      ? 'Possible Conditions (Broad Offline Match)'
+                      : displayDiagnosis.category === 'Abiotic'
                       ? 'Environmental / Abiotic Cause'
                       : 'Detected Pest / Disease'}
                   </p>
@@ -290,7 +292,9 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                     className={`text-base font-semibold ${
                       displayDiagnosis.category === 'Healthy'
                         ? 'text-[#1B5E20]'
-                        : displayDiagnosis.category === 'Abiotic'
+                        : displayDiagnosis.category === 'Abiotic' ||
+                          displayDiagnosis.isVagueMatch ||
+                          displayDiagnosis.category === 'Broad Match'
                         ? 'text-[#B45309]'
                         : 'text-[#9A3412]'
                     }`}
@@ -334,7 +338,7 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                     <p className="border-t border-[#ECEFE9] pt-2 text-[11px] text-[#5A675C]">
                       Other possibilities:{' '}
                       {(localResult?.alternatives ?? [])
-                        .map((a) => `${a.condition.name} (${a.probabilityPercent}%)`)
+                        .map((a) => `${a.crop.commonName} — ${a.condition.name} (${a.probabilityPercent}%)`)
                         .join(' · ')}
                     </p>
                   )}
