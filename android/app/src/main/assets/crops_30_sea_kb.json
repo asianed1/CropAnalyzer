@@ -1,0 +1,5023 @@
+[
+  {
+    "id": "rice",
+    "commonName": "Rice",
+    "scientificName": "Oryza sativa",
+    "family": "Poaceae",
+    "globalRegions": "Vietnam, Thailand, Indonesia, Philippines, Myanmar, Cambodia, Laos",
+    "leafAspectHint": "blade",
+    "conditions": [
+      {
+        "id": "rice_blast",
+        "name": "Rice Blast",
+        "scientificName": "Magnaporthe oryzae",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Spindle- or diamond-shaped lesions with pale gray-white centers and dark brown borders on leaf blades or panicle necks.",
+        "visualSignature": {
+          "dominantTrait": "gray_diamond",
+          "minGrayWhiteRatio": 0.04,
+          "minNecroticRatio": 0.05
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Drain excess standing water briefly if field humidity is severe, then restore shallow flood.",
+            "Avoid excessive nitrogen topdressing while lesions are actively expanding."
+          ],
+          "biologicalControl": [
+            "Apply Bacillus subtilis or Trichoderma viride foliar bio-fungicide early at lesion onset."
+          ],
+          "chemicalGuidance": "Consult local extension guidelines for tricyclazole or azoxystrobin sprays at booting/heading if neck blast threatens yield.",
+          "prevention": [
+            "Plant blast-resistant rice varieties and split nitrogen into 3 smaller applications."
+          ]
+        }
+      },
+      {
+        "id": "rice_bacterial_blight",
+        "name": "Bacterial Leaf Blight",
+        "scientificName": "Xanthomonas oryzae pv. oryzae",
+        "category": "Bacterial",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic",
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Water-soaked yellow-to-straw stripes starting at leaf tips and wavy margins, often curling and drying.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.14
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Avoid draining infected paddy water into healthy downstream plots; pause nitrogen topdressing."
+          ],
+          "biologicalControl": [
+            "Use Pseudomonas fluorescens seed/root dip prior to transplanting in future cycles."
+          ],
+          "chemicalGuidance": "Copper sprays have limited systemic effect; rely on resistant cultivars and clean canal sanitation.",
+          "prevention": [
+            "Maintain balanced potassium nutrition and remove wild grass hosts along paddy bunds."
+          ]
+        }
+      },
+      {
+        "id": "rice_planthopper",
+        "name": "Brown Planthopper",
+        "scientificName": "Nilaparvata lugens",
+        "category": "Pest",
+        "affectedParts": [
+          "stem_stalk",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "insects_webbing",
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "vegetative",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Clusters of small brown hoppers at rice stem bases near waterline causing circular \"hopperburn\" drying patches.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.1
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Drain paddy water for 3–4 days to disrupt nymph buildup at stem bases; count hoppers per hill."
+          ],
+          "biologicalControl": [
+            "Conserve wolf spiders and mirid bugs by avoiding early-season broad-spectrum pyrethroids."
+          ],
+          "chemicalGuidance": "Only if >10–15 nymphs/hill, target stem bases with selective buprofezin or pymetrozine.",
+          "prevention": [
+            "Synchronize planting dates across neighboring plots and avoid overly dense transplanting."
+          ]
+        }
+      },
+      {
+        "id": "rice_healthy",
+        "name": "Healthy Rice Foliage",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Uniform chlorophyll coloration with intact leaf blade margins and no necrotic lesions.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Continue weekly scouting at panicle initiation and heading stages."
+          ],
+          "biologicalControl": [
+            "Preserve beneficial paddy spiders and parasitoid wasps."
+          ],
+          "chemicalGuidance": "No pesticide or fungicide intervention needed.",
+          "prevention": [
+            "Maintain balanced NPK fertility and alternate wetting-drying irrigation."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "maize",
+    "commonName": "Maize (Corn)",
+    "scientificName": "Zea mays",
+    "family": "Poaceae",
+    "globalRegions": "Indonesia, Philippines, Thailand, Vietnam, Myanmar",
+    "leafAspectHint": "blade",
+    "conditions": [
+      {
+        "id": "maize_fall_armyworm",
+        "name": "Fall Armyworm",
+        "scientificName": "Spodoptera frugiperda",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Ragged windowpane or shot-hole leaf feeding with coarse sawdust-like tan frass in the maize whorl.",
+        "visualSignature": {
+          "dominantTrait": "chewed_frass",
+          "minNecroticRatio": 0.06,
+          "minYellowRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Scout 20 whorls per plot; apply dry sand/wood-ash mix or hand-crush young larvae in smallholder plots.",
+            "Time sprays for late afternoon when caterpillars emerge from the whorl."
+          ],
+          "biologicalControl": [
+            "Apply Bacillus thuringiensis (Bt) or azadirachtin (neem) directly into the whorl; release Trichogramma parasitoids."
+          ],
+          "chemicalGuidance": "If >20% whorls show fresh damage, use targeted emamectin benzoate or spinosad directed into the whorl.",
+          "prevention": [
+            "Intercrop maize with legumes and plant synchronously at the start of rains."
+          ]
+        }
+      },
+      {
+        "id": "maize_downy_mildew",
+        "name": "Philippine Corn Downy Mildew",
+        "scientificName": "Peronosclerospora philippinensis",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic",
+          "powdery_mold"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Pale yellow-to-white longitudinal chlorotic streaks from the leaf base with fine white downy growth underneath at dawn.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.14
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Rogue and bury/burn systemically infected chlorotic seedlings within 3 weeks of emergence."
+          ],
+          "biologicalControl": [
+            "Remove neighboring wild Saccharum spontaneum grassy hosts."
+          ],
+          "chemicalGuidance": "Prevent with metalaxyl or dimethomorph seed treatment prior to planting in endemic SEA zones.",
+          "prevention": [
+            "Plant downy-mildew resistant hybrids and avoid overlapping maize crops nearby."
+          ]
+        }
+      },
+      {
+        "id": "maize_nclb",
+        "name": "Northern Corn Leaf Blight",
+        "scientificName": "Exserohilum turcicum",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Long, elliptical \"cigar-shaped\" gray-green to tan necrotic lesions parallel to leaf veins.",
+        "visualSignature": {
+          "dominantTrait": "gray_diamond",
+          "minNecroticRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Strip severely blighted lower leaves on small plots to boost airflow."
+          ],
+          "biologicalControl": [
+            "Trichoderma harzianum sprays reduce secondary spore production in humid weather."
+          ],
+          "chemicalGuidance": "Consult extension guidelines on strobilurin/triazole sprays if lesions reach ear leaf before silking.",
+          "prevention": [
+            "Rotate out of continuous maize and shred or compost infected stalks."
+          ]
+        }
+      },
+      {
+        "id": "maize_healthy",
+        "name": "Healthy Maize Foliage",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Deep green vigorous whorl and broad leaves without frass, downy streaks, or blight lesions.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Inspect whorls weekly from V3 through tasseling."
+          ],
+          "biologicalControl": [
+            "Encourage natural parasitoid habitat near field borders."
+          ],
+          "chemicalGuidance": "No intervention required.",
+          "prevention": [
+            "Maintain balanced fertility and clean seedbed preparation."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "cassava",
+    "commonName": "Cassava",
+    "scientificName": "Manihot esculenta",
+    "family": "Euphorbiaceae",
+    "globalRegions": "Thailand, Indonesia, Vietnam, Cambodia, Laos, Philippines",
+    "leafAspectHint": "lobed",
+    "conditions": [
+      {
+        "id": "cassava_mosaic",
+        "name": "Sri Lankan / SEA Cassava Mosaic Disease",
+        "scientificName": "Sri Lankan Cassava Mosaic Virus (SLCMV)",
+        "category": "Viral",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Distinct green-and-yellow mosaic mottling with twisted, distorted leaf lobes and stunted shoots.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.15
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Uproot and burn mosaic-infected young plants immediately; never harvest cuttings from infected stems."
+          ],
+          "biologicalControl": [
+            "Control Bemisia whitefly vectors in nursery multiplication blocks using neem or insecticidal soap."
+          ],
+          "chemicalGuidance": "No chemical cures viral infection; replace stands with certified virus-free cuttings.",
+          "prevention": [
+            "Source clean tissue-cultured or certified stakes from resistant cultivars."
+          ]
+        }
+      },
+      {
+        "id": "cassava_mealybug",
+        "name": "Cassava Mealybug / Green Mite",
+        "scientificName": "Phenacoccus manihoti / Mononychellus tanajoa",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "insects_webbing",
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Bunchy-top shoot distortion with white waxy mealybug clusters or fine yellow stippling on shoot apices during dry season.",
+        "visualSignature": {
+          "dominantTrait": "white_powder",
+          "minGrayWhiteRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Prune and destroy heavily infested shoot tips early in dry-season outbreaks."
+          ],
+          "biologicalControl": [
+            "Conserve the introduced parasitoid wasp Anagyrus lopezi and predatory ladybirds."
+          ],
+          "chemicalGuidance": "Avoid broad-spectrum sprays that eliminate Anagyrus parasitoids; dip stakes before planting.",
+          "prevention": [
+            "Plant early in the wet season so roots bulk before dry-season pest surges."
+          ]
+        }
+      },
+      {
+        "id": "cassava_bacterial_blight",
+        "name": "Cassava Bacterial Blight",
+        "scientificName": "Xanthomonas phaseoli pv. manihotis",
+        "category": "Bacterial",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Angular water-soaked leaf spots followed by rapid wilting, stem dieback, and amber gummy exudate.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.1
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Prune blighted shoots well below discoloration and sterilize cutting tools between plants."
+          ],
+          "biologicalControl": [
+            "Maintain weed-free airflow and adequate potassium fertilization."
+          ],
+          "chemicalGuidance": "Foliar sprays cannot cure systemic vascular infection; prioritize sanitation.",
+          "prevention": [
+            "Use clean stakes from disease-free fields and hot-water treat cuttings if needed."
+          ]
+        }
+      },
+      {
+        "id": "cassava_healthy",
+        "name": "Healthy Cassava Foliage",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Symmetrical deep-green palmate lobes with clean shoot tips and no mosaic distortion.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Tag vigorous disease-free plants to reserve as clean planting stakes."
+          ],
+          "biologicalControl": [
+            "Preserve natural predators in surrounding vegetation."
+          ],
+          "chemicalGuidance": "No treatment required.",
+          "prevention": [
+            "Continue roguing any off-type sprouts early."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "sweet_potato",
+    "commonName": "Sweet Potato",
+    "scientificName": "Ipomoea batatas",
+    "family": "Convolvulaceae",
+    "globalRegions": "Indonesia, Vietnam, Philippines, Papua New Guinea, Malaysia",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "sweet_potato_weevil",
+        "name": "Sweet Potato Weevil",
+        "scientificName": "Cylas formicarius",
+        "category": "Pest",
+        "affectedParts": [
+          "root_collar",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Swollen, cracked vine crowns and storage roots riddled with dark frass-filled tunnels and bitter terpene odor.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.09
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Hill soil deeply over exposed soil cracks so adult weevils cannot reach storage roots; harvest mature roots promptly."
+          ],
+          "biologicalControl": [
+            "Deploy sex-pheromone baited water traps (15–20/ha) and apply Beauveria bassiana around crowns."
+          ],
+          "chemicalGuidance": "Avoid spraying foliage late in season; pheromone traps + hilling + sanitation give strongest control.",
+          "prevention": [
+            "Use clean vine tip cuttings (top 30 cm) and rotate with flooded rice or legumes."
+          ]
+        }
+      },
+      {
+        "id": "sweet_potato_virus",
+        "name": "Sweet Potato Feathery Mottle Complex",
+        "scientificName": "Potyvirus (Aphid-vectored)",
+        "category": "Viral",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "vegetative",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "isolated_plant"
+        ],
+        "summary": "Faint purple-ringed chlorotic feathering along leaf veins, narrow distorted leaves, and stunted vines.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.12
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Rogue stunted virus-symptomatic vines early and avoid using them for propagation."
+          ],
+          "biologicalControl": [
+            "Manage aphid vectors with neem or insecticidal soap in vine nurseries."
+          ],
+          "chemicalGuidance": "No chemical cures systemic viral infection.",
+          "prevention": [
+            "Refresh planting stock periodically with virus-indexed vine cuttings."
+          ]
+        }
+      },
+      {
+        "id": "sweet_potato_scab",
+        "name": "Sweet Potato Scab / Leaf Spot",
+        "scientificName": "Elsinoë batatas / Cercospora spp.",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Small brown corky scab lesions along leaf midribs and petioles causing upward leaf curling and stunted runners.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Remove heavily scabbed shoot tips and improve bed drainage during monsoon rains."
+          ],
+          "biologicalControl": [
+            "Apply copper-based biofungicide if rainy weather persists at canopy closure."
+          ],
+          "chemicalGuidance": "Consult extension guidance on protectant mancozeb/copper only for severe nursery outbreaks.",
+          "prevention": [
+            "Select scab-tolerant varieties and avoid planting vines into waterlogged beds."
+          ]
+        }
+      },
+      {
+        "id": "sweet_potato_healthy",
+        "name": "Healthy Sweet Potato Vines",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Clean heart-shaped or lobed green leaves with vigorous vine tips and intact crowns.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Check ridges after dry spells and re-hill cracks promptly."
+          ],
+          "biologicalControl": [
+            "Conserve natural predators around vine beds."
+          ],
+          "chemicalGuidance": "No treatment needed.",
+          "prevention": [
+            "Rotate sweet potato beds with paddy rice."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "sugarcane",
+    "commonName": "Sugarcane",
+    "scientificName": "Saccharum officinarum",
+    "family": "Poaceae",
+    "globalRegions": "Thailand, Indonesia, Philippines, Vietnam, Myanmar",
+    "leafAspectHint": "blade",
+    "conditions": [
+      {
+        "id": "sugarcane_red_rot",
+        "name": "Sugarcane Red Rot",
+        "scientificName": "Colletotrichum falcatum",
+        "category": "Fungal",
+        "affectedParts": [
+          "stem_stalk",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Yellowing 3rd–4th crown leaves; split stalks show dull red internal tissue with white transverse bands and sour odor.",
+        "visualSignature": {
+          "dominantTrait": "orange_rust",
+          "minRustRatio": 0.06,
+          "minNecroticRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Uproot and burn affected clumps; avoid running irrigation water through infected furrows."
+          ],
+          "biologicalControl": [
+            "Treat seed setts with Trichoderma harzianum suspension prior to planting."
+          ],
+          "chemicalGuidance": "Foliar sprays are ineffective once stalk pith is infected; replace with clean seed cane.",
+          "prevention": [
+            "Use moist hot-air treated (54°C) clean seed setts and avoid ratooning heavily infected blocks."
+          ]
+        }
+      },
+      {
+        "id": "sugarcane_white_leaf",
+        "name": "Sugarcane White Leaf Disease",
+        "scientificName": "Phytoplasma (Matsumuratettix vector)",
+        "category": "Bacterial",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic",
+          "powdery_mold"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Striking pure white or pale-cream chlorotic leaves with stunted, grassy tillers common in mainland Southeast Asia.",
+        "visualSignature": {
+          "dominantTrait": "white_powder",
+          "minGrayWhiteRatio": 0.12
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Rogue and destroy white-leaf stools immediately so leafhoppers cannot spread phytoplasma."
+          ],
+          "biologicalControl": [
+            "Keep field borders free of grassy weeds harboring Matsumuratettix hiroglyphicus leafhoppers."
+          ],
+          "chemicalGuidance": "Hot-water sett treatment (50°C for 2h) eliminates phytoplasma in planting material.",
+          "prevention": [
+            "Source tissue-cultured clean nursery cane and avoid ratooning symptomatic fields."
+          ]
+        }
+      },
+      {
+        "id": "sugarcane_borer",
+        "name": "Sugarcane Stalk & Shoot Borer",
+        "scientificName": "Chilo sacchariphagus / Scirpophaga excerptalis",
+        "category": "Pest",
+        "affectedParts": [
+          "stem_stalk",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Dead central shoot (\"deadheart\") in young tillers or frass-packed bore holes along mature cane internodes.",
+        "visualSignature": {
+          "dominantTrait": "chewed_frass",
+          "minNecroticRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Cut out deadheart shoots below the growing point and destroy larvae inside."
+          ],
+          "biologicalControl": [
+            "Release Trichogramma chilonis egg parasitoids and Cotesia flavipes larval parasitoids."
+          ],
+          "chemicalGuidance": "Targeted whorl treatments only during severe early shoot-borer hatches.",
+          "prevention": [
+            "Detrash dried lower leaves cleanly to expose stem borers to predators."
+          ]
+        }
+      },
+      {
+        "id": "sugarcane_healthy",
+        "name": "Healthy Sugarcane Crop",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Upright green leaf blades and solid stalks with no white-leaf chlorosis or borer deadhearts.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Monitor young tillers for deadhearts and midribs for red lesions."
+          ],
+          "biologicalControl": [
+            "Maintain Trichogramma releases if regional borer pressure is high."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Use certified clean seed setts."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "coconut",
+    "commonName": "Coconut",
+    "scientificName": "Cocos nucifera",
+    "family": "Arecaceae",
+    "globalRegions": "Philippines, Indonesia, Vietnam, Thailand, Malaysia",
+    "leafAspectHint": "blade",
+    "conditions": [
+      {
+        "id": "coconut_rhino_beetle",
+        "name": "Coconut Rhinoceros Beetle",
+        "scientificName": "Oryctes rhinoceros",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "chewing_holes"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Characteristic V-shaped geometric notches cut cleanly across unfolded palm fronds from beetle boring into the crown.",
+        "visualSignature": {
+          "dominantTrait": "chewed_frass",
+          "minNecroticRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Hook out adult beetles from crown axils with a hooked wire and destroy rotting palm logs/manure heaps nearby."
+          ],
+          "biologicalControl": [
+            "Apply Metarhizium anisopliae (green muscardine fungus) or Oryctes nudivirus to breeding compost heaps.",
+            "Deploy ethyl-4-methyloctanoate pheromone bucket traps around plantation borders."
+          ],
+          "chemicalGuidance": "Avoid spraying tall crowns; pheromone trapping + breeding-site sanitation + Metarhizium is most effective.",
+          "prevention": [
+            "Chip or burn felled coconut trunks promptly so larvae cannot breed in decaying wood."
+          ]
+        }
+      },
+      {
+        "id": "coconut_scale",
+        "name": "Coconut Scale Insect (CSI)",
+        "scientificName": "Aspidiotus rigidus / Aspidiotus destructor",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_lower",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "insects_webbing",
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "vegetative",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Dense crusty yellow-brown overlapping scale colonies covering frond undersides, yellowing leaflets and shriveling nuts.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.14
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Prune and burn heavily encrusted lower fronds in localized initial outbreaks."
+          ],
+          "biologicalControl": [
+            "Release Comperiella calauanica parasitoids and Chilocorus lady beetles; spray horticultural oil on young palms."
+          ],
+          "chemicalGuidance": "Severe outbreaks are managed via extension-supervised trunk injection only where biologicals are unavailable.",
+          "prevention": [
+            "Enforce strict quarantine on transporting coconut seedlings and husks from infested provinces."
+          ]
+        }
+      },
+      {
+        "id": "coconut_bud_rot",
+        "name": "Coconut Bud Rot",
+        "scientificName": "Phytophthora palmivora",
+        "category": "Fungal",
+        "affectedParts": [
+          "whole_plant",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "isolated_plant"
+        ],
+        "summary": "Yellowing and collapse of the youngest central spear leaf accompanied by foul-smelling soft rot at the palm heart.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.12
+        },
+        "recommendations": {
+          "immediateActions": [
+            "If caught at early spear wilt, clear rotted tissue and drench crown with copper fungicide; cut & burn dead palms."
+          ],
+          "biologicalControl": [
+            "Apply Trichoderma compost around young palm root zones and keep crowns free of debris."
+          ],
+          "chemicalGuidance": "Preventive copper oxychloride or fosetyl-Al crown drenches on adjacent healthy palms during typhoons.",
+          "prevention": [
+            "Avoid mechanical wounding of the crown during harvesting and ensure well-drained soils."
+          ]
+        }
+      },
+      {
+        "id": "coconut_healthy",
+        "name": "Healthy Coconut Fronds",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Intact green pinnate leaflets without V-shaped beetle notches, scale crusts, or spear-leaf collapse.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Keep plantation floor free of decaying coconut trunks."
+          ],
+          "biologicalControl": [
+            "Maintain predatory beetles and parasitoid wasps."
+          ],
+          "chemicalGuidance": "No treatment required.",
+          "prevention": [
+            "Monitor pheromone traps monthly."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "oil_palm",
+    "commonName": "Oil Palm",
+    "scientificName": "Elaeis guineensis",
+    "family": "Arecaceae",
+    "globalRegions": "Indonesia, Malaysia, Thailand, Papua New Guinea",
+    "leafAspectHint": "blade",
+    "conditions": [
+      {
+        "id": "oil_palm_ganoderma",
+        "name": "Basal Stem Rot (Ganoderma)",
+        "scientificName": "Ganoderma boninense",
+        "category": "Fungal",
+        "affectedParts": [
+          "root_collar",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "isolated_plant"
+        ],
+        "summary": "Multiple unopened spear leaves, pale drooping lower fronds, and white-rimmed woody bracket mushrooms at the trunk base.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.12
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Excavate infected bole tissue cleanly (sanitation surgery) in early-stage palms and mound clean soil around the base."
+          ],
+          "biologicalControl": [
+            "Apply Trichoderma-enriched empty fruit bunch (EFB) bio-fertilizer in planting holes during replanting."
+          ],
+          "chemicalGuidance": "Targeted hexaconazole trunk injection may prolong productive life of lightly infected mature palms.",
+          "prevention": [
+            "Pulverize old trunks completely at replanting and dig isolation trenches around Ganoderma hotspots."
+          ]
+        }
+      },
+      {
+        "id": "oil_palm_bagworm",
+        "name": "Oil Palm Bagworm",
+        "scientificName": "Metisa plana / Pteroma pendula",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_lower",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Small hanging conical silk bags containing caterpillars on frond undersides, leaving brown scorched windowpane patches.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Census fronds monthly; threshold is 5–10 larvae per frond depending on palm age."
+          ],
+          "biologicalControl": [
+            "Spray Bacillus thuringiensis (Bt) early against young instars and plant nectar-rich Cassia cobanensis/Turnera subulata along roads for parasitoids."
+          ],
+          "chemicalGuidance": "Avoid broad-spectrum foliage sprays that kill natural enemy wasps; use selective trunk injection only in severe defoliation.",
+          "prevention": [
+            "Maintain permanent beneficial insectary flowering strips throughout estate blocks."
+          ]
+        }
+      },
+      {
+        "id": "oil_palm_leaf_spot",
+        "name": "Curvularia Seedling Leaf Spot",
+        "scientificName": "Curvularia eragrostidis",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "seedling"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Small translucent yellow dots enlarging into sunken dark brown-black oval lesions with bright yellow halos on nursery palms.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.07,
+          "minYellowRatio": 0.05
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Cull severely spotted nursery polybags and widen spacing between seedlings for airflow."
+          ],
+          "biologicalControl": [
+            "Water nursery bags at soil level early in the morning rather than overhead at dusk."
+          ],
+          "chemicalGuidance": "Rotate mancozeb or captan nursery protectants only when wet weather persists.",
+          "prevention": [
+            "Ensure balanced nursery nutrition and avoid over-shading polybag beds."
+          ]
+        }
+      },
+      {
+        "id": "oil_palm_healthy",
+        "name": "Healthy Oil Palm Canopy",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Deep green arched fronds with single unopened central spear and intact leaflet surfaces.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Continue quarterly frond census for bagworms and bole checks for bracket fungi."
+          ],
+          "biologicalControl": [
+            "Maintain beneficial insectary flowering plants along estate roads."
+          ],
+          "chemicalGuidance": "No treatment needed.",
+          "prevention": [
+            "Practice balanced K/B/Mg fertilization."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "rubber",
+    "commonName": "Natural Rubber",
+    "scientificName": "Hevea brasiliensis",
+    "family": "Euphorbiaceae",
+    "globalRegions": "Thailand, Indonesia, Vietnam, Malaysia, Myanmar, Cambodia",
+    "leafAspectHint": "compound",
+    "conditions": [
+      {
+        "id": "rubber_abnormal_leaf_fall",
+        "name": "Abnormal Leaf Fall",
+        "scientificName": "Phytophthora meadii / P. palmivora",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Sudden green-leaf drop during monsoon rains showing a characteristic black-brown lesion and latex globule at the petiole.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.09
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Halt tapping temporarily on severely defoliated trees to conserve bark reserves and allow refoliation."
+          ],
+          "biologicalControl": [
+            "Ensure good canopy airflow and drain standing rainwater around root collars."
+          ],
+          "chemicalGuidance": "Pre-monsoon copper oxychloride fogging/spraying protects pods and petioles on high-yielding clones.",
+          "prevention": [
+            "Avoid overtapping and apply balanced post-refoliation fertilizer."
+          ]
+        }
+      },
+      {
+        "id": "rubber_powdery_mildew",
+        "name": "Rubber Powdery Mildew",
+        "scientificName": "Oidium heveae",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower"
+        ],
+        "symptomTags": [
+          "powdery_mold"
+        ],
+        "growthStages": [
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "White powdery patches on tender copper-green refoliating leaves causing crinkling, curling, and secondary leaf fall.",
+        "visualSignature": {
+          "dominantTrait": "white_powder",
+          "minGrayWhiteRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Monitor wintered trees closely during tender leaf flush in cool misty mornings."
+          ],
+          "biologicalControl": [
+            "Wettable sulfur dusting during early bud-burst suppresses Oidium spore germination."
+          ],
+          "chemicalGuidance": "Apply sulfur dust (3–4 rounds at 7–10 day intervals) during active refoliation if mist persists.",
+          "prevention": [
+            "Stimulate uniform, rapid refoliation with timely nitrogen fertilization before wintering ends."
+          ]
+        }
+      },
+      {
+        "id": "rubber_white_root",
+        "name": "White Root Disease",
+        "scientificName": "Rigidoporus microporus",
+        "category": "Fungal",
+        "affectedParts": [
+          "root_collar",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "isolated_plant"
+        ],
+        "summary": "Canopy leaves turn dull yellow and drop prematurely; exposed lateral roots show firm white branching fungal rhizomorph cords.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.14
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Dig isolation trenches (60 cm deep) around infected tree patches and expose/scrape collar rhizomorphs."
+          ],
+          "biologicalControl": [
+            "Dust exposed roots and planting holes with sulfur powder and Trichoderma bio-agent."
+          ],
+          "chemicalGuidance": "Drench collars of lightly affected trees with triadimefon or propiconazole per plantation manual.",
+          "prevention": [
+            "Stump and poison old jungle/rubber roots thoroughly before replanting new clones."
+          ]
+        }
+      },
+      {
+        "id": "rubber_healthy",
+        "name": "Healthy Rubber Canopy",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Glossy trifoliate dark-green leaves free of powdery mildew crinkling or petiole black-stripe lesions.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Maintain clean tapping panels with standard bark hygiene."
+          ],
+          "biologicalControl": [
+            "Maintain leguminous cover crops (Pueraria/Mucuna) in young stands."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Monitor refoliation closely right after dry-season wintering."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "banana",
+    "commonName": "Banana / Plantain",
+    "scientificName": "Musa acuminata",
+    "family": "Musaceae",
+    "globalRegions": "Philippines, Indonesia, Vietnam, Thailand, Malaysia, Myanmar",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "banana_black_sigatoka",
+        "name": "Black Sigatoka",
+        "scientificName": "Pseudocercospora fijiensis",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Reddish-brown specks on leaf undersides elongating into dark black streaks and necrotic leaf margins.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.1,
+          "minYellowRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Trim away severely necrotic leaf portions (>50% dead area) to reduce spore load while keeping green functional leaves."
+          ],
+          "biologicalControl": [
+            "Apply Bacillus subtilis or horticultural mineral oil sprays during rainy months."
+          ],
+          "chemicalGuidance": "Rotate systemic and protectant fungicides strictly per FRAC guidelines in commercial plots.",
+          "prevention": [
+            "Improve drainage, prune excess suckers, and plant Sigatoka-tolerant cultivars."
+          ]
+        }
+      },
+      {
+        "id": "banana_panama_tr4",
+        "name": "Fusarium Wilt (Panama TR4)",
+        "scientificName": "Fusarium oxysporum f. sp. cubense TR4",
+        "category": "Fungal",
+        "affectedParts": [
+          "whole_plant",
+          "stem_stalk",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "isolated_plant"
+        ],
+        "summary": "Bright yellowing progressing from oldest outer leaf margins inward, collapsing petioles into a skirt around the pseudostem.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.18
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Quarantine the infected mat immediately; sanitize boots, tools, and tires before leaving the plot."
+          ],
+          "biologicalControl": [
+            "Apply Trichoderma-enriched organic compost around neighboring healthy mats."
+          ],
+          "chemicalGuidance": "No chemical fungicide cures Fusarium wilt once established in the rhizome.",
+          "prevention": [
+            "Plant certified tissue-culture plantlets and TR4-tolerant selections (e.g., GCTCV lines)."
+          ]
+        }
+      },
+      {
+        "id": "banana_weevil",
+        "name": "Banana Corm Weevil",
+        "scientificName": "Cosmopolites sordidus",
+        "category": "Pest",
+        "affectedParts": [
+          "root_collar",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "vegetative",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "isolated_plant"
+        ],
+        "summary": "Toppling pseudostems with honeycombed tunnels inside the corm and legless white grubs.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.1
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Place split-pseudostem traps on soil surface and collect/destroy trapped weevils daily."
+          ],
+          "biologicalControl": [
+            "Apply Beauveria bassiana fungal paste onto pseudostem traps."
+          ],
+          "chemicalGuidance": "Avoid broad soil drenches; traps + clean planting material give superior control.",
+          "prevention": [
+            "Pare and hot-water treat suckers or use clean tissue-cultured plantlets."
+          ]
+        }
+      },
+      {
+        "id": "banana_healthy",
+        "name": "Healthy Banana Canopy",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Broad, intact green banana leaves with clean midribs and upright petioles.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Maintain 8–10 healthy leaves at flowering for full bunch weight."
+          ],
+          "biologicalControl": [
+            "Keep mulch ring free of rotting pseudostem debris."
+          ],
+          "chemicalGuidance": "No intervention required.",
+          "prevention": [
+            "Sanitize pruning knives between mats."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "mango",
+    "commonName": "Mango",
+    "scientificName": "Mangifera indica",
+    "family": "Anacardiaceae",
+    "globalRegions": "Thailand, Philippines, Indonesia, Vietnam, Myanmar, Cambodia",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "mango_anthracnose",
+        "name": "Mango Anthracnose",
+        "scientificName": "Colletotrichum gloeosporioides",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Irregular dark brown-black sunken spots on young flush leaves, panicles (\"blossom blight\"), and tear-stain black blotches on fruit.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Prune dead panicles and open dense inner canopy branches to speed drying after rain."
+          ],
+          "biologicalControl": [
+            "Apply Bacillus subtilis or hot-water post-harvest fruit dip (52–55°C for 5 min) for storage rot prevention."
+          ],
+          "chemicalGuidance": "Protect emerging panicles and young fruit with copper oxychloride or azoxystrobin per local PHI rules.",
+          "prevention": [
+            "Time flower induction to avoid peak monsoon rain during bloom where feasible."
+          ]
+        }
+      },
+      {
+        "id": "mango_leafhopper",
+        "name": "Mango Leafhopper",
+        "scientificName": "Idioscopus clypealis / Amritodus atkinsoni",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_lower",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "insects_webbing",
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Tiny wedge-shaped brown hoppers jumping off panicles/leaves when disturbed, coating foliage in sticky honeydew and black sooty mold.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.07
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Prune overcrowded inner branches that create dark shaded resting sites for hoppers."
+          ],
+          "biologicalControl": [
+            "Apply neem/azadirachtin or Beauveria bassiana at early panicle emergence; conserve predatory spiders and lacewings."
+          ],
+          "chemicalGuidance": "Avoid spraying open flowers during peak pollinator activity; treat pre-bloom or post-petal fall if >3 hoppers/panicle.",
+          "prevention": [
+            "Keep orchard understory weeded and open canopy after harvest."
+          ]
+        }
+      },
+      {
+        "id": "mango_fruit_fly",
+        "name": "Oriental Fruit Fly",
+        "scientificName": "Bactrocera dorsalis",
+        "category": "Pest",
+        "affectedParts": [
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Pinprick oviposition stings with oozing sap on maturing mangoes and internal creamy-white maggots causing soft fruit collapse.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Bag developing fruits individually in breathable paper bags 45–55 days after fruit set; collect and bury fallen fruits."
+          ],
+          "biologicalControl": [
+            "Hang methyl eugenol pheromone traps (10–15/ha) starting 6 weeks before harvest to mass-trap male flies."
+          ],
+          "chemicalGuidance": "Use localized protein-bait spot sprays on border foliage rather than full-tree cover sprays.",
+          "prevention": [
+            "Never leave rotting cull mangoes on the orchard floor."
+          ]
+        }
+      },
+      {
+        "id": "mango_healthy",
+        "name": "Healthy Mango Foliage & Fruit",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Leathery dark-green lance leaves free of anthracnose spots or black sooty mold.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Inspect emerging floral panicles weekly during humid nights."
+          ],
+          "biologicalControl": [
+            "Protect native pollinators during flowering."
+          ],
+          "chemicalGuidance": "No treatment required.",
+          "prevention": [
+            "Perform light annual structural pruning after harvest."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "papaya",
+    "commonName": "Papaya",
+    "scientificName": "Carica papaya",
+    "family": "Caricaceae",
+    "globalRegions": "Philippines, Indonesia, Thailand, Malaysia, Vietnam",
+    "leafAspectHint": "lobed",
+    "conditions": [
+      {
+        "id": "papaya_ringspot",
+        "name": "Papaya Ringspot Virus (PRSV)",
+        "scientificName": "Potyvirus (Aphid-vectored)",
+        "category": "Viral",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic",
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Yellow leaf mottling, shoestring leaf distortion, dark green oily streaks on petioles, and circular rings on fruit.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.14
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Rogue and destroy infected trees immediately if incidence is <5% in a young orchard to protect remaining trees."
+          ],
+          "biologicalControl": [
+            "Intercrop border rows with tall barrier crops (maize/sorghum) to cleanse aphid stylets before landing on papaya."
+          ],
+          "chemicalGuidance": "Insecticides do not stop non-persistent aphid transmission effectively; rely on roguing and barrier crops.",
+          "prevention": [
+            "Raise seedlings under fine insect-proof netting and avoid planting near cucurbit hosts."
+          ]
+        }
+      },
+      {
+        "id": "papaya_mealybug",
+        "name": "Papaya Mealybug",
+        "scientificName": "Paracoccus marginatus",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_lower",
+          "fruit_pod",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "insects_webbing",
+          "powdery_mold"
+        ],
+        "growthStages": [
+          "vegetative",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Cottony white oval mealybug clusters along leaf veins and fruit clusters, triggering leaf crinkling and black sooty mold.",
+        "visualSignature": {
+          "dominantTrait": "white_powder",
+          "minGrayWhiteRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Prune and burn heavily infested lower leaves; control honeydew-farming ants at tree bases."
+          ],
+          "biologicalControl": [
+            "Conserve/release Acerophagus papayae parasitoid wasps; spray horticultural oil or insecticidal soap on early clusters."
+          ],
+          "chemicalGuidance": "Avoid broad-spectrum insecticides that wipe out Acerophagus papayae.",
+          "prevention": [
+            "Inspect nursery seedlings carefully before transplanting into clean blocks."
+          ]
+        }
+      },
+      {
+        "id": "papaya_phytophthora",
+        "name": "Phytophthora Root & Fruit Rot",
+        "scientificName": "Phytophthora palmivora",
+        "category": "Fungal",
+        "affectedParts": [
+          "root_collar",
+          "fruit_pod",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "powdery_mold"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Rapid leaf yellowing/collapse from root rot or water-soaked fruit lesions covered in white powdery sporangia after typhoons.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.1
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Improve mound drainage immediately and remove/bury infected rotting fruits away from the field."
+          ],
+          "biologicalControl": [
+            "Incorporate Trichoderma-rich compost on raised planting mounds."
+          ],
+          "chemicalGuidance": "Apply copper protectants on fruit columns ahead of heavy typhoon rains if history is severe.",
+          "prevention": [
+            "Plant papaya strictly on raised ridges (30–40 cm high) in well-drained soil."
+          ]
+        }
+      },
+      {
+        "id": "papaya_healthy",
+        "name": "Healthy Papaya Canopy",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Vibrant palmate green leaves free of shoestring mosaic distortion or cottony mealybug clusters.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Scout leaf undersides weekly for aphids and mealybugs."
+          ],
+          "biologicalControl": [
+            "Keep ant populations off trunk bases."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Maintain raised beds for rapid monsoon drainage."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "pineapple",
+    "commonName": "Pineapple",
+    "scientificName": "Ananas comosus",
+    "family": "Bromeliaceae",
+    "globalRegions": "Philippines, Thailand, Indonesia, Vietnam, Malaysia",
+    "leafAspectHint": "blade",
+    "conditions": [
+      {
+        "id": "pineapple_mealybug_wilt",
+        "name": "Mealybug Wilt of Pineapple",
+        "scientificName": "Pineapple Mealybug Wilt-associated Virus (Dysmicoccus brevipes)",
+        "category": "Viral",
+        "affectedParts": [
+          "whole_plant",
+          "root_collar",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "yellowing_mosaic",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "vegetative",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Reddish-pink to yellow discoloration starting at leaf tips, inward leaf-margin curling, and white mealybugs sheltered at leaf bases.",
+        "visualSignature": {
+          "dominantTrait": "orange_rust",
+          "minRustRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Control big-headed/fire ants tending mealybugs along bed edges and rogue severely wilted stools."
+          ],
+          "biologicalControl": [
+            "Dip clean planting slips/crowns in horticultural oil/soap solution before planting."
+          ],
+          "chemicalGuidance": "Target ant colonies around field borders first; healthy roots recover if mealybug feeding stops early.",
+          "prevention": [
+            "Select planting material strictly from vigorous, wilt-free mother blocks."
+          ]
+        }
+      },
+      {
+        "id": "pineapple_heart_rot",
+        "name": "Pineapple Heart Rot",
+        "scientificName": "Phytophthora nicotianae / P. cinnamomi",
+        "category": "Fungal",
+        "affectedParts": [
+          "whole_plant",
+          "root_collar"
+        ],
+        "symptomTags": [
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Central whorl leaves turn dull yellowish-brown and pull out effortlessly with a foul-smelling soft white-to-brown basal rot.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.12
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Clear clogged field drains immediately and avoid throwing soil into leaf whorls during weeding."
+          ],
+          "biologicalControl": [
+            "Cure slips/crowns upright in shade for 3–5 days before planting to suberize bases."
+          ],
+          "chemicalGuidance": "Pre-plant dipping of crowns/slips in fosetyl-Al or metalaxyl prevents wet-season heart rot.",
+          "prevention": [
+            "Plant on raised cambered beds (20–30 cm) in heavy clay soils."
+          ]
+        }
+      },
+      {
+        "id": "pineapple_fruitlet_rot",
+        "name": "Fruitlet Core Rot / Marbling",
+        "scientificName": "Talaromyces / Fusarium / Pantoea complex",
+        "category": "Fungal",
+        "affectedParts": [
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "isolated_plant"
+        ],
+        "summary": "Externally normal fruit showing internal brown-black leathery decay beneath individual eyes/fruitlets when sliced.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Manage pineapple mites and mealybugs during flowering when spores enter open floral cavities."
+          ],
+          "biologicalControl": [
+            "Maintain balanced calcium and potassium nutrition to strengthen fruitlet cell walls."
+          ],
+          "chemicalGuidance": "Apply targeted mite/fungal protection at early forcing/bloom only in high-incidence blocks.",
+          "prevention": [
+            "Avoid excessive nitrogen after floral forcing."
+          ]
+        }
+      },
+      {
+        "id": "pineapple_healthy",
+        "name": "Healthy Pineapple Rosette",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Rigid upright green-to-olive leaves with firm central heart and clean basal sheaths.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Inspect leaf bases periodically for ants and pink mealybugs."
+          ],
+          "biologicalControl": [
+            "Maintain clean drainage furrows."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Cure planting crowns before placing in raised beds."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "durian",
+    "commonName": "Durian",
+    "scientificName": "Durio zibethinus",
+    "family": "Malvaceae",
+    "globalRegions": "Thailand, Malaysia, Indonesia, Vietnam, Philippines",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "durian_patch_canker",
+        "name": "Durian Patch Canker / Stem Rot",
+        "scientificName": "Phytophthora palmivora",
+        "category": "Fungal",
+        "affectedParts": [
+          "stem_stalk",
+          "root_collar",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "isolated_plant"
+        ],
+        "summary": "Dark wet weeping bark patches oozing reddish-brown gum on lower trunks and crotches, leading to twig dieback and fruit rot.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.1
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Scrape away discolored bark down to healthy wood using a sterilized knife and paint the wound with fosetyl-Al or copper paste.",
+            "Clear weeds/mulch 30 cm away from the trunk base to keep bark dry."
+          ],
+          "biologicalControl": [
+            "Incorporate Trichoderma harzianum into compost applied outside the trunk collar ring."
+          ],
+          "chemicalGuidance": "Trunk injection with potassium phosphonate or fosetyl-Al is standard orchard practice for Phytophthora control.",
+          "prevention": [
+            "Plant durian on raised mounds with excellent drainage and avoid wounding trunks with trimmers."
+          ]
+        }
+      },
+      {
+        "id": "durian_fruit_borer",
+        "name": "Durian Fruit & Seed Borer",
+        "scientificName": "Conogethes punctiferalis / Mudaria luteileprosa",
+        "category": "Pest",
+        "affectedParts": [
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Dark wet frass pellets webbed together between durian spines at entry holes bored into the husk and aril.",
+        "visualSignature": {
+          "dominantTrait": "chewed_frass",
+          "minNecroticRatio": 0.07
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Thin crowded fruit clusters to single fruits per branch so larvae cannot shelter between touching husks; remove bored culls."
+          ],
+          "biologicalControl": [
+            "Apply Bacillus thuringiensis (Bt) onto young developing fruits (4–8 weeks after set) and use light traps for moths."
+          ],
+          "chemicalGuidance": "Stop any chemical sprays well ahead of the strict pre-harvest interval before durian drop/harvest.",
+          "prevention": [
+            "Collect and bury all dropped infested fruits immediately after harvest."
+          ]
+        }
+      },
+      {
+        "id": "durian_psyllid",
+        "name": "Durian Psyllid",
+        "scientificName": "Allocaridara malayensis",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_lower",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "insects_webbing",
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Tiny nymphs covered in white waxy filaments on young leaf flushes causing yellow spotting, curling, and leaf drop.",
+        "visualSignature": {
+          "dominantTrait": "white_powder",
+          "minGrayWhiteRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Scout tender copper-colored leaf flushes early; prune heavily curled terminal shoots in nursery trees."
+          ],
+          "biologicalControl": [
+            "Spray neem/horticultural oil onto young flushes; conserve predatory ladybirds and lacewings."
+          ],
+          "chemicalGuidance": "Treat only during vulnerable young-flush windows if natural enemies cannot contain outbreaks.",
+          "prevention": [
+            "Synchronize orchard flushing through uniform irrigation and nutrition."
+          ]
+        }
+      },
+      {
+        "id": "durian_healthy",
+        "name": "Healthy Durian Foliage",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Glossy dark-green upper leaves with silvery-bronze undersides and dry, intact trunk bark.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Inspect lower trunks monthly during monsoon rains for any weeping bark lesions."
+          ],
+          "biologicalControl": [
+            "Maintain clean air circulation beneath the lower scaffold branches."
+          ],
+          "chemicalGuidance": "No treatment needed.",
+          "prevention": [
+            "Keep mulch off the trunk collar."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "coffee",
+    "commonName": "Coffee",
+    "scientificName": "Coffea canephora / C. arabica",
+    "family": "Rubiaceae",
+    "globalRegions": "Vietnam, Indonesia, Philippines, Thailand, Laos",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "coffee_leaf_rust",
+        "name": "Coffee Leaf Rust",
+        "scientificName": "Hemileia vastatrix",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_lower",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "powdery_mold",
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Pale yellow oil-spots on upper leaves paired with bright yellow-orange powdery spore masses on leaf undersides.",
+        "visualSignature": {
+          "dominantTrait": "orange_rust",
+          "minRustRatio": 0.06,
+          "minYellowRatio": 0.05
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Prune dense inner sucker branches for airflow and maintain adequate potassium/nitrogen for heavy berry loads."
+          ],
+          "biologicalControl": [
+            "Apply copper hydroxide/oxychloride sprays targeting leaf undersides prior to monsoon onset."
+          ],
+          "chemicalGuidance": "If incidence exceeds 10%, follow cooperative guidance on systemic triazole/strobilurin sprays.",
+          "prevention": [
+            "Plant rust-resistant robusta or arabica selections under 30–40% shade trees."
+          ]
+        }
+      },
+      {
+        "id": "coffee_berry_borer",
+        "name": "Coffee Berry Borer",
+        "scientificName": "Hypothenemus hampei",
+        "category": "Pest",
+        "affectedParts": [
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "humid_rainy"
+        ],
+        "summary": "Pinpoint entry holes (~1 mm) at the flower disk tip of green or ripe coffee cherries with internal bean tunneling.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Strip all leftover dried black berries from trees and soil after harvest (\"repase\"); deploy alcohol-baited bottle traps."
+          ],
+          "biologicalControl": [
+            "Spray Beauveria bassiana spores on humid mornings when females begin boring."
+          ],
+          "chemicalGuidance": "Sanitation + traps + Beauveria outperforms late chemical sprays.",
+          "prevention": [
+            "Harvest ripe cherries promptly every 10–14 days."
+          ]
+        }
+      },
+      {
+        "id": "coffee_cercospora",
+        "name": "Cercospora Brown Eye Spot",
+        "scientificName": "Cercospora coffeicola",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "isolated_plant"
+        ],
+        "summary": "Circular brown spots with gray-white centers and bright yellow halos common on sun-stressed or nutrient-deficient coffee.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.06,
+          "minYellowRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Check soil moisture and apply balanced NPK + zinc/boron—Cercospora signals tree stress."
+          ],
+          "biologicalControl": [
+            "Provide light shade in nursery seedlings and young transplants."
+          ],
+          "chemicalGuidance": "Copper sprays protect nursery seedlings alongside fertility correction.",
+          "prevention": [
+            "Maintain organic mulch and optimal shade cover."
+          ]
+        }
+      },
+      {
+        "id": "coffee_healthy",
+        "name": "Healthy Coffee Foliage",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Glossy dark-green opposite leaves with clean undersides and unblemished developing cherries.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Inspect leaf undersides monthly ahead of rainy periods."
+          ],
+          "biologicalControl": [
+            "Maintain diverse shade trees supporting insectivorous birds and wasps."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Practice annual post-harvest pruning and complete cherry stripping."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "cacao",
+    "commonName": "Cacao",
+    "scientificName": "Theobroma cacao",
+    "family": "Malvaceae",
+    "globalRegions": "Indonesia, Malaysia, Philippines, Vietnam",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "cacao_black_pod",
+        "name": "Black Pod Disease",
+        "scientificName": "Phytophthora palmivora",
+        "category": "Fungal",
+        "affectedParts": [
+          "fruit_pod",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Rapidly spreading firm chocolate-brown to black rot on cacao pods covered in fine white fungal bloom in wet weather.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.14
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Harvest infected pods frequently (every 7 days) and bury or compost them far from trees to cut spore rain-splash."
+          ],
+          "biologicalControl": [
+            "Prune lower canopy branches to lift canopy >1 m above soil and apply Trichoderma compost."
+          ],
+          "chemicalGuidance": "Targeted copper sprays directly on healthy developing pods during heavy monsoon months.",
+          "prevention": [
+            "Manage shade density at 30–40% and clean pod husks away from tree bases."
+          ]
+        }
+      },
+      {
+        "id": "cacao_pod_borer",
+        "name": "Cacao Pod Borer (CPB)",
+        "scientificName": "Conopomorpha cramerella",
+        "category": "Pest",
+        "affectedParts": [
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Uneven premature yellowing/ripening on pods; sliced pods reveal clumped hardened beans and dark larval tunnels.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.12
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Sleeve/bag young pods (7–10 cm long) with open-bottom plastic sleeves; harvest ripe pods every 7–10 days."
+          ],
+          "biologicalControl": [
+            "Encourage black cocoa ants (Dolichoderus thoracicus) with bamboo nests and use CPB pheromone traps."
+          ],
+          "chemicalGuidance": "Frequent complete harvesting + pod sleeving + cocoa ants replaces frequent insecticide spraying.",
+          "prevention": [
+            "Keep trees pruned below 3.5 m height for complete pod access and rampasan (off-season pod stripping)."
+          ]
+        }
+      },
+      {
+        "id": "cacao_vsd",
+        "name": "Vascular-Streak Dieback (VSD)",
+        "scientificName": "Ceratobasidium theobromae",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic",
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Yellowing 2nd–3rd flush leaves with green-island spots, shedding leaves leaving rough swollen scars and 3 brown vascular dots on cut twigs.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.14
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Prune infected branches at least 30 cm below the last brown vascular streak inside the wood."
+          ],
+          "biologicalControl": [
+            "Raise nursery seedlings under clear rain-shelters away from mature infected cacao blocks."
+          ],
+          "chemicalGuidance": "Fungicides have limited effect inside xylem vessels; regular sanitary pruning is primary control.",
+          "prevention": [
+            "Plant VSD-tolerant cacao clones."
+          ]
+        }
+      },
+      {
+        "id": "cacao_healthy",
+        "name": "Healthy Cacao Foliage & Pods",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Intact oblong green leaves and clean unblemished developing pods along the trunk.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Harvest ripe pods every 10–14 days and maintain open canopy pruning."
+          ],
+          "biologicalControl": [
+            "Foster beneficial black cocoa ants in the orchard."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Bury discarded pod husks outside the root zone."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "black_pepper",
+    "commonName": "Black Pepper",
+    "scientificName": "Piper nigrum",
+    "family": "Piperaceae",
+    "globalRegions": "Vietnam, Indonesia, Malaysia, Cambodia, Thailand",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "pepper_foot_rot",
+        "name": "Pepper Foot Rot / Quick Wilt",
+        "scientificName": "Phytophthora capsici",
+        "category": "Fungal",
+        "affectedParts": [
+          "root_collar",
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Water-soaked dark lesions with fimbriate margins on lower leaves followed by sudden vine wilting and blackened collar rot.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.11
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Prune trailing lower runner shoots touching soil; dig drainage trenches and drench collar with Trichoderma or phosphonate."
+          ],
+          "biologicalControl": [
+            "Apply Trichoderma harzianum + neem cake around vine mounds prior to monsoon onset."
+          ],
+          "chemicalGuidance": "Preventive Bordeaux mixture or potassium phosphonate drenches at onset and peak of monsoon rains.",
+          "prevention": [
+            "Plant vines on raised well-drained mounds and avoid soil-splash onto lower foliage."
+          ]
+        }
+      },
+      {
+        "id": "pepper_pollu_beetle",
+        "name": "Pepper Pollu Beetle / Spike Borer",
+        "scientificName": "Lanka ramakrishnai",
+        "category": "Pest",
+        "affectedParts": [
+          "fruit_pod",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Blackened hollow pepper berries (\"pollu\") that crumble when squeezed, alongside tiny chewed holes on tender leaves.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Regulate support-tree shade to let filtered sunlight in (heavy shade favors pollu beetles)."
+          ],
+          "biologicalControl": [
+            "Spray neem oil/azadirachtin on developing berry spikes at 21-day intervals during berry formation."
+          ],
+          "chemicalGuidance": "Target early berry-set windows only when spike damage exceeds local thresholds.",
+          "prevention": [
+            "Prune dense support-tree branches before monsoon season."
+          ]
+        }
+      },
+      {
+        "id": "pepper_stunt_virus",
+        "name": "Pepper Yellow Mottle / Stunt Disease",
+        "scientificName": "Piper Yellow Mottle Virus (Mealybug-vectored)",
+        "category": "Viral",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "isolated_plant"
+        ],
+        "summary": "Chlorotic yellow mottling, puckered small brittle leaves, shortened internodes, and poorly filled berry spikes.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.14
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Uproot severely stunted virus-infected vines and never take cuttings from symptomatic mother vines."
+          ],
+          "biologicalControl": [
+            "Manage mealybug and lacebug vectors with horticultural oil sprays on young shoots."
+          ],
+          "chemicalGuidance": "No chemical cures viral infection.",
+          "prevention": [
+            "Establish clean nursery mother blocks raised from indexed healthy cuttings."
+          ]
+        }
+      },
+      {
+        "id": "pepper_healthy",
+        "name": "Healthy Black Pepper Vine",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Glossy cordate dark-green leaves and full healthy green berry spikes without collar rot.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Keep lower vine stems 40 cm clear of soil splash."
+          ],
+          "biologicalControl": [
+            "Incorporate Trichoderma compost annually before rains."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Maintain clean drainage furrows between pepper rows."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "chili",
+    "commonName": "Chili Pepper",
+    "scientificName": "Capsicum annuum / C. frutescens",
+    "family": "Solanaceae",
+    "globalRegions": "Indonesia, Thailand, Vietnam, Malaysia, Philippines, Myanmar",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "chili_anthracnose",
+        "name": "Chili Anthracnose (Fruit Rot)",
+        "scientificName": "Colletotrichum scovillei / C. truncatum",
+        "category": "Fungal",
+        "affectedParts": [
+          "fruit_pod",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Circular sunken tan-to-black necrotic lesions on green or ripe chili pods with concentric rings of salmon-orange spore masses.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Pick and destroy every spotted chili fruit immediately before rain splashes spores onto healthy pods."
+          ],
+          "biologicalControl": [
+            "Spray Bacillus subtilis or Trichoderma bio-fungicides weekly during wet fruiting periods."
+          ],
+          "chemicalGuidance": "Rotate protectant mancozeb/copper with azoxystrobin per pre-harvest interval rules.",
+          "prevention": [
+            "Use pathogen-free seed, mulch beds with plastic/straw, and rotate away from solanaceous crops."
+          ]
+        }
+      },
+      {
+        "id": "chili_thrips_curl",
+        "name": "Chili Thrips & Mite Leaf Curl",
+        "scientificName": "Scirtothrips dorsalis / Polyphagotarsonemus latus",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Upward boat-shaped curling (thrips) or downward cupping with bronzed undersides (broad mites) on young shoot tips.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.12
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Inspect terminal undersides with a 10x lens; remove severely viral-curled plants if Begomovirus is co-present."
+          ],
+          "biologicalControl": [
+            "Release Amblyseius predatory mites or Orius bugs; apply neem oil/wettable sulfur for broad mites."
+          ],
+          "chemicalGuidance": "Alternate abamectin (mites) or spinosad (thrips) carefully to prevent rapid resistance.",
+          "prevention": [
+            "Use silver reflective plastic mulch and raise transplants under 50-mesh insect netting."
+          ]
+        }
+      },
+      {
+        "id": "chili_bacterial_wilt",
+        "name": "Bacterial Wilt",
+        "scientificName": "Ralstonia solanacearum",
+        "category": "Bacterial",
+        "affectedParts": [
+          "whole_plant",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "isolated_plant"
+        ],
+        "summary": "Sudden green daytime wilting of entire chili plants without prior yellowing; cut stem placed in clear water oozes milky bacterial threads.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.09
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Uproot wilted plants with surrounding root soil carefully and dispose outside the plot; disinfect tools."
+          ],
+          "biologicalControl": [
+            "Amend planting beds with Bacillus amyloliquefaciens and well-composted organic matter."
+          ],
+          "chemicalGuidance": "No foliar spray cures bacterial wilt; manage via grafting onto resistant rootstocks and rotation.",
+          "prevention": [
+            "Rotate chili with flooded rice or maize and avoid root injury during weeding."
+          ]
+        }
+      },
+      {
+        "id": "chili_healthy",
+        "name": "Healthy Chili Canopy",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Flat, smooth green lance leaves and glossy unblemished green/red chili pods.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Inspect shoot tips weekly for upward or downward curling."
+          ],
+          "biologicalControl": [
+            "Maintain blue/yellow sticky monitoring traps around beds."
+          ],
+          "chemicalGuidance": "No treatment required.",
+          "prevention": [
+            "Use reflective mulch and raised drainage beds."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "tomato",
+    "commonName": "Tomato",
+    "scientificName": "Solanum lycopersicum",
+    "family": "Solanaceae",
+    "globalRegions": "Indonesia, Vietnam, Philippines, Thailand, Myanmar",
+    "leafAspectHint": "lobed",
+    "conditions": [
+      {
+        "id": "tomato_early_blight",
+        "name": "Tomato Early Blight",
+        "scientificName": "Alternaria solani",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Dark brown concentric target-spot rings with surrounding yellow chlorotic halos, typically starting on older lower leaves.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.06,
+          "minYellowRatio": 0.04
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Prune infected lower leaves 30 cm above soil with sanitized shears and mulch beds cleanly."
+          ],
+          "biologicalControl": [
+            "Spray Bacillus subtilis or copper octanoate every 7–10 days during warm humid weather."
+          ],
+          "chemicalGuidance": "Follow local extension guidelines for azoxystrobin or chlorothalonil rotation; observe pre-harvest intervals.",
+          "prevention": [
+            "Stake plants for airflow, use drip irrigation, and rotate away from solanaceous crops."
+          ]
+        }
+      },
+      {
+        "id": "tomato_late_blight",
+        "name": "Tomato Late Blight",
+        "scientificName": "Phytophthora infestans",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower",
+          "stem_stalk",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Irregular greasy olive-black patches on leaves and firm dark brown blotches on stems and green fruits in cool highland mist.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.14
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Remove and bag severely infected plants immediately away from compost piles."
+          ],
+          "biologicalControl": [
+            "Preventive fixed-copper formulations prior to cool wet fronts."
+          ],
+          "chemicalGuidance": "Apply targeted anti-oomycete fungicides promptly in highland wet-season alerts.",
+          "prevention": [
+            "Use rain-shelters in tropical highlands and blight-tolerant cultivars."
+          ]
+        }
+      },
+      {
+        "id": "tomato_tylcv",
+        "name": "Tomato Yellow Leaf Curl Virus",
+        "scientificName": "Begomovirus (Bemisia tabaci vector)",
+        "category": "Viral",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Upward cupping of young terminal leaves with bright yellow margins, stunted shoots, and whiteflies underneath.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.15
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Rogue stunted early-infected plants and deploy yellow sticky traps around perimeter beds."
+          ],
+          "biologicalControl": [
+            "Apply insecticidal soap, horticultural oil, or Beauveria bassiana to leaf undersides targeting whiteflies."
+          ],
+          "chemicalGuidance": "No chemical cures viral infection; protect seedlings early from whitefly vectors.",
+          "prevention": [
+            "Raise seedlings under 50-mesh netting and choose Ty-gene resistant hybrids."
+          ]
+        }
+      },
+      {
+        "id": "tomato_healthy",
+        "name": "Healthy Tomato Foliage",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Deep green serrated leaflets without concentric lesions, curling, or whitefly honeydew.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Maintain steady soil moisture to prevent blossom-end rot."
+          ],
+          "biologicalControl": [
+            "Encourage parasitic wasps and lacewings with companion herbs."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Prune lower suckers and mulch root zones cleanly."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "eggplant",
+    "commonName": "Eggplant (Brinjal)",
+    "scientificName": "Solanum melongena",
+    "family": "Solanaceae",
+    "globalRegions": "Philippines, Indonesia, Thailand, Vietnam, Malaysia, Myanmar",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "eggplant_fsb",
+        "name": "Eggplant Fruit & Shoot Borer (EFSB)",
+        "scientificName": "Leucinodes orbonalis",
+        "category": "Pest",
+        "affectedParts": [
+          "stem_stalk",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Drooping wilted tender shoot tips before flowering and plugged entry holes in eggplants filled with wet frass.",
+        "visualSignature": {
+          "dominantTrait": "chewed_frass",
+          "minNecroticRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Clip and destroy wilted bored shoots and bored fruits weekly to break the moth lifecycle."
+          ],
+          "biologicalControl": [
+            "Install EFSB sex-pheromone traps (80–100/ha) and spray Bacillus thuringiensis (Bt) early."
+          ],
+          "chemicalGuidance": "Avoid weekly broad-spectrum pyrethroid cover sprays; pair pheromone mass-trapping with Bt.",
+          "prevention": [
+            "Remove old eggplant stalks completely after harvest and rotate with non-solanaceous crops."
+          ]
+        }
+      },
+      {
+        "id": "eggplant_bacterial_wilt",
+        "name": "Bacterial Wilt of Eggplant",
+        "scientificName": "Ralstonia solanacearum",
+        "category": "Bacterial",
+        "affectedParts": [
+          "whole_plant",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "isolated_plant"
+        ],
+        "summary": "Sudden permanent wilting of green leaves starting at top shoots; cut stem exudes milky bacterial ooze in water.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.09
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Uproot wilted plants carefully with root-zone soil and avoid splashing irrigation water onto adjacent beds."
+          ],
+          "biologicalControl": [
+            "Graft susceptible eggplant scions onto wilt-resistant Solanum torvum (turkey berry) rootstocks."
+          ],
+          "chemicalGuidance": "Chemical sprays are ineffective against systemic vascular bacteria.",
+          "prevention": [
+            "Rotate with paddy rice and control root-knot nematodes."
+          ]
+        }
+      },
+      {
+        "id": "eggplant_phomopsis",
+        "name": "Phomopsis Blight & Fruit Rot",
+        "scientificName": "Phomopsis vexans",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Round tan-to-gray leaf spots with dark margins and pale sunken soft spots on fruits studded with tiny black pycnidia dots.",
+        "visualSignature": {
+          "dominantTrait": "gray_diamond",
+          "minGrayWhiteRatio": 0.04,
+          "minNecroticRatio": 0.05
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Pick and destroy spotted fruits and lower diseased leaves promptly."
+          ],
+          "biologicalControl": [
+            "Treat seed with Trichoderma viride or hot water (50°C for 30 min) before sowing."
+          ],
+          "chemicalGuidance": "Apply copper or mancozeb protectants during prolonged rainy fruit set.",
+          "prevention": [
+            "Use clean certified seed and 3-year crop rotation."
+          ]
+        }
+      },
+      {
+        "id": "eggplant_healthy",
+        "name": "Healthy Eggplant Foliage",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Broad velvety green leaves with upright turgid shoot tips and glossy unblemished fruits.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Inspect shoot tips twice weekly for early borer wilt."
+          ],
+          "biologicalControl": [
+            "Maintain pheromone traps from transplanting onward."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Mulch beds to prevent rain splash."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "okra",
+    "commonName": "Okra (Lady's Finger)",
+    "scientificName": "Abelmoschus esculentus",
+    "family": "Malvaceae",
+    "globalRegions": "Philippines, Thailand, Malaysia, Vietnam, Indonesia",
+    "leafAspectHint": "lobed",
+    "conditions": [
+      {
+        "id": "okra_yvmv",
+        "name": "Okra Yellow Vein Mosaic Virus (YVMV)",
+        "scientificName": "Begomovirus (Bemisia tabaci vector)",
+        "category": "Viral",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Striking bright yellow network of veins enclosing islands of green tissue, eventually turning entire leaves and pods pale yellow.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.16
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Rogue early-infected plants immediately and hang yellow sticky traps to trap whiteflies."
+          ],
+          "biologicalControl": [
+            "Spray neem oil or insecticidal soap onto leaf undersides to suppress whitefly nymphs."
+          ],
+          "chemicalGuidance": "No chemical cures viral infection; vector control is only useful in the first 4 weeks.",
+          "prevention": [
+            "Plant YVMV-resistant okra hybrids and avoid planting adjacent to older infected okra/cotton."
+          ]
+        }
+      },
+      {
+        "id": "okra_borer",
+        "name": "Okra Shoot & Fruit Borer",
+        "scientificName": "Earias vittella",
+        "category": "Pest",
+        "affectedParts": [
+          "stem_stalk",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "vegetative",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "hot_dry"
+        ],
+        "summary": "Wilted drooping young shoots and crooked, scarred pods with round bore holes plugged by dark frass.",
+        "visualSignature": {
+          "dominantTrait": "chewed_frass",
+          "minNecroticRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Clip off wilted bored shoots and harvest/discard damaged pods every 2–3 days."
+          ],
+          "biologicalControl": [
+            "Spray Bacillus thuringiensis (Bt) or azadirachtin and release Trichogramma egg parasitoids."
+          ],
+          "chemicalGuidance": "Use spinosad only if pod infestation exceeds 10%; observe short okra harvest intervals.",
+          "prevention": [
+            "Remove wild malvaceous weeds near field borders."
+          ]
+        }
+      },
+      {
+        "id": "okra_powdery_mildew",
+        "name": "Okra Powdery Mildew",
+        "scientificName": "Erysiphe cichoracearum",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower"
+        ],
+        "symptomTags": [
+          "powdery_mold"
+        ],
+        "growthStages": [
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Talcum-like white powdery spots covering upper and lower leaf blades, leading to yellowing and premature leaf drop.",
+        "visualSignature": {
+          "dominantTrait": "white_powder",
+          "minGrayWhiteRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Strip severely mildewed old lower leaves to improve airflow through the canopy."
+          ],
+          "biologicalControl": [
+            "Apply wettable sulfur or potassium bicarbonate sprays early in the morning."
+          ],
+          "chemicalGuidance": "Avoid sulfur sprays when daytime temperatures exceed 35°C to prevent leaf scorch.",
+          "prevention": [
+            "Maintain adequate plant spacing (45–60 cm) and balanced irrigation."
+          ]
+        }
+      },
+      {
+        "id": "okra_healthy",
+        "name": "Healthy Okra Foliage",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Deep green lobed leaves with uniform green veins and tender unblemished pods.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Harvest tender pods every 2 days to keep plants productive."
+          ],
+          "biologicalControl": [
+            "Conserve ladybirds and spiders."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Select YVMV-resistant cultivars."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "yardlong_bean",
+    "commonName": "Yardlong Bean",
+    "scientificName": "Vigna unguiculata subsp. sesquipedalis",
+    "family": "Fabaceae",
+    "globalRegions": "Philippines, Thailand, Vietnam, Indonesia, Malaysia",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "yardlong_pod_borer",
+        "name": "Legume Pod Borer",
+        "scientificName": "Maruca vitrata",
+        "category": "Pest",
+        "affectedParts": [
+          "fruit_pod",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Webbed flowers and young pods showing entry holes with dark frass pushed outside.",
+        "visualSignature": {
+          "dominantTrait": "chewed_frass",
+          "minNecroticRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Collect and destroy webbed flowers and bored pods during regular harvests."
+          ],
+          "biologicalControl": [
+            "Apply Bacillus thuringiensis (Bt) or neem extract at early flower bud stage when larvae are exposed."
+          ],
+          "chemicalGuidance": "Target bud/early flower stages strictly per pre-harvest intervals since yardlong beans are picked frequently.",
+          "prevention": [
+            "Rotate trellised bean beds away from previous legume plots."
+          ]
+        }
+      },
+      {
+        "id": "yardlong_aphid",
+        "name": "Black Bean / Cowpea Aphid",
+        "scientificName": "Aphis craccivora",
+        "category": "Pest",
+        "affectedParts": [
+          "stem_stalk",
+          "fruit_pod",
+          "leaf_lower"
+        ],
+        "symptomTags": [
+          "insects_webbing",
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Dense shiny black aphid colonies clustering along tender shoot tips, flower stalks, and young pods, attracting ants.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Wash off localized colonies with a strong water spray or prune heavily encrusted shoot tips."
+          ],
+          "biologicalControl": [
+            "Apply insecticidal soap or neem oil; conserve hoverflies and ladybird beetles."
+          ],
+          "chemicalGuidance": "Spot-treat heavily colonized stems rather than spraying the entire trellis.",
+          "prevention": [
+            "Use silver reflective mulch to deter incoming winged aphids."
+          ]
+        }
+      },
+      {
+        "id": "yardlong_cercospora",
+        "name": "Cercospora Leaf Spot",
+        "scientificName": "Pseudocercospora cruenta",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Reddish-brown to dark smoky-gray angular spots on older leaves causing premature yellowing and defoliation.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Strip and discard heavily spotted lower leaves along the trellis base."
+          ],
+          "biologicalControl": [
+            "Apply copper-based biofungicide early if wet weather persists at pod fill."
+          ],
+          "chemicalGuidance": "Consult extension rules for protectant chlorothalonil/copper sprays observing harvest intervals.",
+          "prevention": [
+            "Space trellises for airflow and avoid overhead irrigation late in the day."
+          ]
+        }
+      },
+      {
+        "id": "yardlong_healthy",
+        "name": "Healthy Yardlong Bean Vines",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Clean trifoliate green leaves, unwebbed flowers, and straight tender green pods.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Harvest tender pods every 2–3 days."
+          ],
+          "biologicalControl": [
+            "Preserve predatory ladybirds and spiders on trellises."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Rotate legume trellises with non-legume crops."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "mungbean",
+    "commonName": "Mungbean",
+    "scientificName": "Vigna radiata",
+    "family": "Fabaceae",
+    "globalRegions": "Myanmar, Thailand, Indonesia, Philippines, Vietnam",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "mungbean_mymv",
+        "name": "Mungbean Yellow Mosaic Virus (MYMV)",
+        "scientificName": "Begomovirus (Bemisia tabaci vector)",
+        "category": "Viral",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Scattered bright yellow specks expanding into golden-yellow mosaic patches on trifoliate leaves and stunted yellow pods.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.16
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Rogue early-infected yellow plants within 25 days of sowing and install yellow sticky traps."
+          ],
+          "biologicalControl": [
+            "Spray neem oil onto young foliage to deter whitefly feeding."
+          ],
+          "chemicalGuidance": "No chemical cures viral infection; focus on resistant cultivars and early whitefly management.",
+          "prevention": [
+            "Sow MYMV-resistant varieties at recommended density and plant early after rice harvest."
+          ]
+        }
+      },
+      {
+        "id": "mungbean_powdery_mildew",
+        "name": "Mungbean Powdery Mildew",
+        "scientificName": "Erysiphe polygoni",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower"
+        ],
+        "symptomTags": [
+          "powdery_mold"
+        ],
+        "growthStages": [
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "White powdery patches coalescing across leaf surfaces during cool dry nights, turning foliage gray-brown.",
+        "visualSignature": {
+          "dominantTrait": "white_powder",
+          "minGrayWhiteRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Inspect shaded inner leaves starting at bud initiation."
+          ],
+          "biologicalControl": [
+            "Apply wettable sulfur (2 g/L) at first appearance of white powdery spots."
+          ],
+          "chemicalGuidance": "Repeat sulfur or a recommended triazole spray once after 14 days only if pod-fill foliage is threatened.",
+          "prevention": [
+            "Use mildew-resistant mungbean cultivars for cool dry-season plantings."
+          ]
+        }
+      },
+      {
+        "id": "mungbean_pod_borer",
+        "name": "Mungbean Pod Borer / Cutworm",
+        "scientificName": "Maruca vitrata / Helicoverpa armigera",
+        "category": "Pest",
+        "affectedParts": [
+          "fruit_pod",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Chewed floral buds, webbed blossoms, and circular entry holes along developing green pods.",
+        "visualSignature": {
+          "dominantTrait": "chewed_frass",
+          "minNecroticRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Scout flowers and young pods; hand-pick webbed clusters in small plots."
+          ],
+          "biologicalControl": [
+            "Apply Bacillus thuringiensis (Bt) or HaNPV during early larval hatch at 50% flowering."
+          ],
+          "chemicalGuidance": "Only use selective larvicides when >2 larvae per 10 plants are counted.",
+          "prevention": [
+            "Deep plow post-harvest stubbles to expose pupae to predators."
+          ]
+        }
+      },
+      {
+        "id": "mungbean_healthy",
+        "name": "Healthy Mungbean Foliage",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Clean trifoliate green leaves free of golden mosaic or white powdery mildew.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Harvest mature black pods promptly before shattering."
+          ],
+          "biologicalControl": [
+            "Preserve field ladybirds and spiders."
+          ],
+          "chemicalGuidance": "No treatment needed.",
+          "prevention": [
+            "Rotate cleanly in rice-mungbean systems."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "soybean",
+    "commonName": "Soybean",
+    "scientificName": "Glycine max",
+    "family": "Fabaceae",
+    "globalRegions": "Indonesia, Vietnam, Thailand, Myanmar, Cambodia",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "soybean_rust",
+        "name": "Asian Soybean Rust",
+        "scientificName": "Phakopsora pachyrhizi",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_lower",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "powdery_mold",
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Tiny tan to reddish-brown volcano-like pustules on lower leaf undersides causing premature yellowing and defoliation.",
+        "visualSignature": {
+          "dominantTrait": "orange_rust",
+          "minRustRatio": 0.05
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Inspect lower canopy leaf undersides with a hand lens for erupting spore pustules."
+          ],
+          "biologicalControl": [
+            "Early wettable sulfur sprays can slow initial epidemic buildup."
+          ],
+          "chemicalGuidance": "If detected between R1–R5 stages, apply local recommended triazole/strobilurin mixtures promptly.",
+          "prevention": [
+            "Eliminate volunteer soybeans between seasons and plant early-maturing cultivars."
+          ]
+        }
+      },
+      {
+        "id": "soybean_frogeye",
+        "name": "Frogeye Leaf Spot",
+        "scientificName": "Cercospora sojina",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Circular lesions with light gray centers and distinct dark reddish-brown margins on upper leaves.",
+        "visualSignature": {
+          "dominantTrait": "gray_diamond",
+          "minGrayWhiteRatio": 0.04,
+          "minNecroticRatio": 0.05
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Assess upper canopy incidence during pod fill (R3–R5)."
+          ],
+          "biologicalControl": [
+            "Incorporate crop residues after harvest to accelerate decomposition."
+          ],
+          "chemicalGuidance": "Use non-QoI fungicides if QoI resistance is known locally.",
+          "prevention": [
+            "Choose resistant varieties and rotate with rice or maize."
+          ]
+        }
+      },
+      {
+        "id": "soybean_pod_sucker",
+        "name": "Soybean Aphid / Pod-Sucking Bugs",
+        "scientificName": "Aphis glycines / Riptortus linearis",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_lower",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "insects_webbing",
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Yellow aphid clusters on shoots or brown stinkbugs piercing young pods causing flat shriveled seeds.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.1
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Scout pods during R3–R6 early in the morning when pod-sucking bugs rest on upper stems."
+          ],
+          "biologicalControl": [
+            "Conserve lady beetles, Orius bugs, and Gryon egg parasitoids; use Beauveria/neem early."
+          ],
+          "chemicalGuidance": "Apply selective insecticides only when economic threshold is exceeded.",
+          "prevention": [
+            "Synchronize planting dates in rice-soybean cropping blocks."
+          ]
+        }
+      },
+      {
+        "id": "soybean_healthy",
+        "name": "Healthy Soybean Crop",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Healthy trifoliate leaves without rust pustules, frogeye spots, or pod-sucker punctures.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Continue weekly canopy scouting from R1 through R5."
+          ],
+          "biologicalControl": [
+            "Preserve natural predators."
+          ],
+          "chemicalGuidance": "No treatment needed.",
+          "prevention": [
+            "Use Rhizobium-inoculated clean seed."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "groundnut",
+    "commonName": "Groundnut (Peanut)",
+    "scientificName": "Arachis hypogaea",
+    "family": "Fabaceae",
+    "globalRegions": "Myanmar, Indonesia, Vietnam, Thailand, Philippines",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "groundnut_leaf_spot",
+        "name": "Early & Late Tikka Leaf Spot",
+        "scientificName": "Passalora arachidicola / Nothopassalora personata",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Dark brown to black circular spots on leaflets—early spot shows yellow halos, late spot is darker underneath.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.08,
+          "minYellowRatio": 0.05
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Remove heavily defoliated crop residue after harvest to reduce soil-surface spore carryover."
+          ],
+          "biologicalControl": [
+            "Neem leaf extract or Trichoderma viride foliar sprays reduce secondary defoliation."
+          ],
+          "chemicalGuidance": "Apply protectant chlorothalonil or tebuconazole starting ~35–45 days after emergence if wet weather persists.",
+          "prevention": [
+            "Rotate groundnut with cereals (rice, maize) for at least 2 seasons."
+          ]
+        }
+      },
+      {
+        "id": "groundnut_rosette",
+        "name": "Peanut Bud Necrosis / Rosette Complex",
+        "scientificName": "Orthotospovirus / Umbravirus",
+        "category": "Viral",
+        "affectedParts": [
+          "whole_plant",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Bushy stunted plants with curled chlorotic yellow leaflets, terminal bud necrosis, and thrips/aphid vectors.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.16
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Uproot early-infected stunted plants immediately and bury/burn away from the field."
+          ],
+          "biologicalControl": [
+            "Plant at optimal dense spacing—early canopy closure deters incoming thrips and winged aphids."
+          ],
+          "chemicalGuidance": "No chemical cures viral infection; protect early emergence only in high-vector zones.",
+          "prevention": [
+            "Intercrop groundnut with pearl millet/maize border rows and plant resistant varieties."
+          ]
+        }
+      },
+      {
+        "id": "groundnut_rust",
+        "name": "Groundnut Rust",
+        "scientificName": "Puccinia arachidis",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_lower",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "powdery_mold",
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Raised orange-red pustules mainly on lower leaflet surfaces rupturing into powdery rust spores.",
+        "visualSignature": {
+          "dominantTrait": "orange_rust",
+          "minRustRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Inspect leaflet undersides if foliage looks prematurely scorched."
+          ],
+          "biologicalControl": [
+            "Wettable sulfur dusting helps suppress early rust pustules."
+          ],
+          "chemicalGuidance": "Triazole or chlorothalonil sprays manage both Tikka leaf spot and rust simultaneously.",
+          "prevention": [
+            "Eliminate volunteer groundnut plants during the off-season."
+          ]
+        }
+      },
+      {
+        "id": "groundnut_healthy",
+        "name": "Healthy Groundnut Foliage",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Four-leaflet pinnate green foliage with clean lower surfaces and active pegging.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Scout weekly starting 30 days after planting for Tikka spots and aphids."
+          ],
+          "biologicalControl": [
+            "Preserve hoverflies and ladybirds."
+          ],
+          "chemicalGuidance": "No treatment required.",
+          "prevention": [
+            "Maintain calcium/gypsum availability at pegging."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "water_spinach",
+    "commonName": "Water Spinach (Kangkong)",
+    "scientificName": "Ipomoea aquatica",
+    "family": "Convolvulaceae",
+    "globalRegions": "Vietnam, Thailand, Indonesia, Philippines, Malaysia, Cambodia",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "kangkong_white_rust",
+        "name": "White Rust of Water Spinach",
+        "scientificName": "Albugo ipomoeae-panduratae",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_lower",
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "powdery_mold",
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Chalky white blister-like pustules on leaf undersides and swollen twisted stems, with pale yellow spots on the upper leaf surface.",
+        "visualSignature": {
+          "dominantTrait": "white_powder",
+          "minGrayWhiteRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Harvest and remove infected shoots promptly; thin dense beds to speed morning dew evaporation."
+          ],
+          "biologicalControl": [
+            "Apply Bacillus subtilis or dilute potassium bicarbonate early; avoid overhead watering in late afternoon."
+          ],
+          "chemicalGuidance": "Avoid persistent synthetic fungicides on short-harvest leafy greens; prioritize bed sanitation and spacing.",
+          "prevention": [
+            "Rotate upland kangkong beds with non-Convolvulaceae greens (brassicas, alliums)."
+          ]
+        }
+      },
+      {
+        "id": "kangkong_leaf_spot",
+        "name": "Cercospora Leaf Spot",
+        "scientificName": "Cercospora ipomoeae",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Circular brown-to-tan spots with dark purple-brown borders on older kangkong leaves.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.07
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Cut out spotted older stems cleanly near the crown and refresh bed water/drainage."
+          ],
+          "biologicalControl": [
+            "Apply Trichoderma bio-agent to planting beds between ratoon cuts."
+          ],
+          "chemicalGuidance": "Observe strict zero-residue safety on fast-growing leafy vegetables.",
+          "prevention": [
+            "Use disease-free cuttings or clean seed and maintain good row spacing."
+          ]
+        }
+      },
+      {
+        "id": "kangkong_cutworm",
+        "name": "Common Cutworm / Armyworm",
+        "scientificName": "Spodoptera litura",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Skeletonized leaves (\"windowpanes\") from young gregarious caterpillars or large ragged holes chewed overnight.",
+        "visualSignature": {
+          "dominantTrait": "chewed_frass",
+          "minNecroticRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Hand-pick leaves carrying white-haired egg masses or gregarious newly hatched larvae during morning scouting."
+          ],
+          "biologicalControl": [
+            "Spray Bacillus thuringiensis (Bt) or SlNPV (Spodoptera litura nuclear polyhedrosis virus) in late afternoon."
+          ],
+          "chemicalGuidance": "Rely on Bt/SlNPV and fine insect netting over short-cycle leafy greens.",
+          "prevention": [
+            "Cover beds with lightweight mesh netting during peak moth flight nights."
+          ]
+        }
+      },
+      {
+        "id": "kangkong_healthy",
+        "name": "Healthy Water Spinach",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Crisp arrow-shaped green leaves and hollow turgid stems free of white blisters or chewing holes.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Cut clean shoots regularly to stimulate tender regrowth."
+          ],
+          "biologicalControl": [
+            "Keep insect mesh intact if growing organically."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Refresh paddy water or rotate upland beds periodically."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "cashew",
+    "commonName": "Cashew",
+    "scientificName": "Anacardium occidentale",
+    "family": "Anacardiaceae",
+    "globalRegions": "Vietnam, Cambodia, Indonesia, Philippines, Thailand, Myanmar",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "cashew_anthracnose",
+        "name": "Cashew Anthracnose",
+        "scientificName": "Colletotrichum gloeosporioides",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "spots_lesions",
+          "wilting_rot",
+          "tip_scorch"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Reddish-brown to black sunken lesions on young cashew flushes, panicles, and developing apples/nuts, causing blossom blight and nut drop.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Prune dead panicles and blighted shoots back into healthy green wood before flushing."
+          ],
+          "biologicalControl": [
+            "Open the canopy to improve airflow and spray Trichoderma or Bacillus subtilis bio-fungicides before flowering."
+          ],
+          "chemicalGuidance": "Apply protective copper oxychloride or mancozeb only at early flush/panicle emergence if wet weather persists; consult local extension.",
+          "prevention": [
+            "Avoid overhead irrigation during flowering and clear fallen infected apples/nuts beneath trees."
+          ]
+        }
+      },
+      {
+        "id": "cashew_tea_mosquito_bug",
+        "name": "Tea Mosquito Bug",
+        "scientificName": "Helopeltis antonii / H. theivora",
+        "category": "Pest",
+        "affectedParts": [
+          "stem_stalk",
+          "fruit_pod",
+          "leaf_upper"
+        ],
+        "symptomTags": [
+          "spots_lesions",
+          "tip_scorch",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Water-soaked necrotic feeding punctures on tender shoots and panicles that turn black and cause dieback (\"shoot scorch\") plus corky scabs on cashew nuts.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Scout tender flushes early morning and prune severely scorched twigs; conserve weaver ants (Oecophylla smaragdina) which suppress Helopeltis."
+          ],
+          "biologicalControl": [
+            "Encourage red weaver ant colonies across canopy bridges and apply Beauveria bassiana or neem oil during flush stage."
+          ],
+          "chemicalGuidance": "Use targeted spot sprays only when >5% of flushes show fresh punctures; avoid broad-spectrum sprays that wipe out weaver ants.",
+          "prevention": [
+            "Synchronize pruning across adjacent trees and clear alternate host weeds like Chromolaena around borders."
+          ]
+        }
+      },
+      {
+        "id": "cashew_stem_borer",
+        "name": "Cashew Stem & Root Borer",
+        "scientificName": "Plocaederus ferrugineus",
+        "category": "Pest",
+        "affectedParts": [
+          "stem_stalk",
+          "root_collar"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "yellowing_mosaic"
+        ],
+        "growthStages": [
+          "mature",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "isolated_plant"
+        ],
+        "summary": "Gummy amber exudate and extruded fibrous frass at the trunk base or root collar, followed by canopy yellowing and premature leaf drop.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.1
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Carefully chisel away loose dead bark around gum-oozing tunnels to extract cream-colored grubs mechanically."
+          ],
+          "biologicalControl": [
+            "Drench cleaned bark collars with entomopathogenic fungi (Metarhizium anisopliae) or neem cake slurry."
+          ],
+          "chemicalGuidance": "Swab or mud-plaster scraped collar wounds; reserve targeted trunk-collar treatments for active galleries per local extension.",
+          "prevention": [
+            "Uproot and destroy dead standing trees promptly and avoid mechanical mower/cutlass wounds on lower trunks."
+          ]
+        }
+      },
+      {
+        "id": "cashew_healthy",
+        "name": "Healthy Cashew",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Glossy obovate green leaves and unblemished panicles or developing cashew apples/nuts.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Maintain light post-harvest pruning to keep sunlight inside the canopy."
+          ],
+          "biologicalControl": [
+            "Protect weaver ant nests as natural biological control."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Mulch basin rings and apply balanced NPK after monsoon onset."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "shallot",
+    "commonName": "Shallot / Red Onion",
+    "scientificName": "Allium cepa var. aggregatum",
+    "family": "Amaryllidaceae",
+    "globalRegions": "Indonesia, Philippines, Thailand, Vietnam, Myanmar",
+    "leafAspectHint": "blade",
+    "conditions": [
+      {
+        "id": "shallot_purple_blotch",
+        "name": "Purple Blotch of Shallot / Onion",
+        "scientificName": "Alternaria porri",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "spots_lesions",
+          "tip_scorch"
+        ],
+        "growthStages": [
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Sunken oval whitish lesions that expand into purplish-brown concentric blotches with yellow halos, girdling tubular leaves and collapsing tops.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.06,
+          "minYellowRatio": 0.04
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Remove heavily blighted outer leaves and widen furrow drainage so leaf wetness dries rapidly after rain."
+          ],
+          "biologicalControl": [
+            "Apply Trichoderma harzianum or Bacillus subtilis foliarly at first specking; avoid evening sprinkler irrigation."
+          ],
+          "chemicalGuidance": "Rotate FRAC-distinct fungicides (e.g., azoxystrobin/mancozeb/difenoconazole) with wetting agent if monsoon pressure is severe; observe pre-harvest intervals.",
+          "prevention": [
+            "Rotate shallot beds away from alliums for 2 seasons and plant well-cured, disease-free seed bulbs."
+          ]
+        }
+      },
+      {
+        "id": "shallot_thrips",
+        "name": "Onion Thrips",
+        "scientificName": "Thrips tabaci",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "bleached_distorted",
+          "tip_scorch",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Silvery-white rasped streaks and curling leaf tips (\"silvertop\") caused by tiny yellowish-brown thrips feeding deep inside the tight leaf axils.",
+        "visualSignature": {
+          "dominantTrait": "white_powder",
+          "minGrayWhiteRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Direct a fine pressurized water spray or soapy water flush into leaf sheaths during hot dry spells to dislodge nymphs."
+          ],
+          "biologicalControl": [
+            "Apply neem oil (azadirachtin) or Beauveria bassiana into the central leaf whorl in late afternoon."
+          ],
+          "chemicalGuidance": "If >15 thrips per plant, rotate spinosad with extension-approved insecticides to prevent rapid resistance.",
+          "prevention": [
+            "Use reflective silver-black plastic mulch and avoid planting new shallots downwind of mature allium fields."
+          ]
+        }
+      },
+      {
+        "id": "shallot_basal_rot",
+        "name": "Fusarium Basal Rot",
+        "scientificName": "Fusarium oxysporum f. sp. cepae",
+        "category": "Fungal",
+        "affectedParts": [
+          "root_collar",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "yellowing_mosaic",
+          "tip_scorch"
+        ],
+        "growthStages": [
+          "vegetative",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "uniform_patch"
+        ],
+        "summary": "Progressive yellowing and dieback starting from leaf tips, accompanied by brown watery decay at the bulb base plate and pink-white mold.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.11
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Rogue yellowing clumps with adhering soil so basal rot spores do not contaminate healthy bulbs during harvest."
+          ],
+          "biologicalControl": [
+            "Coat seed bulbs with Trichoderma viride bio-inoculant before planting in well-drained raised beds."
+          ],
+          "chemicalGuidance": "Field sprays cannot cure infected bulbs; discard rotting bulbs cleanly and solarize beds between cycles.",
+          "prevention": [
+            "Never plant visibly bruised or soft-necked seed bulbs and rotate with paddy rice or legumes."
+          ]
+        }
+      },
+      {
+        "id": "shallot_healthy",
+        "name": "Healthy Shallot / Red Onion",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Erect, waxy blue-green tubular leaves without silvery thrips rasping or purple concentric spots.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Keep weeds controlled cleanly without wounding shallow roots."
+          ],
+          "biologicalControl": [
+            "Maintain organic mulch or Trichoderma soil drenching."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Withhold irrigation 10–14 days before harvest for crisp bulb curing."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "bitter_gourd",
+    "commonName": "Bitter Gourd (Ampalaya)",
+    "scientificName": "Momordica charantia",
+    "family": "Cucurbitaceae",
+    "globalRegions": "Philippines, Thailand, Vietnam, Indonesia, Malaysia",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "bitter_gourd_fruit_fly",
+        "name": "Melon Fruit Fly",
+        "scientificName": "Zeugodacus cucurbitae",
+        "category": "Pest",
+        "affectedParts": [
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "wilting_rot",
+          "spots_lesions",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Tiny oviposition sting marks oozing resinous sap on young bitter gourd fruits, causing bent deformation, internal maggot tunneling, and watery rot.",
+        "visualSignature": {
+          "dominantTrait": "dark_rot",
+          "minNecroticRatio": 0.08
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Collect and bury or submerge all stung/rotting fruits >30 cm deep or seal in black solarization bags to break maggot emergence."
+          ],
+          "biologicalControl": [
+            "Bag young 3–5 cm fruits with paper sleeves and hang Cue-lure male-annihilation traps around trellis borders."
+          ],
+          "chemicalGuidance": "Apply protein bait + spinosad spot sprays to border foliage rather than drenching trellises.",
+          "prevention": [
+            "Bag developing fruits early right after petal fall and clean fallen cucurbits daily."
+          ]
+        }
+      },
+      {
+        "id": "bitter_gourd_downy_mildew",
+        "name": "Cucurbit Downy Mildew",
+        "scientificName": "Pseudoperonospora cubensis",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower"
+        ],
+        "symptomTags": [
+          "spots_lesions",
+          "yellowing_mosaic",
+          "powdery_mold"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Angular pale-green to bright-yellow spots bounded by leaf veins on the upper leaf, with purplish-gray downy sporulation underneath after dewy nights.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.1
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Prune heavily spotted lower leaves along the base of the trellis to improve airflow and dry morning dew faster."
+          ],
+          "biologicalControl": [
+            "Spray Bacillus subtilis or potassium phosphonate preventively at early trellis climb."
+          ],
+          "chemicalGuidance": "Alternate oomycete fungicides (e.g., cymoxanil/mancozeb/dimethomorph) strictly following pre-harvest intervals on picking-stage vines.",
+          "prevention": [
+            "Orient trellises parallel to prevailing winds and avoid overhead watering after mid-afternoon."
+          ]
+        }
+      },
+      {
+        "id": "bitter_gourd_mosaic",
+        "name": "Cucurbit Mosaic / Namamarako (Little Leaf)",
+        "scientificName": "Cucurbit aphid-borne / Begomovirus Complex",
+        "category": "Viral",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic",
+          "bleached_distorted"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "flowering"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Mottled green-yellow mosaic, puckered \"little leaf\" cupping, stunted runner tips, and deformed short knobby fruits transmitted by aphids and whiteflies.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.12
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Rogue severely stunted/little-leaf vines early into bags before walking through healthy trellises."
+          ],
+          "biologicalControl": [
+            "Hang yellow sticky traps and apply insecticidal soap or neem oil to suppress aphid and whitefly vectors."
+          ],
+          "chemicalGuidance": "No chemical cures viral infection; manage insect vectors only with extension-approved selective sprays.",
+          "prevention": [
+            "Raise seedlings inside fine 40-mesh insect-proof nurseries and mulch beds with silver reflective plastic."
+          ]
+        }
+      },
+      {
+        "id": "bitter_gourd_healthy",
+        "name": "Healthy Bitter Gourd (Ampalaya)",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Deeply lobed vibrant green leaves and straight, crisp, ridged fruits free of fruit-fly stings.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Train lateral vines evenly over overhead trellises and bag young fruits early."
+          ],
+          "biologicalControl": [
+            "Maintain pollinator-safe flowering strips and Cue-lure border traps."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Ensure consistent root-zone moisture during fruit enlargement."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "calamansi",
+    "commonName": "Calamansi / Tropical Lime",
+    "scientificName": "Citrus × microcarpa",
+    "family": "Rutaceae",
+    "globalRegions": "Philippines, Malaysia, Indonesia, Singapore, Vietnam",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "calamansi_canker",
+        "name": "Citrus Canker",
+        "scientificName": "Xanthomonas citri subsp. citri",
+        "category": "Bacterial",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower",
+          "fruit_pod",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "spots_lesions"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "storm_wind",
+          "spreading_plot"
+        ],
+        "summary": "Raised corky tan-brown crater lesions surrounded by a water-soaked margin and bright yellow halo on leaves, twigs, and lime skins.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.05,
+          "minYellowRatio": 0.04
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Prune heavily cankered twigs during dry weather and avoid working in wet orchards when windblown rain spreads bacteria."
+          ],
+          "biologicalControl": [
+            "Control citrus leafminers first—their serpentine leaf tunnels open direct entry wounds for canker bacteria."
+          ],
+          "chemicalGuidance": "Apply protective copper-based bactericide sprays at young flush and early fruit set; follow orchard dosage labels.",
+          "prevention": [
+            "Plant windbreak hedges around calamansi blocks to minimize wind-driven rain splash and leaf abrasion."
+          ]
+        }
+      },
+      {
+        "id": "calamansi_hlb",
+        "name": "Huanglongbing (Citrus Greening) & Psyllid",
+        "scientificName": "Candidatus Liberibacter asiaticus / Diaphorina citri",
+        "category": "Bacterial",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "fruiting_grain",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Asymmetric blotchy yellow mottling across leaf halves (\"zinc-deficiency-like\" yellowing), twig dieback, and small lopsided bitter fruits that stay green at the base.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.12
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Inspect new shoot tips for angled tiny brown Asian citrus psyllids and white waxy nymph secretions; confirm blotchy mottle asymmetry."
+          ],
+          "biologicalControl": [
+            "Release or conserve Tamarixia radiata parasitic wasps and spray horticultural mineral oil or neem during new flush."
+          ],
+          "chemicalGuidance": "No chemical cures HLB inside the tree; remove confirmed declining source trees and manage psyllids per local department of agriculture advice.",
+          "prevention": [
+            "Plant ONLY certified disease-free budded calamansi seedlings grown under insect-proof screenhouses."
+          ]
+        }
+      },
+      {
+        "id": "calamansi_leafminer",
+        "name": "Citrus Leafminer",
+        "scientificName": "Phyllocnistis citrella",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower"
+        ],
+        "symptomTags": [
+          "bleached_distorted",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "hot_dry",
+          "spreading_plot"
+        ],
+        "summary": "Silvery winding serpentine tunnels under the leaf cuticle on tender new flushes, causing leaves to curl, twist, and become vulnerable to citrus canker.",
+        "visualSignature": {
+          "dominantTrait": "white_powder",
+          "minGrayWhiteRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Pinch off isolated heavily curled young shoots on backyard/nursery trees; protect synchronized main flushes."
+          ],
+          "biologicalControl": [
+            "Spray horticultural narrow-range mineral oil or neem (azadirachtin) as soon as new feather-stage shoots emerge."
+          ],
+          "chemicalGuidance": "Reserve abamectin or spinosad only for severe nursery/young-tree flush attacks.",
+          "prevention": [
+            "Avoid over-fertilizing with excessive nitrogen that triggers continuous vulnerable flushing year-round."
+          ]
+        }
+      },
+      {
+        "id": "calamansi_healthy",
+        "name": "Healthy Calamansi / Lime",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "fruit_pod"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "vegetative",
+          "flowering",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Glossy dark-green citrus foliage and smooth round green limes without corky craters, blotchy yellowing, or serpentine mines.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Maintain balanced micronutrient foliar feeding (Zn, Mg, Fe) at flush time."
+          ],
+          "biologicalControl": [
+            "Conserve ladybugs and lacewings inside citrus canopy."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Prune dead interior branches annually for airflow and sunlight."
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "taro",
+    "commonName": "Taro (Gabi)",
+    "scientificName": "Colocasia esculenta",
+    "family": "Araceae",
+    "globalRegions": "Philippines, Indonesia, Vietnam, Thailand, Malaysia",
+    "leafAspectHint": "broad",
+    "conditions": [
+      {
+        "id": "taro_leaf_blight",
+        "name": "Taro Leaf Blight",
+        "scientificName": "Phytophthora colocasiae",
+        "category": "Fungal",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "spots_lesions",
+          "wilting_rot"
+        ],
+        "growthStages": [
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Water-soaked purple-brown circular lesions with orange-red exudate droplets and yellow margins that coalesce rapidly in monsoon rain, collapsing entire leaf blades.",
+        "visualSignature": {
+          "dominantTrait": "brown_lesion",
+          "minNecroticRatio": 0.07,
+          "minYellowRatio": 0.03
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Detach heavily blighted older leaves carefully at the petiole base during dry midday hours to slow spore splash."
+          ],
+          "biologicalControl": [
+            "Widen plant spacing to 75–100 cm and apply Trichoderma compost tea around planting hills."
+          ],
+          "chemicalGuidance": "When monsoon outbreaks threaten corm yield, alternate protective copper or metalaxyl/mancozeb fungicides per local extension guidance.",
+          "prevention": [
+            "Select blight-tolerant local gabi cultivars and avoid planting downwind of infected taro patches."
+          ]
+        }
+      },
+      {
+        "id": "taro_caterpillar",
+        "name": "Taro Cluster Caterpillar & Hornworm",
+        "scientificName": "Spodoptera litura / Hippotion celerio",
+        "category": "Pest",
+        "affectedParts": [
+          "leaf_upper",
+          "leaf_lower"
+        ],
+        "symptomTags": [
+          "chewing_holes",
+          "insects_webbing"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative"
+        ],
+        "weatherTriggers": [
+          "hot_dry",
+          "humid_rainy",
+          "spreading_plot"
+        ],
+        "summary": "Large ragged notches and complete defoliation of heart-shaped taro leaves down to the midribs by plump horned hawk-moth larvae or clustered armyworms.",
+        "visualSignature": {
+          "dominantTrait": "chewed_frass",
+          "minNecroticRatio": 0.06
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Hand-pick large hornworms and egg-covered leaves early morning before larvae disperse across the plot."
+          ],
+          "biologicalControl": [
+            "Apply Bacillus thuringiensis (Bt) mixed with a small sticker-spreader so spray clings to waxy taro leaves."
+          ],
+          "chemicalGuidance": "Avoid harsh synthetic sprays especially in paddy-grown taro where fish/frogs inhabit the water.",
+          "prevention": [
+            "Keep field bunds weeded cleanly where adult moths shelter by day."
+          ]
+        }
+      },
+      {
+        "id": "taro_dasheen_mosaic",
+        "name": "Dasheen Mosaic Virus",
+        "scientificName": "Dasheen mosaic virus (DsMV)",
+        "category": "Viral",
+        "affectedParts": [
+          "leaf_upper",
+          "whole_plant"
+        ],
+        "symptomTags": [
+          "yellowing_mosaic",
+          "bleached_distorted"
+        ],
+        "growthStages": [
+          "seedling",
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant",
+          "spreading_plot"
+        ],
+        "summary": "Distinctive feathery pale-green or yellow chlorotic patterns along main leaf veins (\"feathering mosaic\") with narrowed distorted blades and smaller corms.",
+        "visualSignature": {
+          "dominantTrait": "yellow_mosaic",
+          "minYellowRatio": 0.1
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Tag and avoid using suckers/setts from mosaic-feathered mother plants for next season’s propagation."
+          ],
+          "biologicalControl": [
+            "Control melon/cotton aphids with neem oil or soap sprays on young unfurling leaves."
+          ],
+          "chemicalGuidance": "No chemical treatment cures virus in infected corms; focus on clean planting material selection.",
+          "prevention": [
+            "Propagate from virus-indexed tissue-cultured or inspected symptom-free mother hills."
+          ]
+        }
+      },
+      {
+        "id": "taro_healthy",
+        "name": "Healthy Taro (Gabi)",
+        "scientificName": "Healthy Baseline",
+        "category": "Healthy",
+        "affectedParts": [
+          "leaf_upper",
+          "stem_stalk"
+        ],
+        "symptomTags": [
+          "healthy_unsure"
+        ],
+        "growthStages": [
+          "vegetative",
+          "mature"
+        ],
+        "weatherTriggers": [
+          "isolated_plant"
+        ],
+        "summary": "Broad, waxy, water-beading heart-shaped green leaves on sturdy petioles free of water-soaked blight rings or caterpillar notches.",
+        "visualSignature": {
+          "dominantTrait": "healthy_green"
+        },
+        "recommendations": {
+          "immediateActions": [
+            "Maintain shallow clean water flow (wetland taro) or steady mulch (upland gabi)."
+          ],
+          "biologicalControl": [
+            "Encourage frogs and predatory wasps along taro paddies."
+          ],
+          "chemicalGuidance": "No intervention needed.",
+          "prevention": [
+            "Rotate upland taro after 1–2 harvests to avoid corm rot buildup."
+          ]
+        }
+      }
+    ]
+  }
+]

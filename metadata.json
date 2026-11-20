@@ -1,0 +1,10 @@
+{
+  "name": "AgroGuard Field Diagnostics",
+  "description": "Offline-first crop pest and disease diagnostic app covering 12 major global crops with guided bounding-box capture, contextual pulldown refinement, Wi-Fi-first Gemini cloud fallback, and exportable native Android Kotlin source.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,468 @@
+[
+  {
+    "id": "abiotic_drought",
+    "name": "Drought / Water Deficit Stress",
+    "scientificName": "Abiotic — Soil Moisture Deficit",
+    "category": "Abiotic",
+    "affectedParts": [
+      "whole_plant",
+      "leaf_upper",
+      "root_collar"
+    ],
+    "symptomTags": [
+      "wilting_rot",
+      "tip_scorch",
+      "yellowing_mosaic"
+    ],
+    "growthStages": [
+      "seedling",
+      "vegetative",
+      "flowering",
+      "fruiting_grain",
+      "mature"
+    ],
+    "weatherTriggers": [
+      "hot_dry",
+      "uniform_patch"
+    ],
+    "soilTriggers": [
+      "dry_cracked"
+    ],
+    "sunlightTriggers": [
+      "full_sun"
+    ],
+    "inputTriggers": [
+      "none"
+    ],
+    "summary": "Midday leaf rolling or wilting that partially recovers overnight, paired with dry crisp brown leaf margins and cracked soil.",
+    "visualSignature": {
+      "dominantTrait": "brown_lesion",
+      "minNecroticRatio": 0.04,
+      "minYellowRatio": 0.05
+    },
+    "recommendations": {
+      "immediateActions": [
+        "Irrigate deeply at the root zone in early morning or late evening rather than light midday sprinkling.",
+        "Apply 5–8 cm of dry rice straw, coconut husk, or grass mulch around bases to cut soil evaporation."
+      ],
+      "biologicalControl": [
+        "Incorporate composted organic matter after harvest to raise soil water-holding capacity."
+      ],
+      "chemicalGuidance": "Do NOT apply chemical fungicides or granular nitrogen fertilizer while plants are drought-stressed—salts will worsen root burn.",
+      "prevention": [
+        "Use raised-bed mulching, drip/furrow scheduling, and drought-tolerant varieties for dry-season crops."
+      ]
+    }
+  },
+  {
+    "id": "abiotic_overwatering",
+    "name": "Overwatering / Waterlogging & Root Hypoxia",
+    "scientificName": "Abiotic — Root Oxygen Deprivation",
+    "category": "Abiotic",
+    "affectedParts": [
+      "whole_plant",
+      "root_collar",
+      "leaf_upper"
+    ],
+    "symptomTags": [
+      "wilting_rot",
+      "yellowing_mosaic"
+    ],
+    "growthStages": [
+      "seedling",
+      "vegetative",
+      "flowering",
+      "fruiting_grain"
+    ],
+    "weatherTriggers": [
+      "humid_rainy",
+      "uniform_patch"
+    ],
+    "soilTriggers": [
+      "waterlogged"
+    ],
+    "sunlightTriggers": [
+      "full_sun"
+    ],
+    "inputTriggers": [
+      "none"
+    ],
+    "summary": "Plants droop and wilt even though soil is saturated; lower leaves turn uniformly dull yellow, and roots turn dark mushy brown without milky bacterial ooze.",
+    "visualSignature": {
+      "dominantTrait": "yellow_mosaic",
+      "minYellowRatio": 0.1
+    },
+    "recommendations": {
+      "immediateActions": [
+        "Stop irrigation immediately and dig shallow surface drainage channels to drain standing water away from beds.",
+        "Gently aerate crusted topsoil around ridges once surface water recedes."
+      ],
+      "biologicalControl": [
+        "Apply Trichoderma-enriched compost once drained to protect weakened roots from opportunistic Pythium/Phytophthora rot."
+      ],
+      "chemicalGuidance": "Avoid extra soil drenches until excess water drains; check stem cut in clear water to rule out Ralstonia bacterial wilt.",
+      "prevention": [
+        "Plant upland vegetables and papaya/pepper on 25–40 cm raised cambered beds ahead of monsoon season."
+      ]
+    }
+  },
+  {
+    "id": "abiotic_low_sunlight",
+    "name": "Too Little Sunlight / Shade Etiolation Stress",
+    "scientificName": "Abiotic — Photosynthetic Light Deficit",
+    "category": "Abiotic",
+    "affectedParts": [
+      "whole_plant",
+      "stem_stalk",
+      "leaf_upper"
+    ],
+    "symptomTags": [
+      "yellowing_mosaic",
+      "wilting_rot"
+    ],
+    "growthStages": [
+      "seedling",
+      "vegetative",
+      "flowering"
+    ],
+    "weatherTriggers": [
+      "humid_rainy",
+      "uniform_patch"
+    ],
+    "soilTriggers": [
+      "normal"
+    ],
+    "sunlightTriggers": [
+      "heavy_shade"
+    ],
+    "inputTriggers": [
+      "none"
+    ],
+    "summary": "Thin, pale-green to yellowish leaves with weak, overly stretched tall stems (\"leggy\" internodes) and poor flower or fruit set under heavy canopy or monsoon cloud cover.",
+    "visualSignature": {
+      "dominantTrait": "yellow_mosaic",
+      "minYellowRatio": 0.09
+    },
+    "recommendations": {
+      "immediateActions": [
+        "Prune overhanging shade-tree branches or thin overly crowded crop rows to restore direct sunlight.",
+        "Stake stretched weak stems gently so they do not lodge in wind."
+      ],
+      "biologicalControl": [
+        "Avoid heavy nitrogen applications under shade, which intensify soft leggy growth and fungal susceptibility."
+      ],
+      "chemicalGuidance": "No pesticide needed—restoring light intensity reverses new leaf pale coloration within 7–10 days.",
+      "prevention": [
+        "Match shade-intolerant crops (maize, tomato, chili, okra) to open sunny blocks; save partial shade for coffee, cacao, or black pepper."
+      ]
+    }
+  },
+  {
+    "id": "abiotic_fertilizer_burn",
+    "name": "Fertilizer Burn / Excess Nitrogen & Salt Toxicity",
+    "scientificName": "Abiotic — Osmotic Root & Foliar Burn",
+    "category": "Abiotic",
+    "affectedParts": [
+      "leaf_upper",
+      "root_collar",
+      "whole_plant"
+    ],
+    "symptomTags": [
+      "tip_scorch",
+      "wilting_rot",
+      "spots_lesions"
+    ],
+    "growthStages": [
+      "seedling",
+      "vegetative",
+      "flowering",
+      "fruiting_grain"
+    ],
+    "weatherTriggers": [
+      "hot_dry",
+      "uniform_patch"
+    ],
+    "soilTriggers": [
+      "normal"
+    ],
+    "sunlightTriggers": [
+      "full_sun"
+    ],
+    "inputTriggers": [
+      "heavy_fertilizer"
+    ],
+    "summary": "Uniform crispy brown scorching along leaf tips and outer margins shortly after heavy urea/NPK side-dressing or fresh uncomposted manure, sometimes with white salt crust on dry soil.",
+    "visualSignature": {
+      "dominantTrait": "brown_lesion",
+      "minNecroticRatio": 0.06
+    },
+    "recommendations": {
+      "immediateActions": [
+        "Flush the root zone thoroughly with clean freshwater irrigation 2–3 times over 48 hours to leach excess soluble salts below roots.",
+        "Scrape away visible clumps of undissolved fertilizer granules sitting directly against plant stems."
+      ],
+      "biologicalControl": [
+        "Apply well-aged compost or humic-rich organic mulch once salts are flushed to buffer soil conductivity."
+      ],
+      "chemicalGuidance": "Halt ALL chemical fertilizer and foliar nutrient sprays for at least 2–3 weeks until new roots and leaves recover.",
+      "prevention": [
+        "Split fertilizer doses, keep granules 8–10 cm away from stems, water immediately after application, and age raw manure for 60+ days."
+      ]
+    }
+  },
+  {
+    "id": "abiotic_nutrient_deficiency",
+    "name": "Nutrient Deficiency (N / K / Mg / Iron Chlorosis)",
+    "scientificName": "Abiotic — Macronutrient / Micronutrient Deficit",
+    "category": "Abiotic",
+    "affectedParts": [
+      "leaf_upper",
+      "whole_plant"
+    ],
+    "symptomTags": [
+      "yellowing_mosaic",
+      "tip_scorch"
+    ],
+    "growthStages": [
+      "vegetative",
+      "flowering",
+      "fruiting_grain"
+    ],
+    "weatherTriggers": [
+      "uniform_patch"
+    ],
+    "soilTriggers": [
+      "normal"
+    ],
+    "sunlightTriggers": [
+      "full_sun"
+    ],
+    "inputTriggers": [
+      "no_fertilizer_deficit"
+    ],
+    "summary": "Symmetrical yellowing without insect or fungal spore signs: uniform older-leaf yellowing (Nitrogen), scorched older edges (Potassium), or yellow leaf blades with green veins (Magnesium/Iron).",
+    "visualSignature": {
+      "dominantTrait": "yellow_mosaic",
+      "minYellowRatio": 0.12
+    },
+    "recommendations": {
+      "immediateActions": [
+        "Determine leaf position: older lower leaves indicate mobile N/P/K/Mg deficiency; youngest top leaves indicate immobile Iron/Zinc/Calcium/Boron deficit.",
+        "Apply balanced NPK side-dressing or compost tea + wood ash (potassium) watered in cleanly."
+      ],
+      "biologicalControl": [
+        "Incorporate vermicompost, green manure legumes, or Azolla/Rhizobium biofertilizers to build long-term nutrient supply."
+      ],
+      "chemicalGuidance": "For rapid micronutrient correction (Zn/Fe/Mg), apply a light chelated foliar spray at cool morning hours.",
+      "prevention": [
+        "Conduct simple soil pH checks (target pH 5.8–6.8) since acidic soil locks up phosphorus and magnesium even when present."
+      ]
+    }
+  },
+  {
+    "id": "abiotic_heat_sunscald",
+    "name": "Heat Stress & Sunscald",
+    "scientificName": "Abiotic — Thermal / Solar Radiation Injury",
+    "category": "Abiotic",
+    "affectedParts": [
+      "fruit_pod",
+      "leaf_upper"
+    ],
+    "symptomTags": [
+      "bleached_distorted",
+      "tip_scorch"
+    ],
+    "growthStages": [
+      "flowering",
+      "fruiting_grain",
+      "mature"
+    ],
+    "weatherTriggers": [
+      "hot_dry",
+      "uniform_patch"
+    ],
+    "soilTriggers": [
+      "normal"
+    ],
+    "sunlightTriggers": [
+      "intense_heat"
+    ],
+    "inputTriggers": [
+      "none"
+    ],
+    "summary": "Bleached papery white-to-tan sunken patches on the sun-facing side of tomato, chili, papaya, or durian fruits and upper leaves during >36°C heatwaves.",
+    "visualSignature": {
+      "dominantTrait": "white_powder",
+      "minGrayWhiteRatio": 0.06
+    },
+    "recommendations": {
+      "immediateActions": [
+        "Erect temporary 30–40% shade netting over high-value vegetable/nursery beds during peak dry-season heat.",
+        "Avoid aggressive leaf pruning that suddenly exposes green fruits to direct afternoon sun."
+      ],
+      "biologicalControl": [
+        "Maintain thick organic mulch and steady soil moisture so transpirational leaf cooling stays active."
+      ],
+      "chemicalGuidance": "Avoid spraying sulfur or emulsifiable oils when temperatures exceed 34°C, as they intensify sunscald burn.",
+      "prevention": [
+        "Use calcium-silicate or kaolin clay sun-protectant sprays on sensitive fruit crops in intense dry seasons."
+      ]
+    }
+  },
+  {
+    "id": "abiotic_herbicide_drift",
+    "name": "Herbicide / Chemical Drift Injury",
+    "scientificName": "Abiotic — Phytotoxic Spray Drift",
+    "category": "Abiotic",
+    "affectedParts": [
+      "leaf_upper",
+      "stem_stalk",
+      "whole_plant"
+    ],
+    "symptomTags": [
+      "bleached_distorted",
+      "yellowing_mosaic"
+    ],
+    "growthStages": [
+      "seedling",
+      "vegetative",
+      "flowering"
+    ],
+    "weatherTriggers": [
+      "uniform_patch",
+      "isolated_plant"
+    ],
+    "soilTriggers": [
+      "normal"
+    ],
+    "sunlightTriggers": [
+      "full_sun"
+    ],
+    "inputTriggers": [
+      "herbicide_nearby"
+    ],
+    "summary": "Cupped, strap-shaped, twisted young shoots (hormone/2,4-D drift) or stark bleached white/yellow bands across leaves (glyphosate/paraquat drift) without insects.",
+    "visualSignature": {
+      "dominantTrait": "white_powder",
+      "minGrayWhiteRatio": 0.07,
+      "minYellowRatio": 0.06
+    },
+    "recommendations": {
+      "immediateActions": [
+        "If spray drift happened within the last 1–2 hours, rinse foliage thoroughly with clean water.",
+        "Provide light balanced irrigation and seaweed/amino-acid biostimulant to help new uninjured shoots grow out."
+      ],
+      "biologicalControl": [
+        "Trim severely distorted dead tips only after new healthy lateral buds begin emerging."
+      ],
+      "chemicalGuidance": "Flush sprayer tanks 3 times with clean water and detergent after herbicide use—never reuse herbicide sprayers for foliar crop sprays.",
+      "prevention": [
+        "Spray weeds only in calm early mornings (<5 km/h wind) using low-pressure drift-guard nozzles and buffer borders."
+      ]
+    }
+  },
+  {
+    "id": "abiotic_salinity_acidity",
+    "name": "Soil Salinity / Acid-Sulfate & Iron Toxicity",
+    "scientificName": "Abiotic — Coastal Salt or Acidic Soil Stress",
+    "category": "Abiotic",
+    "affectedParts": [
+      "leaf_upper",
+      "whole_plant",
+      "root_collar"
+    ],
+    "symptomTags": [
+      "tip_scorch",
+      "spots_lesions",
+      "yellowing_mosaic"
+    ],
+    "growthStages": [
+      "seedling",
+      "vegetative",
+      "flowering"
+    ],
+    "weatherTriggers": [
+      "hot_dry",
+      "humid_rainy",
+      "uniform_patch"
+    ],
+    "soilTriggers": [
+      "saline_acidic"
+    ],
+    "sunlightTriggers": [
+      "full_sun"
+    ],
+    "inputTriggers": [
+      "none"
+    ],
+    "summary": "White-tipped scorched leaves and stunted patches in coastal brackish deltas (salinity), or tiny rusty-brown spots coalescing into orange-bronze older rice leaves (acid-sulfate iron toxicity).",
+    "visualSignature": {
+      "dominantTrait": "orange_rust",
+      "minRustRatio": 0.05,
+      "minNecroticRatio": 0.05
+    },
+    "recommendations": {
+      "immediateActions": [
+        "For coastal salinity: flush fields with fresh canal/rainwater whenever available and strengthen perimeter bunds against brackish tides.",
+        "For flooded rice iron toxicity: drain field intermittently for 3–5 days to oxidize excess ferrous iron in the root zone."
+      ],
+      "biologicalControl": [
+        "Apply agricultural lime (CaCO3) or rice-husk biochar + potassium/zinc fertilizers to counteract acidity and iron uptake."
+      ],
+      "chemicalGuidance": "Avoid ammonium sulfate in acid-sulfate soils; prefer urea paired with adequate potassium and phosphorus.",
+      "prevention": [
+        "Plant salt-tolerant or iron-toxicity-tolerant SEA cultivars in delta and peatland zones."
+      ]
+    }
+  },
+  {
+    "id": "abiotic_storm_mechanical",
+    "name": "Wind / Typhoon / Mechanical Leaf Damage",
+    "scientificName": "Abiotic — Physical Weather Injury",
+    "category": "Abiotic",
+    "affectedParts": [
+      "leaf_upper",
+      "stem_stalk",
+      "whole_plant"
+    ],
+    "symptomTags": [
+      "chewing_holes",
+      "wilting_rot"
+    ],
+    "growthStages": [
+      "vegetative",
+      "flowering",
+      "fruiting_grain",
+      "mature"
+    ],
+    "weatherTriggers": [
+      "storm_wind"
+    ],
+    "soilTriggers": [
+      "normal"
+    ],
+    "sunlightTriggers": [
+      "full_sun"
+    ],
+    "inputTriggers": [
+      "none"
+    ],
+    "summary": "Clean parallel shredding along banana/maize leaf veins, snapped petioles, or bruised stems after high winds/hail—without caterpillar frass or fungal concentric rings.",
+    "visualSignature": {
+      "dominantTrait": "healthy_green"
+    },
+    "recommendations": {
+      "immediateActions": [
+        "Prop upright lodged stalks/banana pseudostems gently and trim cleanly snapped broken branches to prevent secondary rot entry.",
+        "Drain standing storm rainwater promptly from beds."
+      ],
+      "biologicalControl": [
+        "Apply a light preventive Trichoderma or copper mist on wounded high-value fruit trees (durian, mango, cacao) right after severe hail/typhoons."
+      ],
+      "chemicalGuidance": "Do not spray insecticides for shredded wind leaves—check for frass or insects before treating.",
+      "prevention": [
+        "Plant bamboo/Gliricidia windbreak rows around exposed banana, papaya, and orchard plots."
+      ]
+    }
+  }
+]
