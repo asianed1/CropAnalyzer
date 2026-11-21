@@ -41,8 +41,8 @@ interface ScenarioPreset {
 const QUICK_SCENARIOS: ScenarioPreset[] = [
   {
     id: 'rice_blast',
-    title: 'Rice Blast (Biotic Fungal)',
-    subtitle: 'Offline · Leaf lesions + monsoon humidity',
+    title: 'Rice Blast Spots',
+    subtitle: 'Offline · Leaf spots + rainy weather',
     sampleId: 'sample_rice_blast',
     imageSrc: FIELD_SAMPLES[2].src,
     context: {
@@ -58,8 +58,8 @@ const QUICK_SCENARIOS: ScenarioPreset[] = [
   },
   {
     id: 'maize_armyworm',
-    title: 'Maize Fall Armyworm (Pest)',
-    subtitle: 'Offline · Whorl holes & frass',
+    title: 'Corn Leaf Worms',
+    subtitle: 'Offline · Chewed holes in new leaves',
     sampleId: 'sample_maize_armyworm',
     imageSrc: FIELD_SAMPLES[1].src,
     context: {
@@ -75,8 +75,8 @@ const QUICK_SCENARIOS: ScenarioPreset[] = [
   },
   {
     id: 'drought_stress',
-    title: 'Drought / Lack of Water (Abiotic)',
-    subtitle: 'Offline · Dry cracked soil + unsure symptom',
+    title: 'Too Dry / Needs Water',
+    subtitle: 'Offline · Dry cracked soil',
     sampleId: 'sample_tomato_blight',
     imageSrc: FIELD_SAMPLES[0].src,
     context: {
@@ -92,8 +92,8 @@ const QUICK_SCENARIOS: ScenarioPreset[] = [
   },
   {
     id: 'overwatering',
-    title: 'Overwatering / Waterlogged (Abiotic)',
-    subtitle: 'Offline · Standing water + root hypoxia',
+    title: 'Too Much Water / Flooding',
+    subtitle: 'Offline · Standing water around roots',
     sampleId: 'sample_rice_blast',
     imageSrc: FIELD_SAMPLES[2].src,
     context: {
@@ -109,8 +109,8 @@ const QUICK_SCENARIOS: ScenarioPreset[] = [
   },
   {
     id: 'low_sunlight',
-    title: 'Too Little Sunlight / Shade (Abiotic)',
-    subtitle: 'Offline · Heavy shade etiolation stress',
+    title: 'Too Shady (Low Sun)',
+    subtitle: 'Offline · Weak pale growth in shade',
     sampleId: 'sample_tomato_blight',
     imageSrc: FIELD_SAMPLES[0].src,
     context: {
@@ -126,8 +126,8 @@ const QUICK_SCENARIOS: ScenarioPreset[] = [
   },
   {
     id: 'fertilizer_burn',
-    title: 'Too Much Fertilizer Burn (Abiotic)',
-    subtitle: 'Offline · Heavy NPK/urea last 14 days',
+    title: 'Fertilizer Burn',
+    subtitle: 'Offline · Heavy fertilizer last 2 weeks',
     sampleId: 'sample_tomato_blight',
     imageSrc: FIELD_SAMPLES[0].src,
     context: {
@@ -143,8 +143,8 @@ const QUICK_SCENARIOS: ScenarioPreset[] = [
   },
   {
     id: 'all_unsure_tomato',
-    title: 'All Pulldowns "Do not know"',
-    subtitle: 'Offline · Returns broad multi-crop possibilities',
+    title: 'All Menus "I do not know"',
+    subtitle: 'Offline · Gives rough guess across crops',
     sampleId: 'sample_tomato_blight',
     imageSrc: FIELD_SAMPLES[0].src,
     context: {
@@ -160,8 +160,8 @@ const QUICK_SCENARIOS: ScenarioPreset[] = [
   },
   {
     id: 'mystery_gemini',
-    title: 'Unfamiliar Gall Leaf (~5% Fallback)',
-    subtitle: 'Cloud · Triggers Gemini Y/N + Memory Y/N',
+    title: 'Rare Unfamiliar Leaf',
+    subtitle: 'Online · Asks to check online & save photo',
     sampleId: 'sample_mystery_leaf',
     imageSrc: FIELD_SAMPLES[3].src,
     context: {
@@ -280,7 +280,7 @@ export default function App() {
     setContext(preset.context);
     setDisplayDiagnosis(null);
     setLocalResult(null);
-    setNoticeMessage(`Loaded scenario: ${preset.title}. Tap "Run Offline Analysis" on the phone.`);
+    setNoticeMessage(`Loaded test example: ${preset.title}. Tap "Check Plant Now" below.`);
     setCloudError(null);
     setPromptStep({ type: 'none' });
     setBox({ x: 0.16, y: 0.14, width: 0.68, height: 0.72 });
@@ -320,34 +320,34 @@ export default function App() {
             isVagueMatch: true,
             cropCommonName:
               context.suspectedCropId === 'auto'
-                ? 'Crop Not Specified (Multiple Matching Crops)'
+                ? 'Crop Not Picked (Could Be Several)'
                 : m.crop.commonName,
             cropScientificName:
               context.suspectedCropId === 'auto'
-                ? 'Select Suspected Crop below to narrow'
+                ? 'Pick your crop above to get an exact answer'
                 : m.crop.scientificName,
             diagnosisName:
               analysis.vagueConditionTitle || m.condition.name,
-            pathogenScientificName: 'Broad Offline Match — Vague Inputs',
+            pathogenScientificName: 'Rough Offline Guess — Need More Clues',
             category: 'Broad Match',
             probabilityPercent: m.probabilityPercent,
             summary: analysis.vagueSummary || m.condition.summary,
             matchReasons: [
-              'Visual traits detected inside bounding box',
-              'Inputs left broad / "Do not know"',
+              'Spots or colors seen inside the green box',
+              'Menus left on "I do not know"',
             ],
             recommendations: {
               immediateActions: [
-                'Isolate or prune a few badly affected leaves carefully while avoiding spreading wet spores.',
-                'Check whether surrounding plants show dry/cracked soil, standing water, heavy shade, or recent fertilizer scorch.',
+                'Trim off a few badly spotted leaves gently and put them in a bag so disease does not spread.',
+                'Check if the soil is bone dry, flooded, very shady, or recently got heavy fertilizer.',
               ],
               biologicalControl: [
-                'Hold off on specific bio-fungicides or insecticides until you select the crop in the pulldown to narrow the exact pest or pathogen.',
+                'Wait to buy special sprays until you pick the exact crop in menu #1 above.',
               ],
               chemicalGuidance:
-                'Do NOT apply chemical sprays blindly from a broad match. Specify the crop and primary symptom below—or verify online via Gemini—before spraying.',
+                'Do NOT spray chemical pesticides blindly from a rough guess. Pick your crop name above—or check online—before spraying.',
               prevention: [
-                'Keep field notes on crop name, plant part affected, and recent weather/fertilizer inputs for sharper offline diagnosis.',
+                'Picking your crop name and what looks wrong makes the offline check much more accurate.',
               ],
             },
           }
@@ -388,7 +388,7 @@ export default function App() {
       pendingCaseIdRef.current = `case_${Date.now()}`;
       const reason =
         analysis.failureReason ||
-        'Offline model could not identify this crop pest or disease with sufficient confidence.';
+        'We could not tell what is wrong offline with confidence.';
 
       if (networkReport.isConnected) {
         setPromptStep({
@@ -399,7 +399,7 @@ export default function App() {
       } else {
         setPromptStep({
           type: 'ask_delete_memory_yn',
-          reason: `${reason} No Wi-Fi or Telco signal is available right now.`,
+          reason: `${reason} No internet signal is available right now.`,
         });
       }
     }
@@ -412,13 +412,13 @@ export default function App() {
     if (networkReport.isConnected) {
       setPromptStep({
         type: 'ask_gemini_yn',
-        reason: 'Requested second-opinion cloud analysis for this framed sample.',
+        reason: 'Check online for a second opinion on this leaf photo?',
         payloadKb: qualityMetrics.estimatedPayloadKb,
       });
     } else {
       setPromptStep({
         type: 'ask_delete_memory_yn',
-        reason: 'No Wi-Fi or Telco signal is currently available to reach Gemini.',
+        reason: 'No Wi-Fi or mobile signal is available right now to check online.',
       });
     }
   };
@@ -473,12 +473,12 @@ export default function App() {
       });
       setSavedCases(updated);
       setNoticeMessage(
-        `Diagnosed via Gemini using ${
-          networkReport.activeTransport === 'telco' ? 'Telco Cellular' : 'Wi-Fi (Priority 1)'
-        } (${payloadKb} KB).`
+        `Checked online using ${
+          networkReport.activeTransport === 'telco' ? 'Mobile Data' : 'Wi-Fi (Priority 1)'
+        }.`
       );
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Cloud request failed.';
+      const msg = err instanceof Error ? err.message : 'Online check failed.';
       setCloudError(msg);
       if (promptStep.type === 'none') {
         setNoticeMessage(msg);
@@ -493,7 +493,7 @@ export default function App() {
       setCloudError(null);
       setPromptStep({
         type: 'ask_delete_memory_yn',
-        reason: 'Gemini cloud analysis declined.',
+        reason: 'Online check was skipped.',
       });
       return;
     }
@@ -516,41 +516,41 @@ export default function App() {
       setSavedCases(updated);
       setDisplayDiagnosis(null);
       setLocalResult(null);
-      setNoticeMessage('Unresolved case and photo were deleted from phone memory.');
+      setNoticeMessage('Photo deleted from your phone.');
     } else if (qualityMetrics) {
       const cropLabel =
         context.suspectedCropId === 'auto'
-          ? 'Unidentified Crop'
+          ? 'Unknown Crop'
           : CROPS_KNOWLEDGE_BASE.find((c) => c.id === context.suspectedCropId)?.commonName ??
-            'Unidentified Crop';
+            'Unknown Crop';
 
       const updated = saveFieldCase({
         id,
         createdAt: new Date().toISOString(),
         source: 'unresolved_saved',
         cropCommonName: cropLabel,
-        cropScientificName: 'Pending Identification',
-        diagnosisName: 'Unresolved Disease / Pest',
-        pathogenScientificName: 'Awaiting Gemini Online Review',
+        cropScientificName: 'Not Yet Identified',
+        diagnosisName: 'Needs Online Check',
+        pathogenScientificName: 'Saved for Later',
         category: 'Unresolved',
         probabilityPercent: 0,
         summary:
           localResult?.failureReason ||
-          'Kept in phone memory for later review or Gemini cloud analysis.',
+          'Kept on phone so you can check online when you have signal.',
         recommendations: {
           immediateActions: [
-            'Isolate sample area if symptoms appear to spread rapidly while awaiting confirmation.',
+            'Keep an eye on nearby plants for spreading spots while waiting to check online.',
           ],
-          biologicalControl: ['Avoid broad-spectrum spraying until pest or pathogen is confirmed.'],
-          chemicalGuidance: 'Do not apply targeted chemicals without confirmed identification.',
-          prevention: ['Retry analysis in Saved Cases once Wi-Fi or Telco signal is available.'],
+          biologicalControl: ['Wait before spraying until you know the exact problem.'],
+          chemicalGuidance: 'Do not spray chemicals without knowing what is wrong.',
+          prevention: ['Open Saved Photos when you have Wi-Fi or mobile signal to check online.'],
         },
         roiImageDataUrl: qualityMetrics.roiCroppedDataUrl,
         context,
         payloadKb: qualityMetrics.estimatedPayloadKb,
       });
       setSavedCases(updated);
-      setNoticeMessage('Unresolved case retained in phone memory.');
+      setNoticeMessage('Photo saved on phone to check later.');
     }
   };
 
@@ -745,7 +745,7 @@ export default function App() {
                       Quick Field Test Scenarios
                     </h2>
                     <p className="mt-0.5 text-xs text-[#5A675C]">
-                      Load biotic diseases, abiotic stress (drought, overwatering, low sunlight, fertilizer burn), &ldquo;Do not know&rdquo; menus, or the Gemini fallback flow into the phone.
+                      Try leaf diseases, water/sun/soil/fertilizer problems, &ldquo;I do not know&rdquo; menus, or the online second-opinion flow on the phone screen.
                     </p>
                   </div>
 

@@ -139,8 +139,8 @@ class LocalDiagnosticEngine(
 
         // Evaluate Offline Abiotic & Environmental Stress Causes
         val selectedCrop = crops.firstOrNull { it.id == context.suspectedCropId }
-        val abioticCropCommon = selectedCrop?.commonName ?: "Southeast Asian Field Crop"
-        val abioticCropSci = selectedCrop?.scientificName ?: "Species Unspecified — Abiotic Stress"
+        val abioticCropCommon = selectedCrop?.commonName ?: "Crop Not Selected"
+        val abioticCropSci = selectedCrop?.scientificName ?: "Water, Sun, Soil, or Fertilizer Issue"
 
         for (abiotic in repository.getAbioticCauses()) {
             var score = 0.14
@@ -232,9 +232,9 @@ class LocalDiagnosticEngine(
             return AnalysisDecision.UnresolvedNeedCloud(
                 tempCaseId = tempId,
                 reason = if (isOutOfDistribution) {
-                    "Unrecognized symptom pattern falls outside the 30-crop Southeast Asia & abiotic offline knowledge base."
+                    "This leaf pattern looks unfamiliar and is not in the 30-crop offline guide."
                 } else {
-                    "Visual traits inside the bounding box did not match any known plant condition with enough signal."
+                    "Could not clearly see a leaf spot, color change, or bug inside the green box."
                 },
                 roiJpegBytes = jpegBytes
             )
@@ -260,44 +260,45 @@ class LocalDiagnosticEngine(
                 else -> topThree.joinToString(" or ") { it.diagnosisName }
             }
             val vagueSummary = if (context.suspectedCropId == "auto") {
-                "Since you did not indicate the crop or full field details in the pulldowns, the symptoms observed in this image could be any of these: $joinedReadable. Select the crop below to narrow to one diagnosis, or ask Gemini online if signal is available."
+                "Since you did not pick the crop, this could be any of these: $joinedReadable. Pick your crop below for a clearer answer, or check online if you have signal."
             } else {
-                "Since detailed symptom or soil conditions were left on \"Do not know\", the issue on ${best.cropCommonName} could be any of these: $joinedReadable. Narrow the pulldowns below to confirm."
+                "Since the extra plant details were left blank, the problem on ${best.cropCommonName} could be any of these: $joinedReadable. Add more details below to be sure."
             }
 
             return AnalysisDecision.ConfidentOffline(
                 DiagnosisOutput(
                     caseId = tempId,
                     cropCommonName = if (context.suspectedCropId == "auto") {
-                        "Crop Not Specified (Multiple Matching Crops)"
+                        "Crop Not Picked (Could Be Several)"
                     } else {
                         best.cropCommonName
                     },
                     cropScientificName = if (context.suspectedCropId == "auto") {
-                        "Select Suspected Crop below to narrow"
+                        "Pick your crop below to narrow it down"
                     } else {
                         best.cropScientificName
                     },
                     diagnosisName = titleConditions,
-                    pathogenScientificName = "Broad Offline Match — Vague Inputs",
+                    pathogenScientificName = "Broad Offline Guess",
                     category = "Broad Match",
                     probabilityPercent = best.probability,
                     summary = vagueSummary,
                     recommendations = com.agroguard.field.model.ConditionRecommendation(
                         immediateActions = listOf(
-                            "Isolate or prune a few badly affected leaves carefully while avoiding spreading wet spores.",
-                            "Check whether surrounding plants show dry/cracked soil, standing water, heavy shade, or recent fertilizer scorch."
+                            "Pick off a few badly spotted leaves carefully so sickness does not spread.",
+                            "Check if the soil is bone dry, flooded with standing water, too shady, or recently heavily fertilized."
                         ),
                         biologicalControl = listOf(
-                            "Hold off on specific biological sprays until you select the crop in the pulldown to narrow the exact pest or pathogen."
+                            "Hold off on special sprays until you pick the crop below to see the exact cause."
                         ),
-                        chemicalGuidance = "Do NOT spray chemical pesticides blindly from a broad match. Specify the crop and primary symptom below—or verify online via Gemini—before spraying.",
+                        chemicalGuidance = "Do NOT spray chemical pesticides blindly from a broad guess. Pick the crop below—or check online—before spraying.",
                         prevention = listOf(
-                            "Keep notes on crop name, affected plant part, and recent weather or fertilizer inputs for sharper offline diagnosis."
+                            "Note the crop name, what part looks sick, and recent rain or fertilizer for faster answers."
                         )
                     ),
                     source = "OFFLINE_ON_DEVICE"
-                )
+                ),
+                roiJpegBytes = jpegBytes
             )
         }
 
@@ -313,16 +314,25 @@ class LocalDiagnosticEngine(
                 summary = best.summary,
                 recommendations = best.recommendations,
                 source = "OFFLINE_ON_DEVICE"
-            )
+            ),
+            roiJpegBytes = jpegBytes
         )
     }
 
+    fun extractRoiJpegBytes(sourceBitmap: Bitmap, box: BoundingBoxNormalized): ByteArray {
+        val roi = cropToBoundingBox(sourceBitmap, box)
+        return compressRoiForPossibleCloud(roi)
+    }
+
     private fun cropToBoundingBox(bitmap: Bitmap, box: BoundingBoxNormalized): Bitmap {
-        val x = (box.left.coerceIn(0f, 0.9f) * bitmap.width).toInt()
-        val y = (box.top.coerceIn(0f, 0.9f) * bitmap.height).toInt()
-        val w = ((box.right - box.left).coerceIn(0.1f, 1f) * bitmap.width).toInt().coerceAtMost(bitmap.width - x)
-        val h = ((box.bottom - box.top).coerceIn(0.1f, 1f) * bitmap.height).toInt().coerceAtMost(bitmap.height - y)
-        return Bitmap.createBitmap(bitmap, x, y, max(32, w), max(32, h))
+        val minCrop = min(32, min(bitmap.width, bitmap.height)).coerceAtLeast(1)
+        val x = (box.left * bitmap.width).toInt().coerceIn(0, max(0, bitmap.width - minCrop))
+        val y = (box.top * bitmap.height).toInt().coerceIn(0, max(0, bitmap.height - minCrop))
+        val maxW = (bitmap.width - x).coerceAtLeast(1)
+        val maxH = (bitmap.height - y).coerceAtLeast(1)
+        val w = ((box.right - box.left) * bitmap.width).toInt().coerceIn(min(minCrop, maxW), maxW)
+        val h = ((box.bottom - box.top) * bitmap.height).toInt().coerceIn(min(minCrop, maxH), maxH)
+        return Bitmap.createBitmap(bitmap, x, y, w, h)
     }
 
     private fun evaluateImageQuality(roi: Bitmap): ImageQualityMetrics {
@@ -360,9 +370,9 @@ class LocalDiagnosticEngine(
         val avgLum = (lumSum / total).roundToInt()
         val isWellLit = avgLum in 52..224
         val lightingHint = when {
-            avgLum < 52 -> "Image inside bounding box is too dark ($avgLum/255). Turn on torch or move to daylight."
-            avgLum > 224 -> "Image inside bounding box is overexposed ($avgLum/255)."
-            else -> "Well lit ($avgLum/255)"
+            avgLum < 52 -> "The photo inside the box is too dark. Turn on the flashlight or move into brighter light."
+            avgLum > 224 -> "The photo inside the box is too bright or washed out. Try taking it in light shade."
+            else -> "Good light"
         }
 
         return ImageQualityMetrics(

@@ -208,8 +208,8 @@ export function runOnDeviceDiagnosis(
       alternatives: [],
       failureReason:
         quality.lightingStatus === 'too_dark'
-          ? 'Image inside bounding box is too dark for reliable on-device leaf feature extraction.'
-          : 'Image inside bounding box is washed out / overexposed.',
+          ? 'The photo inside the box is too dark. Move to brighter daylight or turn on the flashlight.'
+          : 'The photo inside the box is too bright or washed out. Try taking it in softer shade.',
     };
   }
 
@@ -533,8 +533,8 @@ export function runOnDeviceDiagnosis(
       primaryMatch: top,
       alternatives,
       failureReason: isOutOfDistribution
-        ? 'Unusual purple-bronze galls or unrecognized leaf morphology fall outside the 30-crop Southeast Asia & abiotic offline model.'
-        : 'Visual traits inside the bounding box did not match any known plant condition with enough signal.',
+        ? 'This leaf pattern looks unfamiliar and is not in the 30-crop offline guide.'
+        : 'Could not clearly see a leaf spot, color change, or bug inside the green box.',
     };
   }
 
@@ -560,19 +560,10 @@ export function runOnDeviceDiagnosis(
         ? `${conditionTitleList[0]}, ${conditionTitleList[1]}, or ${conditionTitleList[2]}`
         : conditionTitleList.join(' or ');
 
-    const missingParts: string[] = [];
-    if (context.suspectedCropId === 'auto') missingParts.push('the crop');
-    if (context.primarySymptom === 'unknown') missingParts.push('the primary symptom');
-    if (context.soilMoisture === 'unknown' && context.recentInputs === 'unknown') {
-      missingParts.push('soil/input history');
-    }
-    const missingPhrase =
-      missingParts.length > 0 ? missingParts.slice(0, 2).join(' and ') : 'detailed field context';
-
     const vagueSummary =
       context.suspectedCropId === 'auto'
-        ? `Since you did not indicate ${missingPhrase} in the pulldowns, the symptoms observed in the image could be any of these: ${joinedReadable}. Select the crop below to pinpoint one cause, or ask Gemini online if available.`
-        : `Since ${missingPhrase} ${missingParts.length > 1 ? 'were' : 'was'} left on "Do not know", the issue on ${top.crop.commonName} could be any of these: ${joinedReadable}. Narrow the symptom or soil pulldowns below to confirm.`;
+        ? `Since you did not pick the crop, this could be any of these: ${joinedReadable}. Pick your crop below for a clearer answer, or check online if you have signal.`
+        : `Since the extra plant details were left blank, the problem on ${top.crop.commonName} could be any of these: ${joinedReadable}. Add more details below to be sure.`;
 
     return {
       status: 'diagnosed_vague_offline',

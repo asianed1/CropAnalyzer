@@ -27,9 +27,9 @@ data class PriorityNetworkState(
 
     val humanReadableSignal: String
         get() = when (preferredTransport) {
-            TransportType.WIFI -> "Wi-Fi Signal Available (Priority 1)"
-            TransportType.TELCO_CELLULAR -> "Telco Cellular Signal Available (Wi-Fi unavailable)"
-            TransportType.NONE -> "No Wi-Fi or Telco Signal (Offline)"
+            TransportType.WIFI -> "Using Free Wi-Fi First"
+            TransportType.TELCO_CELLULAR -> "Using Mobile Data (Wi-Fi not available)"
+            TransportType.NONE -> "No Wi-Fi or Mobile Signal (Offline)"
         }
 }
 

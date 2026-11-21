@@ -142,11 +142,12 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
 }) => {
   const [cropSearch, setCropSearch] = useState('');
   const [selectedKbId, setSelectedKbId] = useState<string>('abiotic_causes');
+  const [showMoreDetails, setShowMoreDetails] = useState(false);
 
   const transportBadge = !networkReport.isConnected
     ? 'OFFLINE'
     : networkReport.activeTransport === 'telco'
-    ? 'TELCO 4G/5G'
+    ? 'MOBILE DATA'
     : 'WIFI';
 
   const filteredCrops = CROPS_KNOWLEDGE_BASE.filter((c) => {
@@ -169,7 +170,6 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
       {framed && (
         <div className="flex shrink-0 items-center justify-between bg-[#F2F5EF] px-5 pb-1.5 pt-2.5 text-[11px] font-semibold text-[#182019]">
           <span className="font-mono-tabular">17:06</span>
-          {/* Camera punch-hole */}
           <span
             aria-hidden="true"
             className="h-3.5 w-3.5 rounded-full bg-[#161B17] ring-2 ring-[#2C332D]"
@@ -211,7 +211,7 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
       <div className="flex-1 space-y-3.5 overflow-y-auto px-3.5 py-3.5">
         {!browserOnline && (
           <div className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-medium text-amber-900">
-            Offline Mode — 30 SEA crops &amp; 9 abiotic causes running on-device.
+            Offline Mode — works with no internet across 30 crops and water, sun, soil &amp; fertilizer checks.
           </div>
         )}
 
@@ -230,7 +230,7 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
 
         {activeTab === 'scan' && (
           <div className="space-y-4">
-            {/* CameraX Guided Bounding-Box Card */}
+            {/* Fixed Center Framing Viewport Card */}
             <div className="rounded-2xl border border-[#DCE2D7] bg-white p-3">
               <BoundingBoxViewport
                 imageSrc={imageSrc}
@@ -244,34 +244,156 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
               />
             </div>
 
+            {/* 2 Simple Upfront Questions + Collapsible Optional Details */}
+            <div className="space-y-3 rounded-2xl border border-[#DCE2D7] bg-white p-3.5">
+              <div>
+                <h2 className="text-sm font-bold text-[#182019]">
+                  Tell Us What You See (Optional)
+                </h2>
+                <p className="text-[11px] text-[#5A675C]">
+                  Not sure? Leave &ldquo;I do not know&rdquo; and tap Check Plant Now.
+                </p>
+              </div>
+
+              <MaterialOutlinedDropdown
+                label="1. Which crop is this? (30 Crops)"
+                value={context.suspectedCropId}
+                options={[
+                  { value: 'auto', label: 'I do not know — Check all 30 crops' },
+                  ...CROPS_KNOWLEDGE_BASE.map((c) => ({
+                    value: c.id,
+                    label: `${c.commonName} (${c.scientificName})`,
+                  })),
+                ]}
+                onChange={(val) =>
+                  onContextChange((prev) => ({ ...prev, suspectedCropId: val }))
+                }
+              />
+
+              <MaterialOutlinedDropdown
+                label="2. What looks wrong?"
+                value={context.primarySymptom}
+                options={SYMPTOM_OPTIONS}
+                onChange={(val) =>
+                  onContextChange((prev) => ({
+                    ...prev,
+                    primarySymptom: val as PrimarySymptom,
+                  }))
+                }
+              />
+
+              <button
+                type="button"
+                onClick={() => setShowMoreDetails((v) => !v)}
+                className="flex min-h-[40px] w-full items-center justify-between rounded-xl border border-[#DCE2D7] bg-[#F5F7F3] px-3 py-2 text-left text-xs font-semibold text-[#1B5E20]"
+              >
+                <span>More Farm Details (Optional)</span>
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform ${showMoreDetails ? 'rotate-180' : ''}`}
+                />
+              </button>
+
+              {showMoreDetails && (
+                <div className="space-y-3 pt-1">
+                  <MaterialOutlinedDropdown
+                    label="Which part is sick?"
+                    value={context.plantPart}
+                    options={PLANT_PART_OPTIONS}
+                    onChange={(val) =>
+                      onContextChange((prev) => ({ ...prev, plantPart: val as PlantPart }))
+                    }
+                  />
+
+                  <MaterialOutlinedDropdown
+                    label="Plant age"
+                    value={context.growthStage}
+                    options={GROWTH_STAGE_OPTIONS}
+                    onChange={(val) =>
+                      onContextChange((prev) => ({ ...prev, growthStage: val as GrowthStage }))
+                    }
+                  />
+
+                  <MaterialOutlinedDropdown
+                    label="Weather & spread"
+                    value={context.fieldCondition}
+                    options={FIELD_CONDITION_OPTIONS}
+                    onChange={(val) =>
+                      onContextChange((prev) => ({
+                        ...prev,
+                        fieldCondition: val as FieldCondition,
+                      }))
+                    }
+                  />
+
+                  <MaterialOutlinedDropdown
+                    label="Soil wetness"
+                    value={context.soilMoisture}
+                    options={SOIL_MOISTURE_OPTIONS}
+                    onChange={(val) =>
+                      onContextChange((prev) => ({
+                        ...prev,
+                        soilMoisture: val as SoilMoisture,
+                      }))
+                    }
+                  />
+
+                  <MaterialOutlinedDropdown
+                    label="Sunlight"
+                    value={context.sunlightExposure}
+                    options={SUNLIGHT_OPTIONS}
+                    onChange={(val) =>
+                      onContextChange((prev) => ({
+                        ...prev,
+                        sunlightExposure: val as SunlightExposure,
+                      }))
+                    }
+                  />
+
+                  <MaterialOutlinedDropdown
+                    label="Fertilizer or weed spray (2 weeks)"
+                    value={context.recentInputs}
+                    options={RECENT_INPUT_OPTIONS}
+                    onChange={(val) =>
+                      onContextChange((prev) => ({
+                        ...prev,
+                        recentInputs: val as RecentInputHistory,
+                      }))
+                    }
+                  />
+                </div>
+              )}
+            </div>
+
             {/* Material 3 Primary Action Button */}
             <button
               type="button"
               onClick={onRunOfflineAnalysis}
               className="flex min-h-[48px] w-full items-center justify-center rounded-full bg-[#1B5E20] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#14532D] active:scale-[0.99]"
             >
-              Run Offline Analysis
+              Check Plant Now
             </button>
 
             {/* Material 3 Diagnosis Output Card */}
             {displayDiagnosis && (
               <section
-                aria-label="Android Diagnosis Card"
+                aria-label="Diagnosis Card"
                 className="rounded-2xl border border-[#DCE2D7] bg-white p-4 space-y-3"
               >
                 <div className="flex items-center justify-between gap-2 border-b border-[#ECEFE9] pb-2 text-[11px] text-[#475449]">
                   <span className="font-semibold text-[#1B5E20]">
                     {displayDiagnosis.source === 'gemini_cloud'
-                      ? `Gemini (${displayDiagnosis.transportUsed === 'telco' ? 'Telco' : 'Wi-Fi'})`
-                      : 'On-Device (0 KB)'}
+                      ? `Online Second Opinion (${
+                          displayDiagnosis.transportUsed === 'telco' ? 'Mobile Data' : 'Wi-Fi'
+                        })`
+                      : 'Checked Offline (No Data Used)'}
                   </span>
                   <span className="font-mono-tabular font-bold text-[#182019]">
-                    {displayDiagnosis.probabilityPercent}% probability
+                    {displayDiagnosis.probabilityPercent}% match
                   </span>
                 </div>
 
                 <div>
-                  <p className="text-[11px] text-[#5A675C]">Identified Plant / Crop</p>
+                  <p className="text-[11px] text-[#5A675C]">Crop</p>
                   <p className="text-base font-bold text-[#182019]">
                     {displayDiagnosis.cropCommonName}{' '}
                     <span className="text-sm font-normal italic text-[#475449]">
@@ -283,10 +405,10 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                 <div>
                   <p className="text-[11px] text-[#5A675C]">
                     {displayDiagnosis.isVagueMatch || displayDiagnosis.category === 'Broad Match'
-                      ? 'Possible Conditions (Broad Offline Match)'
+                      ? 'Possible Problems (Could Be Several)'
                       : displayDiagnosis.category === 'Abiotic'
-                      ? 'Environmental / Abiotic Cause'
-                      : 'Detected Pest / Disease'}
+                      ? 'Water, Sun, Soil, or Fertilizer Cause'
+                      : 'Likely Problem'}
                   </p>
                   <p
                     className={`text-base font-semibold ${
@@ -311,13 +433,13 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                 </p>
 
                 <div className="space-y-1.5 border-t border-[#ECEFE9] pt-2.5">
-                  <p className="text-xs font-semibold text-[#1B5E20]">Immediate Actions</p>
+                  <p className="text-xs font-semibold text-[#1B5E20]">What to Do Today</p>
                   {displayDiagnosis.recommendations.immediateActions.map((act, idx) => (
                     <p key={idx} className="text-xs leading-snug text-[#2C372E]">
                       • {act}
                     </p>
                   ))}
-                  <p className="pt-1 text-xs font-semibold text-[#182019]">Guidance</p>
+                  <p className="pt-1 text-xs font-semibold text-[#182019]">Spray &amp; Safety Advice</p>
                   <p className="text-xs leading-snug text-[#475449]">
                     {displayDiagnosis.recommendations.chemicalGuidance}
                   </p>
@@ -329,7 +451,7 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                     onClick={onVerifyOnlineClick}
                     className="w-full pt-1 text-left text-xs font-semibold text-[#1B5E20] underline underline-offset-4"
                   >
-                    Ask Gemini online for a second opinion
+                    Not sure? Check online for a second opinion
                   </button>
                 )}
 
@@ -344,111 +466,6 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                   )}
               </section>
             )}
-
-            {/* Material 3 ExposedDropdownMenuContext Fields */}
-            <div className="space-y-3 rounded-2xl border border-[#DCE2D7] bg-white p-3.5">
-              <div>
-                <h2 className="text-sm font-bold text-[#182019]">
-                  Field Context Pulldowns
-                </h2>
-                <p className="text-[11px] text-[#5A675C]">
-                  Optional Material 3 menus — pick &ldquo;Do not know&rdquo; anytime.
-                </p>
-              </div>
-
-              <MaterialOutlinedDropdown
-                label="Suspected Crop (30 SEA Crops)"
-                value={context.suspectedCropId}
-                options={[
-                  { value: 'auto', label: 'Do not know — Auto-Detect Crop' },
-                  ...CROPS_KNOWLEDGE_BASE.map((c) => ({
-                    value: c.id,
-                    label: `${c.commonName} (${c.scientificName})`,
-                  })),
-                ]}
-                onChange={(val) =>
-                  onContextChange((prev) => ({ ...prev, suspectedCropId: val }))
-                }
-              />
-
-              <MaterialOutlinedDropdown
-                label="Affected Plant Part"
-                value={context.plantPart}
-                options={PLANT_PART_OPTIONS}
-                onChange={(val) =>
-                  onContextChange((prev) => ({ ...prev, plantPart: val as PlantPart }))
-                }
-              />
-
-              <MaterialOutlinedDropdown
-                label="Primary Visible Symptom"
-                value={context.primarySymptom}
-                options={SYMPTOM_OPTIONS}
-                onChange={(val) =>
-                  onContextChange((prev) => ({
-                    ...prev,
-                    primarySymptom: val as PrimarySymptom,
-                  }))
-                }
-              />
-
-              <MaterialOutlinedDropdown
-                label="Growth Stage"
-                value={context.growthStage}
-                options={GROWTH_STAGE_OPTIONS}
-                onChange={(val) =>
-                  onContextChange((prev) => ({ ...prev, growthStage: val as GrowthStage }))
-                }
-              />
-
-              <MaterialOutlinedDropdown
-                label="Weather & Plot Pattern"
-                value={context.fieldCondition}
-                options={FIELD_CONDITION_OPTIONS}
-                onChange={(val) =>
-                  onContextChange((prev) => ({
-                    ...prev,
-                    fieldCondition: val as FieldCondition,
-                  }))
-                }
-              />
-
-              <MaterialOutlinedDropdown
-                label="Soil Moisture & Drainage"
-                value={context.soilMoisture}
-                options={SOIL_MOISTURE_OPTIONS}
-                onChange={(val) =>
-                  onContextChange((prev) => ({
-                    ...prev,
-                    soilMoisture: val as SoilMoisture,
-                  }))
-                }
-              />
-
-              <MaterialOutlinedDropdown
-                label="Sunlight Exposure"
-                value={context.sunlightExposure}
-                options={SUNLIGHT_OPTIONS}
-                onChange={(val) =>
-                  onContextChange((prev) => ({
-                    ...prev,
-                    sunlightExposure: val as SunlightExposure,
-                  }))
-                }
-              />
-
-              <MaterialOutlinedDropdown
-                label="Recent Fertilizer / Spray (14d)"
-                value={context.recentInputs}
-                options={RECENT_INPUT_OPTIONS}
-                onChange={(val) =>
-                  onContextChange((prev) => ({
-                    ...prev,
-                    recentInputs: val as RecentInputHistory,
-                  }))
-                }
-              />
-            </div>
           </div>
         )}
 
@@ -458,7 +475,7 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
               type="search"
               value={cropSearch}
               onChange={(e) => setCropSearch(e.target.value)}
-              placeholder="Search 30 SEA crops or abiotic stress..."
+              placeholder="Search 30 crops or problems..."
               className="min-h-[44px] w-full rounded-full border border-[#D4DBD0] bg-white px-4 text-sm text-[#182019] focus:border-[#1B5E20] focus:outline-none"
             />
 
@@ -472,7 +489,7 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                     : 'border-[#DCE2D7] bg-white text-[#475449]'
                 }`}
               >
-                9 Abiotic Causes
+                Water, Sun, Soil &amp; Fertilizer (9)
               </button>
               {filteredCrops.map((crop) => (
                 <button
@@ -497,11 +514,11 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                     key={cond.id}
                     className="rounded-2xl border border-[#DCE2D7] bg-white p-3.5"
                   >
-                    <p className="text-xs font-semibold text-[#B45309]">Abiotic Stress</p>
+                    <p className="text-xs font-semibold text-[#B45309]">Water, Sun, Soil, or Fertilizer</p>
                     <h3 className="text-sm font-bold text-[#182019]">{cond.name}</h3>
                     <p className="mt-1 text-xs text-[#2C372E]">{cond.summary}</p>
                     <p className="mt-1.5 text-[11px] text-[#475449]">
-                      <span className="font-semibold text-[#182019]">Action: </span>
+                      <span className="font-semibold text-[#182019]">What to do: </span>
                       {cond.recommendations.immediateActions[0]}
                     </p>
                   </article>
@@ -550,10 +567,10 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
             {savedCases.length === 0 ? (
               <div className="rounded-2xl border border-[#DCE2D7] bg-white p-6 text-center">
                 <p className="text-sm font-semibold text-[#182019]">
-                  No Saved Field Cases
+                  No Saved Photos Yet
                 </p>
                 <p className="mt-1 text-xs text-[#5A675C]">
-                  Diagnosed scans and unresolved photos kept in Room/local memory appear here.
+                  Plant checks and photos you keep for later will appear here.
                 </p>
               </div>
             ) : (
@@ -574,9 +591,9 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                       <div className="min-w-0 flex-1">
                         <p className="text-[11px] text-[#5A675C]">
                           {isUnresolved
-                            ? 'Unresolved · Kept in memory'
-                            : `${entry.probabilityPercent}% · ${
-                                entry.source === 'gemini_cloud' ? 'Gemini Cloud' : 'Offline'
+                            ? 'Needs online check · Saved on phone'
+                            : `${entry.probabilityPercent}% match · ${
+                                entry.source === 'gemini_cloud' ? 'Online Check' : 'Offline'
                               }`}
                         </p>
                         <h3 className="truncate text-sm font-bold text-[#182019]">
@@ -596,7 +613,7 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                           onClick={() => onRetryGeminiForSavedCase(entry)}
                           className="min-h-[40px] flex-1 rounded-full bg-[#1B5E20] px-3 text-xs font-medium text-white disabled:opacity-50"
                         >
-                          {networkReport.isConnected ? 'Analyze via Gemini' : 'Offline'}
+                          {networkReport.isConnected ? 'Check Online Now' : 'No Signal'}
                         </button>
                       )}
                       <button
@@ -618,10 +635,10 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
         {activeTab === 'android' && (
           <div className="space-y-3 rounded-2xl border border-[#DCE2D7] bg-white p-4">
             <h2 className="text-base font-bold text-[#182019]">
-              Native Android Studio Project
+              Android App Source (APK Project)
             </h2>
             <p className="text-xs leading-relaxed text-[#475449]">
-              Includes CameraX framing, Room SQLite memory deletion, ConnectivityManager Wi-Fi-first fallback, 30 SEA crops + 9 abiotic JSON assets, and Kotlin/Jetpack Compose UI.
+              Ready-to-build Android app with live camera, photo gallery picker, 30 crops + 9 water/sun/soil/fertilizer guides, offline phone memory, and Wi-Fi-first online check.
             </p>
             <a
               href="/api/android-project.zip"
@@ -644,10 +661,10 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
         <div className="grid grid-cols-4 items-center">
           {(
             [
-              ['scan', 'Scan', ScanLine],
+              ['scan', 'Check', ScanLine],
               ['crops', '30 Crops', BookOpen],
-              ['cases', `Cases (${savedCases.length})`, FolderHeart],
-              ['android', 'APK Source', Smartphone],
+              ['cases', `Saved (${savedCases.length})`, FolderHeart],
+              ['android', 'APK', Smartphone],
             ] as [PhoneTab, string, React.ComponentType<{ className?: string }>][]
           ).map(([id, label, Icon]) => {
             const active = activeTab === id;
@@ -695,7 +712,7 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
           {promptStep.type === 'ask_gemini_yn' ? (
             <div className="w-full max-w-[330px] rounded-[28px] bg-[#FAFBF9] p-6 shadow-2xl">
               <h3 className="text-lg font-bold text-[#182019]">
-                Analyze via Gemini?
+                Not Sure Offline — Check Online Now?
               </h3>
               <p className="mt-2.5 text-xs leading-relaxed text-[#475449]">
                 {promptStep.reason}
@@ -703,11 +720,11 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
               <div className="mt-3 rounded-2xl bg-[#EEF2EC] p-3 text-xs text-[#182019]">
                 <p className="font-semibold">
                   {networkReport.activeTransport === 'telco'
-                    ? 'Telco Cellular Connected (Wi-Fi unavailable)'
-                    : 'Wi-Fi Signal Available (Priority 1)'}
+                    ? 'Using Mobile Data (Wi-Fi unavailable)'
+                    : 'Using Free Wi-Fi First'}
                 </p>
-                <p className="mt-0.5 font-mono-tabular text-[#475449]">
-                  Cropped upload: ~{promptStep.payloadKb} KB
+                <p className="mt-0.5 text-[#475449]">
+                  Only sends the small leaf photo inside the green box.
                 </p>
               </div>
               {cloudError && (
@@ -722,7 +739,7 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                   onClick={() => onRespondGemini(true)}
                   className="min-h-[44px] w-full rounded-full bg-[#1B5E20] px-4 text-xs font-semibold text-white disabled:opacity-60"
                 >
-                  {isCloudLoading ? 'Analyzing via Gemini...' : 'Yes, Analyze Online'}
+                  {isCloudLoading ? 'Checking Online...' : 'Yes, Check Online'}
                 </button>
                 <button
                   type="button"
@@ -737,10 +754,10 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
           ) : (
             <div className="w-full max-w-[330px] rounded-[28px] bg-[#FAFBF9] p-6 shadow-2xl">
               <h3 className="text-lg font-bold text-[#182019]">
-                Delete Unresolved Case from Memory?
+                Delete Unfinished Photo?
               </h3>
               <p className="mt-2.5 text-xs leading-relaxed text-[#475449]">
-                {promptStep.reason} Should this unresolved case and its photo be deleted from phone memory?
+                {promptStep.reason} Do you want to delete this photo from your phone, or keep it saved to check later?
               </p>
               <div className="mt-5 flex flex-col gap-2">
                 <button
@@ -748,7 +765,7 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                   onClick={() => onRespondDelete(true)}
                   className="min-h-[44px] w-full rounded-full bg-[#991B1B] px-4 text-xs font-semibold text-white"
                 >
-                  Yes, Delete from Memory
+                  Yes, Delete Photo
                 </button>
                 <button
                   type="button"

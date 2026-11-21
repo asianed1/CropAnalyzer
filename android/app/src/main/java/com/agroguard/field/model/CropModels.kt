@@ -110,7 +110,10 @@ data class DiagnosisOutput(
 )
 
 sealed class AnalysisDecision {
-    data class ConfidentOffline(val output: DiagnosisOutput) : AnalysisDecision()
+    data class ConfidentOffline(
+        val output: DiagnosisOutput,
+        val roiJpegBytes: ByteArray = ByteArray(0)
+    ) : AnalysisDecision()
     data class UnresolvedNeedCloud(
         val tempCaseId: String,
         val reason: String,

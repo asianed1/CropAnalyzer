@@ -53,7 +53,7 @@ export function resolveNetworkPriority(mode: NetworkSimulationMode): NetworkStat
       activeTransport: 'wifi',
       wifiAvailable: true,
       telcoAvailable: true,
-      priorityLabel: 'Wi-Fi Connected (Priority 1 selected over Telco)',
+      priorityLabel: 'Using Free Wi-Fi First',
     };
   }
   if (mode === 'telco_only') {
@@ -62,7 +62,7 @@ export function resolveNetworkPriority(mode: NetworkSimulationMode): NetworkStat
       activeTransport: 'telco',
       wifiAvailable: false,
       telcoAvailable: true,
-      priorityLabel: 'Telco Cellular Connected (Wi-Fi unavailable)',
+      priorityLabel: 'Using Mobile Data (Wi-Fi not available)',
     };
   }
   if (mode === 'offline') {
@@ -71,7 +71,7 @@ export function resolveNetworkPriority(mode: NetworkSimulationMode): NetworkStat
       activeTransport: 'none',
       wifiAvailable: false,
       telcoAvailable: false,
-      priorityLabel: 'No Wi-Fi or Telco Signal (Offline)',
+      priorityLabel: 'No Wi-Fi or Mobile Signal (Offline)',
     };
   }
 
@@ -83,7 +83,7 @@ export function resolveNetworkPriority(mode: NetworkSimulationMode): NetworkStat
       activeTransport: 'none',
       wifiAvailable: false,
       telcoAvailable: false,
-      priorityLabel: 'No Wi-Fi or Telco Signal (Offline)',
+      priorityLabel: 'No Wi-Fi or Mobile Signal (Offline)',
     };
   }
 
@@ -98,7 +98,7 @@ export function resolveNetworkPriority(mode: NetworkSimulationMode): NetworkStat
       activeTransport: 'telco',
       wifiAvailable: false,
       telcoAvailable: true,
-      priorityLabel: 'Telco Cellular Connected (Wi-Fi unavailable)',
+      priorityLabel: 'Using Mobile Data (Wi-Fi not available)',
     };
   }
 
@@ -108,7 +108,7 @@ export function resolveNetworkPriority(mode: NetworkSimulationMode): NetworkStat
     activeTransport: 'wifi',
     wifiAvailable: true,
     telcoAvailable: true,
-    priorityLabel: 'Wi-Fi Signal Available (Priority 1)',
+    priorityLabel: 'Using Free Wi-Fi First',
   };
 }
 

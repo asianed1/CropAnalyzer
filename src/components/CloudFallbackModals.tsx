@@ -44,12 +44,12 @@ export const CloudFallbackModals: React.FC<CloudFallbackModalsProps> = ({
           <div className="flex flex-col items-center py-6 text-center">
             <Loader2 className="h-8 w-8 animate-spin text-[#1B5E20]" />
             <h2 className="mt-4 text-lg font-bold text-[#182019]">
-              Analyzing via Gemini Cloud Fallback
+              Checking Online for a Second Opinion
             </h2>
             <p className="mt-1 text-sm text-[#475449]">
-              Routing cropped bounding-box sample over{' '}
+              Sending only the small leaf photo over{' '}
               <span className="font-semibold">
-                {networkReport.activeTransport === 'telco' ? 'Telco Cellular' : 'Wi-Fi (Priority 1)'}
+                {networkReport.activeTransport === 'telco' ? 'Mobile Data' : 'Wi-Fi (Priority 1)'}
               </span>
               ...
             </p>
@@ -62,7 +62,7 @@ export const CloudFallbackModals: React.FC<CloudFallbackModalsProps> = ({
             </div>
 
             <h2 className="mt-2 text-lg font-bold text-[#182019] text-balance">
-              Analyze Mysterious Crop Disease / Pest via Gemini?
+              Not Sure Offline — Check Online Now?
             </h2>
 
             <p className="mt-2 text-sm leading-relaxed text-[#475449]">
@@ -70,7 +70,7 @@ export const CloudFallbackModals: React.FC<CloudFallbackModalsProps> = ({
             </p>
 
             <p className="mt-3 rounded-xl bg-[#F6F7F4] p-3 text-xs text-[#2C372E]">
-              A signal is available (<span className="font-semibold">{networkReport.activeTransport === 'wifi' ? 'Wi-Fi Priority 1' : 'Telco Cellular'}</span>). Proceeding will send only the cropped bounding-box image (~<span className="font-mono-tabular font-semibold">{step.payloadKb} KB</span>) and your pulldown choices to Gemini.
+              Internet signal is ready (<span className="font-semibold">{networkReport.activeTransport === 'wifi' ? 'Wi-Fi First' : 'Mobile Data'}</span>). Only the small cropped leaf photo inside the green box and your menu choices are sent.
             </p>
 
             {cloudError && (
@@ -85,14 +85,14 @@ export const CloudFallbackModals: React.FC<CloudFallbackModalsProps> = ({
                 onClick={() => onRespondGemini(false)}
                 className="min-h-[44px] rounded-xl border border-[#D4DBD0] bg-white px-4 py-2 text-sm font-medium text-[#182019] hover:bg-[#F3F5F0]"
               >
-                No, Do Not Use Cloud
+                No, Stay Offline
               </button>
               <button
                 type="button"
                 onClick={() => onRespondGemini(true)}
                 className="min-h-[44px] rounded-xl bg-[#1B5E20] px-5 py-2 text-sm font-semibold text-white hover:bg-[#14532D]"
               >
-                Yes, Analyze via Gemini
+                Yes, Check Online
               </button>
             </div>
           </div>
@@ -100,15 +100,15 @@ export const CloudFallbackModals: React.FC<CloudFallbackModalsProps> = ({
           <div>
             <div className="flex items-center gap-2 text-xs font-semibold text-[#9A3412]">
               <Trash2 className="h-4 w-4" />
-              <span>Unresolved Case Memory Check</span>
+              <span>Unfinished Photo Check</span>
             </div>
 
             <h2 className="mt-2 text-lg font-bold text-[#182019] text-balance">
-              Delete This Case from Local Memory?
+              Delete Unfinished Photo?
             </h2>
 
             <p className="mt-2 text-sm leading-relaxed text-[#475449]">
-              {step.reason} No cloud request was sent. Would you like to delete this unresolved crop case from device memory, or keep it saved for later?
+              {step.reason} Nothing was sent online. Do you want to delete this photo from your phone, or keep it saved to check later?
             </p>
 
             <div className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:justify-end">
@@ -117,14 +117,14 @@ export const CloudFallbackModals: React.FC<CloudFallbackModalsProps> = ({
                 onClick={() => onRespondDelete(false)}
                 className="min-h-[44px] rounded-xl border border-[#D4DBD0] bg-white px-4 py-2 text-sm font-medium text-[#182019] hover:bg-[#F3F5F0]"
               >
-                No, Keep in Memory
+                No, Keep Saved
               </button>
               <button
                 type="button"
                 onClick={() => onRespondDelete(true)}
                 className="min-h-[44px] rounded-xl bg-[#B91C1C] px-5 py-2 text-sm font-semibold text-white hover:bg-[#991B1B]"
               >
-                Yes, Delete from Memory
+                Yes, Delete Photo
               </button>
             </div>
           </div>

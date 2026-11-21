@@ -60,7 +60,7 @@ export const BoundingBoxViewport: React.FC<BoundingBoxViewportProps> = ({
 
   const [cameraOpen, setCameraOpen] = useState(false);
   const [cameraError, setCameraError] = useState<string | null>(null);
-  const [dragMode, setDragMode] = useState<'move' | 'se' | 'nw' | null>(null);
+  const [isDraggingMove, setIsDraggingMove] = useState(false);
   const dragStartRef = useRef<{ clientX: number; clientY: number; startBox: BoundingBox } | null>(null);
 
   useEffect(() => {
@@ -74,7 +74,7 @@ export const BoundingBoxViewport: React.FC<BoundingBoxViewportProps> = ({
   const openCamera = async () => {
     setCameraError(null);
     if (!navigator.mediaDevices?.getUserMedia) {
-      setCameraError('Camera access is not supported in this browser. Upload a photo instead.');
+      setCameraError('Camera is not available here. Tap Upload Photo instead.');
       return;
     }
     try {
@@ -90,7 +90,7 @@ export const BoundingBoxViewport: React.FC<BoundingBoxViewportProps> = ({
         }
       });
     } catch {
-      setCameraError('Camera permission declined or unavailable. Use Upload Photo or choose a sample below.');
+      setCameraError('Camera was blocked or not found. Pick a photo from Gallery or tap a sample below.');
     }
   };
 
@@ -129,11 +129,11 @@ export const BoundingBoxViewport: React.FC<BoundingBoxViewportProps> = ({
     e.target.value = '';
   };
 
-  const beginDrag = (mode: 'move' | 'se' | 'nw', e: React.PointerEvent) => {
+  const beginMoveDrag = (e: React.PointerEvent) => {
     e.stopPropagation();
     e.preventDefault();
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
-    setDragMode(mode);
+    setIsDraggingMove(true);
     dragStartRef.current = {
       clientX: e.clientX,
       clientY: e.clientY,
@@ -142,7 +142,7 @@ export const BoundingBoxViewport: React.FC<BoundingBoxViewportProps> = ({
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
-    if (!dragMode || !dragStartRef.current || !containerRef.current) return;
+    if (!isDraggingMove || !dragStartRef.current || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     if (rect.width === 0 || rect.height === 0) return;
 
@@ -150,30 +150,13 @@ export const BoundingBoxViewport: React.FC<BoundingBoxViewportProps> = ({
     const dy = (e.clientY - dragStartRef.current.clientY) / rect.height;
     const start = dragStartRef.current.startBox;
 
-    if (dragMode === 'move') {
-      const nextX = Math.max(0.02, Math.min(0.98 - start.width, start.x + dx));
-      const nextY = Math.max(0.02, Math.min(0.98 - start.height, start.y + dy));
-      onBoxChange({ ...start, x: nextX, y: nextY });
-    } else if (dragMode === 'se') {
-      const nextW = Math.max(0.18, Math.min(0.98 - start.x, start.width + dx));
-      const nextH = Math.max(0.18, Math.min(0.98 - start.y, start.height + dy));
-      onBoxChange({ ...start, width: nextW, height: nextH });
-    } else if (dragMode === 'nw') {
-      const maxRight = start.x + start.width;
-      const maxBottom = start.y + start.height;
-      const nextX = Math.max(0.02, Math.min(maxRight - 0.18, start.x + dx));
-      const nextY = Math.max(0.02, Math.min(maxBottom - 0.18, start.y + dy));
-      onBoxChange({
-        x: nextX,
-        y: nextY,
-        width: maxRight - nextX,
-        height: maxBottom - nextY,
-      });
-    }
+    const nextX = Math.max(0.02, Math.min(0.98 - start.width, start.x + dx));
+    const nextY = Math.max(0.02, Math.min(0.98 - start.height, start.y + dy));
+    onBoxChange({ ...start, x: nextX, y: nextY });
   };
 
   const endDrag = () => {
-    setDragMode(null);
+    setIsDraggingMove(false);
     dragStartRef.current = null;
   };
 
@@ -190,7 +173,7 @@ export const BoundingBoxViewport: React.FC<BoundingBoxViewportProps> = ({
             }`}
           >
             {cameraOpen ? <X className="h-3.5 w-3.5" /> : <Camera className="h-3.5 w-3.5" />}
-            {cameraOpen ? 'Close' : compact ? 'CameraX' : 'Open Camera'}
+            {cameraOpen ? 'Close' : 'Open Camera'}
           </button>
 
           <button
@@ -220,7 +203,7 @@ export const BoundingBoxViewport: React.FC<BoundingBoxViewportProps> = ({
           className="inline-flex min-h-[44px] items-center gap-1 rounded-full px-2.5 py-1.5 text-xs font-medium text-[#475449] hover:bg-[#EAECE6] whitespace-nowrap shrink-0"
         >
           <RotateCcw className="h-3.5 w-3.5" />
-          Reset
+          Reset Box
         </button>
       </div>
 
@@ -230,15 +213,13 @@ export const BoundingBoxViewport: React.FC<BoundingBoxViewportProps> = ({
         </p>
       )}
 
-      {/* Guided Framing Viewport */}
+      {/* Fixed QR-Style Center Framing Viewport */}
       <div
         ref={containerRef}
         onPointerMove={handlePointerMove}
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
-        className={`relative aspect-[4/3] w-full overflow-hidden border border-[#D4DBD0] bg-[#141A15] select-none touch-none ${
-          compact ? 'rounded-2xl' : 'rounded-2xl'
-        }`}
+        className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-[#D4DBD0] bg-[#141A15] select-none touch-none"
       >
         {cameraOpen ? (
           <>
@@ -249,11 +230,11 @@ export const BoundingBoxViewport: React.FC<BoundingBoxViewportProps> = ({
               muted
               className="h-full w-full object-cover"
             />
-            {/* Guided Bounding-Box Reticle in Camera View */}
+            {/* Fixed Center Framing Reticle — move phone closer/farther to fill box */}
             <div className="pointer-events-none absolute inset-0 flex items-center justify-center p-6">
-              <div className="relative h-full w-full max-w-[78%] max-h-[78%] rounded-xl border-2 border-emerald-300/90 shadow-[0_0_0_9999px_rgba(0,0,0,0.42)]">
-                <span className="absolute -top-5 left-0 text-[11px] font-medium text-white">
-                  Frame affected part inside box
+              <div className="relative h-full w-full max-w-[74%] max-h-[76%] rounded-xl border-2 border-emerald-300/95 shadow-[0_0_0_9999px_rgba(0,0,0,0.45)]">
+                <span className="absolute -top-6 left-0 right-0 text-center text-[11px] font-medium text-white drop-shadow">
+                  Put sick leaf inside the green box — move closer or farther
                 </span>
               </div>
             </div>
@@ -263,7 +244,7 @@ export const BoundingBoxViewport: React.FC<BoundingBoxViewportProps> = ({
                 onClick={captureFromCamera}
                 className="min-h-[44px] rounded-full bg-white px-5 py-2 text-xs font-semibold text-[#182019] shadow-lg active:scale-95"
               >
-                Capture Frame
+                Take Photo
               </button>
             </div>
           </>
@@ -272,70 +253,46 @@ export const BoundingBoxViewport: React.FC<BoundingBoxViewportProps> = ({
             <img
               ref={imgRef}
               src={imageSrc}
-              alt="Crop leaf or pest framing preview"
+              alt="Plant leaf preview"
               referrerPolicy="no-referrer"
               onLoad={(e) => onImageElementReady(e.currentTarget)}
               className="h-full w-full object-cover"
             />
 
-            {/* Dimmed outside-ROI overlay + Interactive Bounding Box */}
+            {/* Simple Center Frame (1-finger slide allowed on saved/uploaded photos) */}
             <div
-              onPointerDown={(e) => beginDrag('move', e)}
+              onPointerDown={beginMoveDrag}
               style={{
                 left: `${box.x * 100}%`,
                 top: `${box.y * 100}%`,
                 width: `${box.width * 100}%`,
                 height: `${box.height * 100}%`,
               }}
-              className="absolute cursor-move rounded-lg border-2 border-emerald-300 shadow-[0_0_0_9999px_rgba(12,18,13,0.45)]"
+              className="absolute cursor-move rounded-xl border-2 border-emerald-300 shadow-[0_0_0_9999px_rgba(12,18,13,0.45)]"
             >
-              {/* Top-left resize handle */}
-              <button
-                type="button"
-                aria-label="Resize top-left bounding box corner"
-                onPointerDown={(e) => beginDrag('nw', e)}
-                className="absolute -left-2.5 -top-2.5 h-6 w-6 cursor-nwse-resize rounded-full border-2 border-[#1B5E20] bg-white shadow"
-              />
-              {/* Bottom-right resize handle */}
-              <button
-                type="button"
-                aria-label="Resize bottom-right bounding box corner"
-                onPointerDown={(e) => beginDrag('se', e)}
-                className="absolute -bottom-2.5 -right-2.5 h-6 w-6 cursor-nwse-resize rounded-full border-2 border-[#1B5E20] bg-white shadow"
-              />
-              <span className="pointer-events-none absolute left-2 top-1.5 rounded bg-black/65 px-1.5 py-0.5 text-[10px] font-medium text-white">
-                ROI Frame (Drag)
+              <span className="pointer-events-none absolute left-2 top-1.5 rounded bg-black/65 px-2 py-0.5 text-[10px] font-medium text-white">
+                Move box over sick spot
               </span>
             </div>
           </>
         )}
       </div>
 
-      {/* Live Image Quality & Payload Metrics (Unboxed metadata per design constitution) */}
+      {/* Simple Plain-English Lighting Hint */}
       {qualityMetrics && !cameraOpen && (
-        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11px] text-[#475449]">
-          <span className="font-semibold text-[#182019]">
-            {qualityMetrics.lightingStatus === 'well_lit'
-              ? 'Well Lit'
-              : qualityMetrics.lightingStatus === 'too_dark'
-              ? 'Too Dark (Retake)'
-              : 'Overexposed'}
-          </span>
-          <span aria-hidden="true">·</span>
-          <span className="font-mono-tabular">Lum {qualityMetrics.avgLuminance}/255</span>
-          <span aria-hidden="true">·</span>
-          <span className="font-mono-tabular">
-            {qualityMetrics.isSharp ? 'Sharp' : 'Soft'}
-          </span>
-          <span aria-hidden="true">·</span>
-          <span className="font-mono-tabular">~{qualityMetrics.estimatedPayloadKb} KB</span>
-        </div>
+        <p className="text-[11px] font-medium text-[#475449]">
+          {qualityMetrics.lightingStatus === 'well_lit'
+            ? 'Lighting looks good — move camera closer so the sick part fills the green box.'
+            : qualityMetrics.lightingStatus === 'too_dark'
+            ? 'Photo is too dark — move into brighter daylight and try again.'
+            : 'Too much glare — shade the leaf slightly with your hand or body.'}
+        </p>
       )}
 
       {/* Field Test Samples Switcher */}
       <div className="pt-0.5">
         <p className="mb-1.5 text-[11px] font-medium text-[#475449]">
-          Sample Photos (tap to switch crop inside viewfinder):
+          Try Sample Photos:
         </p>
         <div className={compact ? 'grid grid-cols-2 gap-1.5' : 'grid grid-cols-2 gap-2 sm:grid-cols-4'}>
           {FIELD_SAMPLES.map((sample) => {

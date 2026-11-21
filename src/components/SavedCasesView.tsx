@@ -24,22 +24,22 @@ export const SavedCasesView: React.FC<SavedCasesViewProps> = ({
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-[#182019] text-balance">
-            Saved Field Cases
+            Saved Photos &amp; Checks
           </h1>
           <p className="mt-1 text-sm text-[#475449]">
-            Stored locally on this device. Unresolved cases kept in memory can be analyzed via Gemini later or deleted anytime.
+            Saved right on this phone. Unfinished photos can be checked online later or deleted anytime.
           </p>
         </div>
         <span className="font-mono-tabular text-xs font-medium text-[#475449]">
-          {cases.length} {cases.length === 1 ? 'case' : 'cases'} in local memory
+          {cases.length} {cases.length === 1 ? 'photo' : 'photos'} saved
         </span>
       </div>
 
       {cases.length === 0 ? (
         <div className="rounded-2xl border border-[#DCE2D7] bg-white p-8 text-center">
-          <p className="text-base font-medium text-[#182019]">No field cases stored in memory</p>
+          <p className="text-base font-medium text-[#182019]">No saved photos yet</p>
           <p className="mt-1 text-sm text-[#5A675C]">
-            Run an offline scan or retain an unresolved sample to inspect it here.
+            Check a plant or save a photo for later and it will show up here.
           </p>
         </div>
       ) : (
@@ -68,10 +68,10 @@ export const SavedCasesView: React.FC<SavedCasesViewProps> = ({
                       <div className="flex flex-wrap items-center gap-2 text-xs text-[#5A675C]">
                         <span className="font-medium text-[#182019]">
                           {entry.source === 'gemini_cloud'
-                            ? `Gemini Cloud (${entry.transportUsed === 'telco' ? 'Telco' : 'Wi-Fi'})`
+                            ? `Online Check (${entry.transportUsed === 'telco' ? 'Mobile Data' : 'Wi-Fi'})`
                             : entry.source === 'offline_engine'
-                            ? 'Offline On-Device'
-                            : 'Unresolved (Kept in Memory)'}
+                            ? 'Checked Offline'
+                            : 'Needs Online Check'}
                         </span>
                         <span aria-hidden="true">·</span>
                         <span className="font-mono-tabular">
@@ -80,7 +80,7 @@ export const SavedCasesView: React.FC<SavedCasesViewProps> = ({
                         {!isUnresolved && (
                           <>
                             <span aria-hidden="true">·</span>
-                            <span className="font-mono-tabular">{entry.probabilityPercent}%</span>
+                            <span className="font-mono-tabular">{entry.probabilityPercent}% match</span>
                           </>
                         )}
                       </div>
@@ -102,7 +102,7 @@ export const SavedCasesView: React.FC<SavedCasesViewProps> = ({
                         className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg bg-[#1B5E20] px-3.5 py-2 text-xs font-medium text-white transition-colors hover:bg-[#14532D] disabled:cursor-not-allowed disabled:opacity-50 whitespace-nowrap"
                       >
                         <Wifi className="h-3.5 w-3.5" />
-                        {networkReport.isConnected ? 'Analyze via Gemini' : 'Signal Required'}
+                        {networkReport.isConnected ? 'Check Online Now' : 'No Signal'}
                       </button>
                     )}
 

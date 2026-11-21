@@ -45,10 +45,10 @@ export const CropCatalogView: React.FC = () => {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-[#182019] text-balance">
-            30 Southeast Asian Crops &amp; 9 Abiotic Causes
+            30 Crops &amp; 9 Water, Sun, Soil &amp; Fertilizer Guides
           </h1>
           <p className="mt-1 text-sm text-[#475449]">
-            Stored locally inside CropAnalyzer for zero-signal field lookup across 30 SEA crops plus drought, overwatering, low sunlight, fertilizer burn, nutrient deficits, heat, herbicide drift, salinity, and storm damage.
+            Stored right on the phone for offline checking across 30 Southeast Asian crops plus lack of water, too much water, too little sun, fertilizer burn, weak soil, heat, weedkiller drift, salty soil, and storm damage.
           </p>
         </div>
 
@@ -58,7 +58,7 @@ export const CropCatalogView: React.FC = () => {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Filter crop, pest, or stress..."
+            placeholder="Search crop, pest, or problem..."
             className="min-h-[44px] w-full rounded-xl border border-[#D4DBD0] bg-white pl-9 pr-3 text-sm text-[#182019] placeholder:text-[#7A877B] focus:border-[#1B5E20] focus:outline-none"
           />
         </label>
@@ -77,13 +77,13 @@ export const CropCatalogView: React.FC = () => {
             }`}
           >
             <div>
-              <p className="text-sm font-semibold">Abiotic &amp; Environmental Stress</p>
+              <p className="text-sm font-semibold">Water, Sun, Soil &amp; Fertilizer</p>
               <p className="text-xs italic text-[#5A675C]">
-                Drought, overwatering, shade, fertilizer, salinity
+                Dry soil, too much water, shade, fertilizer, salt
               </p>
             </div>
             <span className="font-mono-tabular text-xs text-[#5A675C]">
-              {filteredAbiotic.length} causes
+              {filteredAbiotic.length} guides
             </span>
           </button>
 
@@ -105,7 +105,7 @@ export const CropCatalogView: React.FC = () => {
                   <p className="text-xs italic text-[#5A675C]">{crop.scientificName}</p>
                 </div>
                 <span className="font-mono-tabular text-xs text-[#5A675C]">
-                  {crop.conditions.length} entries
+                  {crop.conditions.length} guides
                 </span>
               </button>
             );
@@ -118,10 +118,10 @@ export const CropCatalogView: React.FC = () => {
             <div className="rounded-2xl border border-[#DCE2D7] bg-white p-5">
               <div className="border-b border-[#ECEFE9] pb-3">
                 <h2 className="text-xl font-bold text-[#182019]">
-                  Abiotic &amp; Non-Pest Crop Destruction Causes
+                  Water, Sun, Soil, or Fertilizer Problems (Not Bugs)
                 </h2>
                 <p className="mt-0.5 text-xs text-[#5A675C]">
-                  Evaluated offline across all 30 Southeast Asian crops when water, light, soil, fertilizer, or weather conditions match.
+                  Checked offline for all 30 crops whenever water, shade, soil, fertilizer, or weather matches.
                 </p>
               </div>
 
@@ -130,12 +130,12 @@ export const CropCatalogView: React.FC = () => {
                   <article key={cond.id} className="py-4 first:pt-0 last:pb-0">
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
                       <h3 className="text-base font-semibold text-[#182019]">{cond.name}</h3>
-                      <span className="text-xs font-medium text-[#B45309]">{cond.category}</span>
+                      <span className="text-xs font-medium text-[#B45309]">Water / Soil / Sun</span>
                     </div>
                     <p className="text-xs italic text-[#5A675C]">{cond.scientificName}</p>
                     <p className="mt-2 text-sm text-[#2C372E]">{cond.summary}</p>
                     <p className="mt-2 text-xs text-[#475449]">
-                      <span className="font-semibold text-[#182019]">Action: </span>
+                      <span className="font-semibold text-[#182019]">What to do: </span>
                       {cond.recommendations.immediateActions[0]}
                     </p>
                   </article>
