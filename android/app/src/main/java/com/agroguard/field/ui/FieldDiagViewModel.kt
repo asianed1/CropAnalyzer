@@ -95,13 +95,14 @@ class FieldDiagViewModel(application: Application) : AndroidViewModel(applicatio
     fun analyzeCapturedImage(
         bitmap: Bitmap,
         box: BoundingBoxNormalized,
-        context: FarmerContextInput
+        context: FarmerContextInput,
+        demoSampleId: String? = null
     ) {
         pendingContext = context
         _statusBanner.value = null
         viewModelScope.launch {
             val decision = withContext(Dispatchers.Default) {
-                engine.analyze(bitmap, box, context)
+                engine.analyze(bitmap, box, context, demoSampleId)
             }
             when (decision) {
                 is AnalysisDecision.ConfidentOffline -> {

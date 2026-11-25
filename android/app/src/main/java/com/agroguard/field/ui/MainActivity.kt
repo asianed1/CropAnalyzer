@@ -95,6 +95,7 @@ fun CropAnalyzerScreen(vm: FieldDiagViewModel = viewModel()) {
     var activeTab by remember { mutableIntStateOf(0) }
     var showMoreDetails by remember { mutableStateOf(false) }
     var capturedBitmap by remember { mutableStateOf<Bitmap?>(null) }
+    var activeDemoSampleId by remember { mutableStateOf<String?>(null) }
     var boundingBox by remember { mutableStateOf(BoundingBoxNormalized()) }
 
     var selectedCrop by remember { mutableStateOf("auto") }
@@ -221,12 +222,28 @@ fun CropAnalyzerScreen(vm: FieldDiagViewModel = viewModel()) {
 
             when (activeTab) {
                 0 -> {
-                    // Tab 0: Live Camera + Photo Gallery + 2 Simple Questions + Check Plant Now
+                    // Tab 0: Live Camera + Photo Gallery + Test Mode + 2 Simple Questions + Check Plant Now
                     CameraAndBoundingBoxSection(
                         capturedBitmap = capturedBitmap,
                         boundingBox = boundingBox,
-                        onBitmapCaptured = { bmp -> capturedBitmap = bmp },
-                        onClearToCamera = { capturedBitmap = null },
+                        activeDemoSampleId = activeDemoSampleId,
+                        onBitmapCaptured = { bmp ->
+                            capturedBitmap = bmp
+                            activeDemoSampleId = null
+                        },
+                        onDemoSampleSelected = { sample, bmp ->
+                            capturedBitmap = bmp
+                            activeDemoSampleId = sample.id
+                            selectedCrop = sample.suggestedCropId
+                            selectedSymptom = sample.suggestedSymptom
+                            vm.showStatus(
+                                "Test photo loaded: ${sample.label}. Tap Check Plant Now below (or change crop to 'I do not know')."
+                            )
+                        },
+                        onClearToCamera = {
+                            capturedBitmap = null
+                            activeDemoSampleId = null
+                        },
                         onBoundingBoxChange = { box -> boundingBox = box },
                         onStatusMessage = { msg -> vm.showStatus(msg) }
                     )
@@ -396,12 +413,13 @@ fun CropAnalyzerScreen(vm: FieldDiagViewModel = viewModel()) {
                         onClick = {
                             val bmp = capturedBitmap
                             if (bmp == null) {
-                                vm.showStatus("Take a leaf photo with the camera or tap Gallery first.")
+                                vm.showStatus("Take a leaf photo, tap Gallery, or open Test Mode first.")
                             } else {
                                 vm.analyzeCapturedImage(
                                     bitmap = bmp,
                                     box = boundingBox,
-                                    context = currentContext
+                                    context = currentContext,
+                                    demoSampleId = activeDemoSampleId
                                 )
                             }
                         },

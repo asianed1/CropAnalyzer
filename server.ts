@@ -27,17 +27,22 @@ function getGeminiClient(): GoogleGenAI {
   });
 }
 
-function collectAndroidFiles(dir: string, baseDir: string): { path: string; content: string }[] {
+const BINARY_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.ico', '.ttf', '.otf', '.tflite']);
+
+function collectAndroidFiles(dir: string, baseDir: string, includeBinary = false): { path: string; content: string | Buffer }[] {
   if (!fs.existsSync(dir)) return [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
-  const results: { path: string; content: string }[] = [];
+  const results: { path: string; content: string | Buffer }[] = [];
   for (const entry of entries) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) {
-      results.push(...collectAndroidFiles(full, baseDir));
+      results.push(...collectAndroidFiles(full, baseDir, includeBinary));
     } else {
+      const ext = path.extname(entry.name).toLowerCase();
+      const isBinary = BINARY_EXTENSIONS.has(ext);
+      if (!includeBinary && isBinary) continue;
       const rel = path.relative(baseDir, full).replace(/\\/g, '/');
-      results.push({ path: rel, content: fs.readFileSync(full, 'utf8') });
+      results.push({ path: rel, content: isBinary ? fs.readFileSync(full) : fs.readFileSync(full, 'utf8') });
     }
   }
   return results.sort((a, b) => a.path.localeCompare(b.path));
@@ -141,7 +146,7 @@ async function startServer() {
    */
   app.get('/api/android-files', (_req, res) => {
     const androidDir = path.join(__dirname, 'android');
-    const files = collectAndroidFiles(androidDir, androidDir);
+    const files = collectAndroidFiles(androidDir, androidDir, false);
     res.json({ files });
   });
 
@@ -151,7 +156,7 @@ async function startServer() {
   app.get('/api/android-project.zip', async (_req, res) => {
     try {
       const androidDir = path.join(__dirname, 'android');
-      const files = collectAndroidFiles(androidDir, androidDir);
+      const files = collectAndroidFiles(androidDir, androidDir, true);
       const zip = new JSZip();
       for (const file of files) {
         zip.file(`CropAnalyzer/${file.path}`, file.content);

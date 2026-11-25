@@ -289,10 +289,10 @@ export const BoundingBoxViewport: React.FC<BoundingBoxViewportProps> = ({
         </p>
       )}
 
-      {/* Field Test Samples Switcher */}
+      {/* Test Mode Demo Photos Switcher */}
       <div className="pt-0.5">
         <p className="mb-1.5 text-[11px] font-medium text-[#475449]">
-          Try Sample Photos:
+          Test Mode — Demo Sample Photos (when no plant is nearby):
         </p>
         <div className={compact ? 'grid grid-cols-2 gap-1.5' : 'grid grid-cols-2 gap-2 sm:grid-cols-4'}>
           {FIELD_SAMPLES.map((sample) => {

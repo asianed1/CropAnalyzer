@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
 import android.graphics.Matrix
 import android.net.Uri
@@ -77,17 +78,64 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.agroguard.field.model.BoundingBoxNormalized
 import kotlin.math.max
 
+data class DemoCropSample(
+    val id: String,
+    val label: String,
+    val subtitle: String,
+    val assetPath: String,
+    val suggestedCropId: String,
+    val suggestedSymptom: String
+)
+
+val BUILT_IN_DEMO_SAMPLES = listOf(
+    DemoCropSample(
+        id = "demo_tomato_blight",
+        label = "Tomato Spots",
+        subtitle = "Leaf spots demo",
+        assetPath = "demo_samples/demo_tomato_blight.jpg",
+        suggestedCropId = "tomato",
+        suggestedSymptom = "spots_lesions"
+    ),
+    DemoCropSample(
+        id = "demo_maize_armyworm",
+        label = "Corn Worms",
+        subtitle = "Chewed leaf demo",
+        assetPath = "demo_samples/demo_maize_armyworm.jpg",
+        suggestedCropId = "maize",
+        suggestedSymptom = "chewing_holes"
+    ),
+    DemoCropSample(
+        id = "demo_rice_blast",
+        label = "Rice Blast",
+        subtitle = "Rice spots demo",
+        assetPath = "demo_samples/demo_rice_blast.jpg",
+        suggestedCropId = "rice",
+        suggestedSymptom = "spots_lesions"
+    ),
+    DemoCropSample(
+        id = "demo_mystery_leaf",
+        label = "Rare Mystery Leaf",
+        subtitle = "Tests online check",
+        assetPath = "demo_samples/demo_mystery_leaf.jpg",
+        suggestedCropId = "auto",
+        suggestedSymptom = "unknown"
+    )
+)
+
 @Composable
 fun CameraAndBoundingBoxSection(
     capturedBitmap: Bitmap?,
     boundingBox: BoundingBoxNormalized,
+    activeDemoSampleId: String?,
     onBitmapCaptured: (Bitmap) -> Unit,
+    onDemoSampleSelected: (DemoCropSample, Bitmap) -> Unit,
     onClearToCamera: () -> Unit,
     onBoundingBoxChange: (BoundingBoxNormalized) -> Unit,
     onStatusMessage: (String) -> Unit
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
+    var showDemoGallery by remember { mutableStateOf(false) }
 
     var hasCameraPermission by remember {
         mutableStateOf(
@@ -432,7 +480,112 @@ fun CameraAndBoundingBoxSection(
                 }
             }
         }
+
+        // Collapsible Test Mode (Built-in Demo Samples when no plants are nearby)
+        OutlinedButton(
+            onClick = { showDemoGallery = !showDemoGallery },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = if (showDemoGallery) {
+                    "Hide Test Mode (Demo Photos)"
+                } else {
+                    "Test Mode — Try Demo Photos (No Plant Nearby?)"
+                },
+                color = Color(0xFF1B5E20),
+                style = MaterialTheme.typography.labelLarge
+            )
+        }
+
+        if (showDemoGallery) {
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(containerColor = Color(0xFFF5F7F3)),
+                border = BorderStroke(1.dp, Color(0xFFDCE2D7))
+            ) {
+                Column(
+                    modifier = Modifier.padding(12.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Text(
+                        text = "Tap any sample leaf below for training or testing:",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Color(0xFF475449)
+                    )
+                    BUILT_IN_DEMO_SAMPLES.chunked(2).forEach { rowSamples ->
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            rowSamples.forEach { sample ->
+                                val thumb = remember(sample.assetPath) {
+                                    decodeAssetBitmap(context, sample.assetPath)
+                                }
+                                val isSelected = activeDemoSampleId == sample.id
+                                Card(
+                                    onClick = {
+                                        val fullBmp = decodeAssetBitmap(context, sample.assetPath)
+                                        if (fullBmp != null) {
+                                            onBoundingBoxChange(BoundingBoxNormalized())
+                                            onDemoSampleSelected(sample, fullBmp)
+                                        } else {
+                                            onStatusMessage("Could not load demo photo.")
+                                        }
+                                    },
+                                    modifier = Modifier.weight(1f),
+                                    colors = CardDefaults.cardColors(
+                                        containerColor = if (isSelected) Color(0xFFEBF3EB) else Color.White
+                                    ),
+                                    border = BorderStroke(
+                                        width = if (isSelected) 1.5.dp else 1.dp,
+                                        color = if (isSelected) Color(0xFF1B5E20) else Color(0xFFDCE2D7)
+                                    )
+                                ) {
+                                    Row(
+                                        modifier = Modifier.padding(8.dp),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                    ) {
+                                        thumb?.let { bmp ->
+                                            Image(
+                                                bitmap = bmp.asImageBitmap(),
+                                                contentDescription = sample.label,
+                                                contentScale = ContentScale.Crop,
+                                                modifier = Modifier
+                                                    .size(42.dp)
+                                                    .clip(RoundedCornerShape(6.dp))
+                                            )
+                                        }
+                                        Column(modifier = Modifier.weight(1f)) {
+                                            Text(
+                                                text = sample.label,
+                                                style = MaterialTheme.typography.labelMedium,
+                                                fontWeight = FontWeight.Bold,
+                                                color = Color(0xFF182019)
+                                            )
+                                            Text(
+                                                text = sample.subtitle,
+                                                style = MaterialTheme.typography.labelSmall,
+                                                color = Color(0xFF5A675C)
+                                            )
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+}
+
+private fun decodeAssetBitmap(context: Context, assetPath: String): Bitmap? {
+    return runCatching {
+        context.assets.open(assetPath).use { stream ->
+            BitmapFactory.decodeStream(stream)
+        }
+    }.getOrNull()
 }
 
 private fun imageProxyToUprightBitmap(imageProxy: ImageProxy): Bitmap? {
