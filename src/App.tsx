@@ -27,6 +27,7 @@ import { SavedCasesView } from './components/SavedCasesView';
 import { AndroidSourceView } from './components/AndroidSourceView';
 import { AndroidPhoneShell, PhoneTab } from './components/AndroidPhoneShell';
 import { CloudPromptStep } from './components/CloudFallbackModals';
+import { CropAnalyzerLogo } from './components/CropAnalyzerLogo';
 import { useOnlineStatus, usePWAInstall } from './hooks/usePWAInstall';
 
 interface ScenarioPreset {
@@ -323,12 +324,10 @@ export default function App() {
                 ? 'Crop Not Picked (Could Be Several)'
                 : m.crop.commonName,
             cropScientificName:
-              context.suspectedCropId === 'auto'
-                ? 'Pick your crop above to get an exact answer'
-                : m.crop.scientificName,
+              context.suspectedCropId === 'auto' ? '' : m.crop.scientificName,
             diagnosisName:
               analysis.vagueConditionTitle || m.condition.name,
-            pathogenScientificName: 'Rough Offline Guess — Need More Clues',
+            pathogenScientificName: '',
             category: 'Broad Match',
             probabilityPercent: m.probabilityPercent,
             summary: analysis.vagueSummary || m.condition.summary,
@@ -613,9 +612,10 @@ export default function App() {
             <button
               type="button"
               onClick={() => setActiveTab('scan')}
-              className="font-display text-lg font-bold tracking-tight text-[#14532D] whitespace-nowrap shrink-0"
+              className="flex items-center shrink-0"
+              aria-label="CropAnalyzer Home"
             >
-              CropAnalyzer
+              <CropAnalyzerLogo variant="inline" size="sm" />
             </button>
 
             <nav
@@ -700,13 +700,16 @@ export default function App() {
             <div className="grid grid-cols-12 items-start gap-8">
               {/* Left Column: Field Scenario Presets & Signal Routing Controls */}
               <div className="col-span-6 space-y-6">
-                <div>
-                  <h1 className="text-3xl font-bold text-[#182019] text-balance">
-                    CropAnalyzer Android Preview
-                  </h1>
-                  <p className="mt-1.5 text-sm leading-relaxed text-[#475449]">
-                    Test how CropAnalyzer looks and operates on an Android phone using the interactive Material 3 screen on the right. Select a quick field scenario below or operate the phone screen directly.
-                  </p>
+                <div className="flex items-center gap-5">
+                  <CropAnalyzerLogo variant="stacked" size="lg" />
+                  <div>
+                    <h1 className="text-2xl font-bold text-[#182019] text-balance">
+                      Simple Plant Checker for Farmers
+                    </h1>
+                    <p className="mt-1.5 text-sm leading-relaxed text-[#475449]">
+                      Frame the sick leaf inside the green box, tap Check Plant Now, and read plain advice right away. Use the phone screen on the right or test an example below.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Signal Routing Selector */}

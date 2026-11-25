@@ -9,6 +9,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -49,6 +50,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -61,14 +63,17 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.agroguard.field.data.FieldCaseEntity
 import com.agroguard.field.model.BoundingBoxNormalized
 import com.agroguard.field.model.DiagnosisOutput
 import com.agroguard.field.model.FarmerContextInput
+import kotlinx.coroutines.delay
 import java.io.File
 
 class MainActivity : ComponentActivity() {
@@ -97,6 +102,15 @@ fun CropAnalyzerScreen(vm: FieldDiagViewModel = viewModel()) {
     var capturedBitmap by remember { mutableStateOf<Bitmap?>(null) }
     var activeDemoSampleId by remember { mutableStateOf<String?>(null) }
     var boundingBox by remember { mutableStateOf(BoundingBoxNormalized()) }
+    val scrollState = rememberScrollState()
+    var diagnosisOffsetY by remember { mutableIntStateOf(0) }
+
+    LaunchedEffect(diagnosis?.caseId, activeTab) {
+        if (diagnosis != null && activeTab == 0) {
+            delay(90)
+            scrollState.animateScrollTo(diagnosisOffsetY)
+        }
+    }
 
     var selectedCrop by remember { mutableStateOf("auto") }
     var selectedPart by remember { mutableStateOf("unknown") }
@@ -121,7 +135,13 @@ fun CropAnalyzerScreen(vm: FieldDiagViewModel = viewModel()) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("CropAnalyzer", fontWeight = FontWeight.Bold, color = Color(0xFF14532D)) },
+                title = {
+                    CropAnalyzerLogoLockup(
+                        stacked = false,
+                        iconSize = 34.dp,
+                        fontSize = 18.sp
+                    )
+                },
                 actions = {
                     val netLabel = when (netState.preferredTransport.name) {
                         "WIFI" -> "WIFI"
@@ -164,7 +184,7 @@ fun CropAnalyzerScreen(vm: FieldDiagViewModel = viewModel()) {
                 .fillMaxSize()
                 .padding(padding)
                 .padding(horizontal = 16.dp, vertical = 12.dp)
-                .verticalScroll(rememberScrollState()),
+                .verticalScroll(scrollState),
             verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             if (!netState.isAvailable) {
@@ -222,6 +242,17 @@ fun CropAnalyzerScreen(vm: FieldDiagViewModel = viewModel()) {
 
             when (activeTab) {
                 0 -> {
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CropAnalyzerLogoLockup(
+                            stacked = true,
+                            iconSize = 60.dp,
+                            fontSize = 18.sp
+                        )
+                    }
+
                     // Tab 0: Live Camera + Photo Gallery + Test Mode + 2 Simple Questions + Check Plant Now
                     CameraAndBoundingBoxSection(
                         capturedBitmap = capturedBitmap,
@@ -259,36 +290,36 @@ fun CropAnalyzerScreen(vm: FieldDiagViewModel = viewModel()) {
                         selectedValue = selectedCrop,
                         options = listOf(
                             "auto" to "I do not know — Check all 30 crops",
-                            "rice" to "Rice (Oryza sativa)",
-                            "maize" to "Maize / Corn (Zea mays)",
-                            "cassava" to "Cassava (Manihot esculenta)",
-                            "sweet_potato" to "Sweet Potato (Ipomoea batatas)",
-                            "sugarcane" to "Sugarcane (Saccharum officinarum)",
-                            "coconut" to "Coconut (Cocos nucifera)",
-                            "oil_palm" to "Oil Palm (Elaeis guineensis)",
-                            "rubber" to "Natural Rubber (Hevea brasiliensis)",
-                            "banana" to "Banana / Plantain (Musa acuminata)",
-                            "mango" to "Mango (Mangifera indica)",
-                            "papaya" to "Papaya (Carica papaya)",
-                            "pineapple" to "Pineapple (Ananas comosus)",
-                            "durian" to "Durian (Durio zibethinus)",
-                            "coffee" to "Coffee (Coffea canephora / C. arabica)",
-                            "cacao" to "Cacao (Theobroma cacao)",
-                            "black_pepper" to "Black Pepper (Piper nigrum)",
-                            "chili" to "Chili Pepper (Capsicum annuum)",
-                            "tomato" to "Tomato (Solanum lycopersicum)",
-                            "eggplant" to "Eggplant / Brinjal (Solanum melongena)",
-                            "okra" to "Okra / Lady's Finger (Abelmoschus esculentus)",
-                            "yardlong_bean" to "Yardlong Bean (Vigna unguiculata)",
-                            "mungbean" to "Mungbean (Vigna radiata)",
-                            "soybean" to "Soybean (Glycine max)",
-                            "groundnut" to "Groundnut / Peanut (Arachis hypogaea)",
-                            "water_spinach" to "Water Spinach / Kangkong (Ipomoea aquatica)",
-                            "cashew" to "Cashew (Anacardium occidentale)",
-                            "shallot" to "Shallot / Red Onion (Allium cepa var. aggregatum)",
-                            "bitter_gourd" to "Bitter Gourd / Ampalaya (Momordica charantia)",
-                            "calamansi" to "Calamansi / Tropical Lime (Citrus × microcarpa)",
-                            "taro" to "Taro / Gabi (Colocasia esculenta)"
+                            "rice" to "Rice",
+                            "maize" to "Maize / Corn",
+                            "cassava" to "Cassava",
+                            "sweet_potato" to "Sweet Potato",
+                            "sugarcane" to "Sugarcane",
+                            "coconut" to "Coconut",
+                            "oil_palm" to "Oil Palm",
+                            "rubber" to "Natural Rubber",
+                            "banana" to "Banana / Plantain",
+                            "mango" to "Mango",
+                            "papaya" to "Papaya",
+                            "pineapple" to "Pineapple",
+                            "durian" to "Durian",
+                            "coffee" to "Coffee",
+                            "cacao" to "Cacao",
+                            "black_pepper" to "Black Pepper",
+                            "chili" to "Chili Pepper",
+                            "tomato" to "Tomato",
+                            "eggplant" to "Eggplant (Brinjal)",
+                            "okra" to "Okra (Lady's Finger)",
+                            "yardlong_bean" to "Yardlong Bean",
+                            "mungbean" to "Mungbean",
+                            "soybean" to "Soybean",
+                            "groundnut" to "Groundnut (Peanut)",
+                            "water_spinach" to "Water Spinach (Kangkong)",
+                            "cashew" to "Cashew",
+                            "shallot" to "Shallot / Red Onion",
+                            "bitter_gourd" to "Bitter Gourd (Ampalaya)",
+                            "calamansi" to "Calamansi / Tropical Lime",
+                            "taro" to "Taro (Gabi)"
                         ),
                         onSelect = { selectedCrop = it }
                     )
@@ -409,6 +440,15 @@ fun CropAnalyzerScreen(vm: FieldDiagViewModel = viewModel()) {
                         )
                     }
 
+                    if (capturedBitmap != null && diagnosis == null) {
+                        Text(
+                            text = "Photo ready! Tap Check Plant Now below to see what is wrong.",
+                            style = MaterialTheme.typography.bodySmall,
+                            fontWeight = FontWeight.SemiBold,
+                            color = Color(0xFF1B5E20)
+                        )
+                    }
+
                     Button(
                         onClick = {
                             val bmp = capturedBitmap
@@ -432,17 +472,25 @@ fun CropAnalyzerScreen(vm: FieldDiagViewModel = viewModel()) {
                     }
 
                     diagnosis?.let { result ->
-                        DiagnosisResultSection(
-                            result = result,
-                            onAskGeminiClick = {
-                                val bmp = capturedBitmap
-                                if (bmp != null) {
-                                    vm.askGeminiSecondOpinion(bmp, boundingBox, currentContext)
-                                } else {
-                                    vm.showStatus("Take or pick a photo first.")
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .onGloballyPositioned { coords ->
+                                    diagnosisOffsetY = coords.positionInParent().y.toInt()
                                 }
-                            }
-                        )
+                        ) {
+                            DiagnosisResultSection(
+                                result = result,
+                                onAskGeminiClick = {
+                                    val bmp = capturedBitmap
+                                    if (bmp != null) {
+                                        vm.askGeminiSecondOpinion(bmp, boundingBox, currentContext)
+                                    } else {
+                                        vm.showStatus("Take or pick a photo first.")
+                                    }
+                                }
+                            )
+                        }
                     }
                 }
 
@@ -563,7 +611,7 @@ private fun DiagnosisResultSection(
             HorizontalDivider(color = Color(0xFFECEFE9))
 
             Text(
-                text = "${result.cropCommonName} (${result.cropScientificName})",
+                text = result.cropCommonName,
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
             )
@@ -576,12 +624,6 @@ private fun DiagnosisResultSection(
                     isAbiotic || isBroad -> Color(0xFFB45309)
                     else -> Color(0xFF9A3412)
                 }
-            )
-            Text(
-                text = result.pathogenScientificName,
-                style = MaterialTheme.typography.bodySmall,
-                fontStyle = FontStyle.Italic,
-                color = Color(0xFF475449)
             )
             Text(
                 text = result.summary,
@@ -713,8 +755,7 @@ private fun OfflineCatalogTab(vm: FieldDiagViewModel) {
             ) {
                 Column(modifier = Modifier.padding(14.dp)) {
                     Text(crop.commonName, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-                    Text(crop.scientificName, fontStyle = FontStyle.Italic, style = MaterialTheme.typography.bodySmall)
-                    Text("Grown in: ${crop.globalRegions}", style = MaterialTheme.typography.labelSmall)
+                    Text("Where grown: ${crop.globalRegions}", style = MaterialTheme.typography.labelSmall)
                 }
             }
             crop.conditions.forEach { cond ->
@@ -726,7 +767,6 @@ private fun OfflineCatalogTab(vm: FieldDiagViewModel) {
                     Column(modifier = Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text(cond.category, style = MaterialTheme.typography.labelSmall, color = Color(0xFF5A675C))
                         Text(cond.name, fontWeight = FontWeight.Bold)
-                        Text(cond.scientificName, fontStyle = FontStyle.Italic, style = MaterialTheme.typography.bodySmall)
                         Text(cond.summary, style = MaterialTheme.typography.bodySmall)
                         cond.recommendations.immediateActions.firstOrNull()?.let { act ->
                             Text("What to do: $act", style = MaterialTheme.typography.bodySmall, color = Color(0xFF1B5E20))
@@ -813,12 +853,6 @@ private fun SavedCasesTab(
                             text = "${entry.cropCommonName} — ${entry.diagnosisName}",
                             fontWeight = FontWeight.Bold,
                             style = MaterialTheme.typography.bodyMedium
-                        )
-                        Text(
-                            text = entry.pathogenScientificName,
-                            fontStyle = FontStyle.Italic,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = Color(0xFF475449)
                         )
                     }
                 }

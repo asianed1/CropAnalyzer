@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   BatteryCharging,
   BookOpen,
@@ -42,6 +42,7 @@ import {
 import { BoundingBoxViewport } from './BoundingBoxViewport';
 import { DiagnosisDisplayData } from './DiagnosisResultCard';
 import { CloudPromptStep } from './CloudFallbackModals';
+import { CropAnalyzerLogo } from './CropAnalyzerLogo';
 
 export type PhoneTab = 'scan' | 'crops' | 'cases' | 'android';
 
@@ -143,6 +144,16 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
   const [cropSearch, setCropSearch] = useState('');
   const [selectedKbId, setSelectedKbId] = useState<string>('abiotic_causes');
   const [showMoreDetails, setShowMoreDetails] = useState(false);
+  const diagnosisRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (displayDiagnosis && activeTab === 'scan') {
+      const timer = setTimeout(() => {
+        diagnosisRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 90);
+      return () => clearTimeout(timer);
+    }
+  }, [displayDiagnosis, activeTab]);
 
   const transportBadge = !networkReport.isConnected
     ? 'OFFLINE'
@@ -199,9 +210,7 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
           !framed ? 'sticky top-0 z-20' : ''
         }`}
       >
-        <span className="font-display text-lg font-bold tracking-tight text-[#14532D] whitespace-nowrap">
-          CropAnalyzer
-        </span>
+        <CropAnalyzerLogo variant="inline" size="sm" />
         <span className="font-mono-tabular text-[11px] font-semibold text-[#475449] whitespace-nowrap">
           {transportBadge}
         </span>
@@ -230,6 +239,10 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
 
         {activeTab === 'scan' && (
           <div className="space-y-4">
+            <div className="flex justify-center pt-0.5">
+              <CropAnalyzerLogo variant="stacked" size="md" />
+            </div>
+
             {/* Fixed Center Framing Viewport Card */}
             <div className="rounded-2xl border border-[#DCE2D7] bg-white p-3">
               <BoundingBoxViewport
@@ -262,7 +275,7 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                   { value: 'auto', label: 'I do not know — Check all 30 crops' },
                   ...CROPS_KNOWLEDGE_BASE.map((c) => ({
                     value: c.id,
-                    label: `${c.commonName} (${c.scientificName})`,
+                    label: c.commonName,
                   })),
                 ]}
                 onChange={(val) =>
@@ -365,19 +378,27 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
             </div>
 
             {/* Material 3 Primary Action Button */}
-            <button
-              type="button"
-              onClick={onRunOfflineAnalysis}
-              className="flex min-h-[48px] w-full items-center justify-center rounded-full bg-[#1B5E20] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#14532D] active:scale-[0.99]"
-            >
-              Check Plant Now
-            </button>
+            <div className="space-y-1.5">
+              {qualityMetrics && !displayDiagnosis && (
+                <p className="text-center text-xs font-semibold text-[#1B5E20]">
+                  Photo ready — tap below to see what is wrong
+                </p>
+              )}
+              <button
+                type="button"
+                onClick={onRunOfflineAnalysis}
+                className="flex min-h-[48px] w-full items-center justify-center rounded-full bg-[#1B5E20] px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#14532D] active:scale-[0.99]"
+              >
+                Check Plant Now
+              </button>
+            </div>
 
             {/* Material 3 Diagnosis Output Card */}
             {displayDiagnosis && (
               <section
+                ref={diagnosisRef}
                 aria-label="Diagnosis Card"
-                className="rounded-2xl border border-[#DCE2D7] bg-white p-4 space-y-3"
+                className="rounded-2xl border border-[#DCE2D7] bg-white p-4 space-y-3 scroll-mt-3"
               >
                 <div className="flex items-center justify-between gap-2 border-b border-[#ECEFE9] pb-2 text-[11px] text-[#475449]">
                   <span className="font-semibold text-[#1B5E20]">
@@ -395,10 +416,7 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                 <div>
                   <p className="text-[11px] text-[#5A675C]">Crop</p>
                   <p className="text-base font-bold text-[#182019]">
-                    {displayDiagnosis.cropCommonName}{' '}
-                    <span className="text-sm font-normal italic text-[#475449]">
-                      ({displayDiagnosis.cropScientificName})
-                    </span>
+                    {displayDiagnosis.cropCommonName}
                   </p>
                 </div>
 
@@ -422,9 +440,6 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                     }`}
                   >
                     {displayDiagnosis.diagnosisName}
-                  </p>
-                  <p className="text-xs italic text-[#475449]">
-                    {displayDiagnosis.pathogenScientificName}
                   </p>
                 </div>
 
@@ -535,8 +550,9 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                       <h2 className="text-base font-bold text-[#182019]">
                         {crop.commonName}
                       </h2>
-                      <p className="text-xs italic text-[#5A675C]">{crop.scientificName}</p>
-                      <p className="mt-1 text-[11px] text-[#475449]">{crop.globalRegions}</p>
+                      <p className="mt-1 text-[11px] text-[#475449]">
+                        Where grown: {crop.globalRegions}
+                      </p>
                     </div>
                     {crop.conditions.map((cond) => (
                       <article
@@ -549,9 +565,6 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                             {cond.category}
                           </span>
                         </div>
-                        <p className="text-[11px] italic text-[#5A675C]">
-                          {cond.scientificName}
-                        </p>
                         <p className="mt-1.5 text-xs text-[#2C372E]">{cond.summary}</p>
                       </article>
                     ))}
@@ -599,9 +612,6 @@ export const AndroidPhoneShell: React.FC<AndroidPhoneShellProps> = ({
                         <h3 className="truncate text-sm font-bold text-[#182019]">
                           {entry.cropCommonName} — {entry.diagnosisName}
                         </h3>
-                        <p className="truncate text-[11px] italic text-[#475449]">
-                          {entry.pathogenScientificName}
-                        </p>
                       </div>
                     </div>
 

@@ -102,7 +102,6 @@ export const CropCatalogView: React.FC = () => {
               >
                 <div>
                   <p className="text-sm font-semibold">{crop.commonName}</p>
-                  <p className="text-xs italic text-[#5A675C]">{crop.scientificName}</p>
                 </div>
                 <span className="font-mono-tabular text-xs text-[#5A675C]">
                   {crop.conditions.length} guides
@@ -132,7 +131,6 @@ export const CropCatalogView: React.FC = () => {
                       <h3 className="text-base font-semibold text-[#182019]">{cond.name}</h3>
                       <span className="text-xs font-medium text-[#B45309]">Water / Soil / Sun</span>
                     </div>
-                    <p className="text-xs italic text-[#5A675C]">{cond.scientificName}</p>
                     <p className="mt-2 text-sm text-[#2C372E]">{cond.summary}</p>
                     <p className="mt-2 text-xs text-[#475449]">
                       <span className="font-semibold text-[#182019]">What to do: </span>
@@ -149,13 +147,10 @@ export const CropCatalogView: React.FC = () => {
               <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-[#ECEFE9] pb-3">
                 <div>
                   <h2 className="text-xl font-bold text-[#182019]">
-                    {activeCrop.commonName}{' '}
-                    <span className="font-normal italic text-[#475449]">
-                      ({activeCrop.scientificName})
-                    </span>
+                    {activeCrop.commonName}
                   </h2>
                   <p className="mt-0.5 text-xs text-[#5A675C]">
-                    Family: {activeCrop.family} · Regions: {activeCrop.globalRegions}
+                    Where grown: {activeCrop.globalRegions}
                   </p>
                 </div>
               </div>
@@ -167,10 +162,9 @@ export const CropCatalogView: React.FC = () => {
                       <h3 className="text-base font-semibold text-[#182019]">{cond.name}</h3>
                       <span className="text-xs font-medium text-[#5A675C]">{cond.category}</span>
                     </div>
-                    <p className="text-xs italic text-[#5A675C]">{cond.scientificName}</p>
                     <p className="mt-2 text-sm text-[#2C372E]">{cond.summary}</p>
                     <p className="mt-2 text-xs text-[#475449]">
-                      <span className="font-semibold text-[#182019]">Action: </span>
+                      <span className="font-semibold text-[#182019]">What to do: </span>
                       {cond.recommendations.immediateActions[0]}
                     </p>
                   </article>

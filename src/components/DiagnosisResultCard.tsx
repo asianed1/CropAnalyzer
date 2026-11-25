@@ -78,10 +78,7 @@ export const DiagnosisResultCard: React.FC<DiagnosisResultCardProps> = ({
           <div>
             <p className="text-xs font-medium text-[#5A675C]">Crop</p>
             <h2 className="mt-0.5 text-xl font-bold text-[#182019] text-balance">
-              {result.cropCommonName}{' '}
-              <span className="font-normal italic text-[#475449]">
-                ({result.cropScientificName})
-              </span>
+              {result.cropCommonName}
             </h2>
           </div>
 
@@ -106,7 +103,6 @@ export const DiagnosisResultCard: React.FC<DiagnosisResultCardProps> = ({
             >
               {result.diagnosisName}
             </p>
-            <p className="text-sm italic text-[#475449]">{result.pathogenScientificName}</p>
           </div>
         </div>
 

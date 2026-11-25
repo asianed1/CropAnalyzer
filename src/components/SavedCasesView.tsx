@@ -87,9 +87,6 @@ export const SavedCasesView: React.FC<SavedCasesViewProps> = ({
                       <h2 className="mt-1 truncate text-base font-bold text-[#182019]">
                         {entry.cropCommonName} — {entry.diagnosisName}
                       </h2>
-                      <p className="truncate text-xs italic text-[#475449]">
-                        {entry.cropScientificName} · {entry.pathogenScientificName}
-                      </p>
                     </div>
                   </button>
 
